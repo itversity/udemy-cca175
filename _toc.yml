@@ -4,5 +4,5 @@
     - file: spark-sql/02_basic_transformations
     - file: spark-sql/03_basic_ddl_and_dml
     - file: spark-sql/04_dml_and_partitioning
-    - file: spark-sql/05_overview_of_spark_sql_functions
+    - file: spark-sql/05_predefined_functions
     - file: spark-sql/06_windowing_functions
