@@ -1,0 +1,8 @@
+- file: spark_sql
+  sections:
+    - file: 01_getting_started
+    - file: 02_basic_transformation
+    - file: 03_managing_tables_-_basic_ddl_and_dml
+    - file: 04_managing_tables_-_dml_and_partitioning
+    - file: 05_overview_of_spark_sql_functions
+    - file: 06_windowing_functions
