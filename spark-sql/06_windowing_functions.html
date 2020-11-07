@@ -159,14 +159,11 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/spark-sql/06_windowing_functions.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/spark-sql/06_windowing_functions.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/spark-sql/06_windowing_functions.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -297,15 +294,15 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
 
-<span class="n">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span>
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
     <span class="n">builder</span><span class="o">.</span>
-    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.ui.port&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span><span class="o">.</span>
-    <span class="n">config</span><span class="p">(</span><span class="s2">&quot;spark.sql.warehouse.dir&quot;</span><span class="p">,</span> <span class="s2">&quot;/user/itversity/warehouse&quot;</span><span class="p">)</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.sql.warehouse.dir&quot;</span><span class="o">,</span> <span class="s">&quot;/user/itversity/warehouse&quot;</span><span class="o">).</span>
     <span class="n">enableHiveSupport</span><span class="o">.</span>
-    <span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Spark SQL - Windowing Functions&quot;</span><span class="p">)</span><span class="o">.</span>
-    <span class="n">master</span><span class="p">(</span><span class="s2">&quot;yarn&quot;</span><span class="p">)</span><span class="o">.</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Spark SQL - Windowing Functions&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
     <span class="n">getOrCreate</span>
 </pre></div>
 </div>
@@ -313,8 +310,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
-<span class="n">SET</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">shuffle</span><span class="o">.</span><span class="n">partitions</span><span class="o">=</span><span class="mi">2</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<span class="nc">SET</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">.</span><span class="n">shuffle</span><span class="o">.</span><span class="n">partitions</span><span class="k">=</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -330,36 +327,36 @@
 <p>First let us start with creating the database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DROP</span> <span class="n">DATABASE</span> <span class="n">itversity_hr</span> <span class="n">CASCADE</span>
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="n">itversity_hr</span> <span class="nc">CASCADE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">itversity_hr</span>
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="n">itversity_hr</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_hr</span>
+<span class="nc">USE</span> <span class="n">itversity_hr</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">current_database</span><span class="p">()</span>
+<span class="nc">SELECT</span> <span class="n">current_database</span><span class="o">()</span>
 </pre></div>
 </div>
 </div>
@@ -367,21 +364,21 @@
 <p>As the database is created, let us go ahead and add table to it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">employees</span> <span class="p">(</span>
-  <span class="n">employee_id</span>     <span class="nb">int</span><span class="p">,</span>
-  <span class="n">first_name</span>      <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-  <span class="n">last_name</span>       <span class="n">varchar</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span>
-  <span class="n">email</span>           <span class="n">varchar</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span>
-  <span class="n">phone_number</span>    <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-  <span class="n">hire_date</span>       <span class="n">date</span><span class="p">,</span>
-  <span class="n">job_id</span>          <span class="n">varchar</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-  <span class="n">salary</span>          <span class="n">decimal</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-  <span class="n">commission_pct</span>  <span class="n">decimal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-  <span class="n">manager_id</span>      <span class="nb">int</span><span class="p">,</span>
-  <span class="n">department_id</span>   <span class="nb">int</span>
-<span class="p">)</span> <span class="n">ROW</span> <span class="n">FORMAT</span> <span class="n">DELIMITED</span> <span class="n">FIELDS</span> <span class="n">TERMINATED</span> <span class="n">BY</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span>
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">employees</span> <span class="o">(</span>
+  <span class="n">employee_id</span>     <span class="n">int</span><span class="o">,</span>
+  <span class="n">first_name</span>      <span class="n">varchar</span><span class="o">(</span><span class="mi">20</span><span class="o">),</span>
+  <span class="n">last_name</span>       <span class="n">varchar</span><span class="o">(</span><span class="mi">25</span><span class="o">),</span>
+  <span class="n">email</span>           <span class="n">varchar</span><span class="o">(</span><span class="mi">25</span><span class="o">),</span>
+  <span class="n">phone_number</span>    <span class="n">varchar</span><span class="o">(</span><span class="mi">20</span><span class="o">),</span>
+  <span class="n">hire_date</span>       <span class="n">date</span><span class="o">,</span>
+  <span class="n">job_id</span>          <span class="n">varchar</span><span class="o">(</span><span class="mi">10</span><span class="o">),</span>
+  <span class="n">salary</span>          <span class="n">decimal</span><span class="o">(</span><span class="mi">8</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span>
+  <span class="n">commission_pct</span>  <span class="n">decimal</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span>
+  <span class="n">manager_id</span>      <span class="n">int</span><span class="o">,</span>
+  <span class="n">department_id</span>   <span class="n">int</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;\t&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -389,37 +386,37 @@
 <p>Let us load the data and validate the table.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">LOAD</span> <span class="n">DATA</span> <span class="n">LOCAL</span> <span class="n">INPATH</span> <span class="s1">&#39;/data/hr_db/employees&#39;</span> 
-<span class="n">INTO</span> <span class="n">TABLE</span> <span class="n">employees</span>
+LOAD DATA LOCAL INPATH &#39;/data/hr_db/employees&#39; 
+INTO TABLE employees
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">employees</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">employees</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> <span class="n">FROM</span> <span class="n">employees</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">employee_id</span><span class="o">,</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span> <span class="nc">FROM</span> <span class="n">employees</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">employees</span>
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">employees</span>
 </pre></div>
 </div>
 </div>
@@ -438,33 +435,33 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_hr</span>
+<span class="nc">USE</span> <span class="n">itversity_hr</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> <span class="n">FROM</span> <span class="n">employees</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">employee_id</span><span class="o">,</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span> <span class="nc">FROM</span> <span class="n">employees</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span>
-    <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">employee_count</span><span class="p">,</span>
-    <span class="n">rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">rnk</span><span class="p">,</span>
-    <span class="n">lead</span><span class="p">(</span><span class="n">employee_id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">lead_emp_id</span><span class="p">,</span>
-    <span class="n">lead</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">lead_emp_sal</span>
-<span class="n">FROM</span> <span class="n">employees</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">employee_id</span>
+<span class="nc">SELECT</span> <span class="n">employee_id</span><span class="o">,</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span><span class="o">,</span>
+    <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">employee_count</span><span class="o">,</span>
+    <span class="n">rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">rnk</span><span class="o">,</span>
+    <span class="n">lead</span><span class="o">(</span><span class="n">employee_id</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">lead_emp_id</span><span class="o">,</span>
+    <span class="n">lead</span><span class="o">(</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">lead_emp_sal</span>
+<span class="nc">FROM</span> <span class="n">employees</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">employee_id</span>
 </pre></div>
 </div>
 </div>
@@ -481,21 +478,47 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_hr</span>
+<span class="nc">USE</span> <span class="n">itversity_hr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> 
-<span class="n">FROM</span> <span class="n">employees</span> 
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">employee_id</span><span class="o">,</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span> 
+<span class="nc">FROM</span> <span class="n">employees</span> 
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+--------+
+|employee_id|department_id|  salary|
++-----------+-------------+--------+
+|        178|         null| 7000.00|
+|        200|           10| 4400.00|
+|        202|           20| 6000.00|
+|        201|           20|13000.00|
+|        119|           30| 2500.00|
+|        118|           30| 2600.00|
+|        117|           30| 2800.00|
+|        116|           30| 2900.00|
+|        115|           30| 3100.00|
+|        114|           30|11000.00|
++-----------+-------------+--------+
 </pre></div>
 </div>
 </div>
@@ -505,33 +528,74 @@
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">department_id</span><span class="p">,</span>
-       <span class="nb">sum</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">AS</span> <span class="n">department_salary_expense</span>
-<span class="n">FROM</span> <span class="n">employees</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">department_id</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">department_id</span>
+<span class="nc">SELECT</span> <span class="n">department_id</span><span class="o">,</span>
+       <span class="n">sum</span><span class="o">(</span><span class="n">salary</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">department_salary_expense</span>
+<span class="nc">FROM</span> <span class="n">employees</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">department_id</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">department_id</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------------+-------------------------+
+|department_id|department_salary_expense|
++-------------+-------------------------+
+|         null|                  7000.00|
+|           10|                  4400.00|
+|           20|                 19000.00|
+|           30|                 24900.00|
+|           40|                  6500.00|
+|           50|                156400.00|
+|           60|                 28800.00|
+|           70|                 10000.00|
+|           80|                304500.00|
+|           90|                 58000.00|
++-------------+-------------------------+
+only showing top 10 rows
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">,</span>
-       <span class="n">ae</span><span class="o">.</span><span class="n">department_salary_expense</span><span class="p">,</span>
+<span class="nc">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">,</span>
+       <span class="n">ae</span><span class="o">.</span><span class="n">department_salary_expense</span><span class="o">,</span>
        <span class="n">ae</span><span class="o">.</span><span class="n">avg_salary_expense</span>
-<span class="n">FROM</span> <span class="n">employees</span> <span class="n">e</span> <span class="n">JOIN</span> <span class="p">(</span>
-     <span class="n">SELECT</span> <span class="n">department_id</span><span class="p">,</span> 
-            <span class="nb">sum</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">AS</span> <span class="n">department_salary_expense</span><span class="p">,</span>
-            <span class="n">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_salary_expense</span>
-     <span class="n">FROM</span> <span class="n">employees</span>
-     <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">department_id</span>
-<span class="p">)</span> <span class="n">ae</span>
-<span class="n">ON</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">department_id</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span>
+<span class="nc">FROM</span> <span class="n">employees</span> <span class="n">e</span> <span class="nc">JOIN</span> <span class="o">(</span>
+     <span class="nc">SELECT</span> <span class="n">department_id</span><span class="o">,</span> 
+            <span class="n">sum</span><span class="o">(</span><span class="n">salary</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">department_salary_expense</span><span class="o">,</span>
+            <span class="n">avg</span><span class="o">(</span><span class="n">salary</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">avg_salary_expense</span>
+     <span class="nc">FROM</span> <span class="n">employees</span>
+     <span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">department_id</span>
+<span class="o">)</span> <span class="n">ae</span>
+<span class="nc">ON</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">department_id</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|        117|           30| 2800.00|                 24900.0...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+--------+-------------------------+------------------+
+|employee_id|department_id|  salary|department_salary_expense|avg_salary_expense|
++-----------+-------------+--------+-------------------------+------------------+
+|        200|           10| 4400.00|                  4400.00|       4400.000000|
+|        202|           20| 6000.00|                 19000.00|       9500.000000|
+|        201|           20|13000.00|                 19000.00|       9500.000000|
+|        119|           30| 2500.00|                 24900.00|       4150.000000|
+|        118|           30| 2600.00|                 24900.00|       4150.000000|
+|        117|           30| 2800.00|                 24900.00|       4150.000000|
+|        116|           30| 2900.00|                 24900.00|       4150.000000|
+|        115|           30| 3100.00|                 24900.00|       4150.000000|
+|        114|           30|11000.00|                 24900.00|       4150.000000|
+|        203|           40| 6500.00|                  6500.00|       6500.000000|
++-----------+-------------+--------+-------------------------+------------------+
+only showing top 10 rows
 </pre></div>
 </div>
 </div>
@@ -544,30 +608,74 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">,</span>
-       <span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> 
-         <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span>
-         <span class="n">AS</span> <span class="n">department_salary_expense</span>
-<span class="n">FROM</span> <span class="n">employees</span> <span class="n">e</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span>
+<span class="nc">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">,</span>
+       <span class="n">sum</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> 
+         <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span>
+         <span class="nc">AS</span> <span class="n">department_salary_expense</span>
+<span class="nc">FROM</span> <span class="n">employees</span> <span class="n">e</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|        117|          ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+--------+-------------------------+
+|employee_id|department_id|  salary|department_salary_expense|
++-----------+-------------+--------+-------------------------+
+|        178|         null| 7000.00|                  7000.00|
+|        200|           10| 4400.00|                  4400.00|
+|        202|           20| 6000.00|                 19000.00|
+|        201|           20|13000.00|                 19000.00|
+|        116|           30| 2900.00|                 24900.00|
+|        119|           30| 2500.00|                 24900.00|
+|        115|           30| 3100.00|                 24900.00|
+|        118|           30| 2600.00|                 24900.00|
+|        117|           30| 2800.00|                 24900.00|
+|        114|           30|11000.00|                 24900.00|
++-----------+-------------+--------+-------------------------+
+only showing top 10 rows
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">,</span>
-    <span class="nb">sum</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">sum_sal_expense</span><span class="p">,</span>
-    <span class="n">avg</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">avg_sal_expense</span><span class="p">,</span>
-    <span class="nb">min</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">min_sal_expense</span><span class="p">,</span>
-    <span class="nb">max</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">max_sal_expense</span><span class="p">,</span>
-    <span class="n">count</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span> <span class="n">AS</span> <span class="n">cnt_sal_expense</span>
-<span class="n">FROM</span> <span class="n">employees</span> <span class="n">e</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span>
+<span class="nc">SELECT</span> <span class="n">e</span><span class="o">.</span><span class="n">employee_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">,</span>
+    <span class="n">sum</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">sum_sal_expense</span><span class="o">,</span>
+    <span class="n">avg</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">avg_sal_expense</span><span class="o">,</span>
+    <span class="n">min</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">min_sal_expense</span><span class="o">,</span>
+    <span class="n">max</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">max_sal_expense</span><span class="o">,</span>
+    <span class="n">count</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="n">salary</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">cnt_sal_expense</span>
+<span class="nc">FROM</span> <span class="n">employees</span> <span class="n">e</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">e</span><span class="o">.</span><span class="n">department_id</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|        201| ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+--------+---------------+---------------+---------------+---------------+---------------+
+|employee_id|department_id|  salary|sum_sal_expense|avg_sal_expense|min_sal_expense|max_sal_expense|cnt_sal_expense|
++-----------+-------------+--------+---------------+---------------+---------------+---------------+---------------+
+|        178|         null| 7000.00|        7000.00|    7000.000000|        7000.00|        7000.00|              1|
+|        200|           10| 4400.00|        4400.00|    4400.000000|        4400.00|        4400.00|              1|
+|        202|           20| 6000.00|       19000.00|    9500.000000|        6000.00|       13000.00|              2|
+|        201|           20|13000.00|       19000.00|    9500.000000|        6000.00|       13000.00|              2|
+|        116|           30| 2900.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
+|        119|           30| 2500.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
+|        115|           30| 3100.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
+|        118|           30| 2600.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
+|        117|           30| 2800.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
+|        114|           30|11000.00|       24900.00|    4150.000000|        2500.00|       11000.00|              6|
++-----------+-------------+--------+---------------+---------------+---------------+---------------+---------------+
+only showing top 10 rows
 </pre></div>
 </div>
 </div>
@@ -585,46 +693,88 @@
 <p>Let us create table to compute daily revenue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">daily_revenue</span>
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">daily_revenue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">daily_revenue</span>
-<span class="n">AS</span>
-<span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-       <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-<span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-<span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-<span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span>
+CREATE TABLE daily_revenue
+AS
+SELECT o.order_date,
+       round(sum(oi.order_item_subtotal), 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> 
-<span class="n">FROM</span> <span class="n">daily_revenue</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> 
+<span class="nc">FROM</span> <span class="n">daily_revenue</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+--------+
+|          order_date| revenue|
++--------------------+--------+
+|2013-07-25 00:00:...|31547.23|
+|2013-07-26 00:00:...|54713.23|
+|2013-07-27 00:00:...|48411.48|
+|2013-07-28 00:00:...|35672.03|
+|2013-07-29 00:00:...| 54579.7|
+|2013-07-30 00:00:...|49329.29|
+|2013-07-31 00:00:...|59212.49|
+|2013-08-01 00:00:...|49160.08|
+|2013-08-02 00:00:...|50688.58|
+|2013-08-03 00:00:...|43416.74|
++--------------------+--------+
 </pre></div>
 </div>
 </div>
@@ -632,47 +782,92 @@
 <p>Let us create table to compute daily product revenue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DROP</span> <span class="n">TABLE</span> <span class="n">IF</span> <span class="n">EXISTS</span> <span class="n">daily_product_revenue</span>
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">daily_product_revenue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">daily_product_revenue</span>
-<span class="n">AS</span>
-<span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-       <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">,</span>
-       <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-<span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-<span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-<span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span>
+CREATE TABLE daily_product_revenue
+AS
+SELECT o.order_date,
+       oi.order_item_product_id,
+       round(sum(oi.order_item_subtotal), 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date, oi.order_item_product_id
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>++
+||
+++
+++
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> 
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">order_item_product_id</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> 
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">order_item_product_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-----...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+---------------------+-------+
+|          order_date|order_item_product_id|revenue|
++--------------------+---------------------+-------+
+|2013-07-25 00:00:...|                   24| 319.96|
+|2013-07-25 00:00:...|                   93|  74.97|
+|2013-07-25 00:00:...|                  134|  100.0|
+|2013-07-25 00:00:...|                  191|5099.49|
+|2013-07-25 00:00:...|                  226| 599.99|
+|2013-07-25 00:00:...|                  365|3359.44|
+|2013-07-25 00:00:...|                  403|1949.85|
+|2013-07-25 00:00:...|                  502| 1650.0|
+|2013-07-25 00:00:...|                  572| 119.97|
+|2013-07-25 00:00:...|                  625| 199.99|
++--------------------+---------------------+-------+
 </pre></div>
 </div>
 </div>
@@ -685,34 +880,34 @@
 <p>Here is the example where we can get prior or following records based on <strong>ORDER BY</strong> Clause.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">daily_revenue</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">daily_revenue</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">order_date</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_date</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">order_date</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_date</span><span class="o">,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">revenue</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
@@ -720,51 +915,51 @@
 <p>We can also pass number of rows as well as default values for nulls as arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">order_date</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_date</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">revenue</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">order_date</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_date</span><span class="o">,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">revenue</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">order_date</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_date</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">revenue</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">order_date</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_date</span><span class="o">,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">revenue</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">order_date</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_date</span><span class="p">,</span>
-  <span class="n">lead</span><span class="p">(</span><span class="n">revenue</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">prior_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">order_date</span><span class="o">,</span> <span class="mi">7</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_date</span><span class="o">,</span>
+  <span class="n">lead</span><span class="o">(</span><span class="n">revenue</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">prior_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
@@ -773,47 +968,47 @@
 <p>Here is the example where we can get prior or following records based on <strong>PARTITION BY</strong> and then <strong>ORDER BY</strong> Clause.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DESCRIBE</span> <span class="n">daily_product_revenue</span>
+<span class="nc">DESCRIBE</span> <span class="n">daily_product_revenue</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">LEAD</span><span class="p">(</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> 
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">next_product_id</span><span class="p">,</span>
-  <span class="n">LEAD</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> 
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">next_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="nc">LEAD</span><span class="o">(</span><span class="n">order_item_product_id</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> 
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">next_product_id</span><span class="o">,</span>
+  <span class="nc">LEAD</span><span class="o">(</span><span class="n">revenue</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> 
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">next_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -821,17 +1016,17 @@
 <p>We can also pass number of rows as well as default values for nulls as arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">LEAD</span><span class="p">(</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">next_product_id</span><span class="p">,</span>
-  <span class="n">LEAD</span><span class="p">(</span><span class="n">revenue</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">next_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="nc">LEAD</span><span class="o">(</span><span class="n">order_item_product_id</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">next_product_id</span><span class="o">,</span>
+  <span class="nc">LEAD</span><span class="o">(</span><span class="n">revenue</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">next_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -843,27 +1038,27 @@
 <p>Here is the example of using first_value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">first_value</span><span class="p">(</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">first_product_id</span><span class="p">,</span>
-  <span class="n">first_value</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">first_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">first_value</span><span class="o">(</span><span class="n">order_item_product_id</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">first_product_id</span><span class="o">,</span>
+  <span class="n">first_value</span><span class="o">(</span><span class="n">revenue</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">first_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -871,29 +1066,29 @@
 <p>Let us see an example with last_value. While using last_value we need to specify <strong>ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING/PRECEEDING</strong>. By default it uses</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">last_value</span><span class="p">(</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span>
-    <span class="n">ROWS</span> <span class="n">BETWEEN</span> <span class="n">CURRENT</span> <span class="n">ROW</span> <span class="n">AND</span> <span class="n">UNBOUNDED</span> <span class="n">FOLLOWING</span>
-  <span class="p">)</span> <span class="n">last_product_id</span><span class="p">,</span>
-  <span class="n">last_value</span><span class="p">(</span><span class="n">revenue</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span>
-    <span class="n">ROWS</span> <span class="n">BETWEEN</span> <span class="n">CURRENT</span> <span class="n">ROW</span> <span class="n">AND</span> <span class="n">UNBOUNDED</span> <span class="n">FOLLOWING</span>
-  <span class="p">)</span>  <span class="n">last_revenue</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">AS</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">last_value</span><span class="o">(</span><span class="n">order_item_product_id</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span>
+    <span class="nc">ROWS</span> <span class="nc">BETWEEN</span> <span class="nc">CURRENT</span> <span class="nc">ROW</span> <span class="nc">AND</span> <span class="nc">UNBOUNDED</span> <span class="nc">FOLLOWING</span>
+  <span class="o">)</span> <span class="n">last_product_id</span><span class="o">,</span>
+  <span class="n">last_value</span><span class="o">(</span><span class="n">revenue</span><span class="o">)</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span>
+    <span class="nc">ROWS</span> <span class="nc">BETWEEN</span> <span class="nc">CURRENT</span> <span class="nc">ROW</span> <span class="nc">AND</span> <span class="nc">UNBOUNDED</span> <span class="nc">FOLLOWING</span>
+  <span class="o">)</span>  <span class="n">last_revenue</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="nc">AS</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -910,25 +1105,25 @@
 <p>Here is an example to assign sparse ranks using daily_product_revenue with in each day based on revenue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">AS</span> <span class="n">rnk</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+  <span class="n">rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span>
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="nc">AS</span> <span class="n">rnk</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -936,55 +1131,55 @@
 <p>Here is another example to assign sparse ranks using employees data set with in each department.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_hr</span>
+<span class="nc">USE</span> <span class="n">itversity_hr</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span>
-  <span class="n">employee_id</span><span class="p">,</span>
-  <span class="n">department_id</span><span class="p">,</span>
-  <span class="n">salary</span><span class="p">,</span>
-  <span class="n">rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">rnk</span><span class="p">,</span>
-  <span class="n">dense_rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">drnk</span><span class="p">,</span>
-  <span class="n">row_number</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">department_id</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">rn</span>
-<span class="n">FROM</span> <span class="n">employees</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">department_id</span><span class="p">,</span> <span class="n">salary</span> <span class="n">DESC</span>
+<span class="nc">SELECT</span>
+  <span class="n">employee_id</span><span class="o">,</span>
+  <span class="n">department_id</span><span class="o">,</span>
+  <span class="n">salary</span><span class="o">,</span>
+  <span class="n">rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span>
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">rnk</span><span class="o">,</span>
+  <span class="n">dense_rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span>
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">drnk</span><span class="o">,</span>
+  <span class="n">row_number</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">department_id</span>
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="n">rn</span>
+<span class="nc">FROM</span> <span class="n">employees</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">department_id</span><span class="o">,</span> <span class="n">salary</span> <span class="nc">DESC</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">employees</span> <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">employees</span> <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="n">employee_id</span><span class="p">,</span> <span class="n">salary</span><span class="p">,</span>
-    <span class="n">dense_rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">ORDER</span> <span class="n">BY</span> <span class="n">salary</span> <span class="n">DESC</span><span class="p">)</span> <span class="n">AS</span> <span class="n">drnk</span>
-<span class="n">FROM</span> <span class="n">employees</span>
+<span class="nc">SELECT</span> <span class="n">employee_id</span><span class="o">,</span> <span class="n">salary</span><span class="o">,</span>
+    <span class="n">dense_rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span><span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">salary</span> <span class="nc">DESC</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">drnk</span>
+<span class="nc">FROM</span> <span class="n">employees</span>
 </pre></div>
 </div>
 </div>
@@ -1010,42 +1205,42 @@
 <p>Let us come up with a query which will compute daily revenue using COMPLETE or CLOSED orders and also ordered by order_date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-  <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-<span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-<span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-<span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+SELECT o.order_date,
+  round(sum(oi.order_item_order_id), 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+ORDER BY o.order_date
+LIMIT 10
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-    <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-<span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-<span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-<span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span>
-    <span class="n">HAVING</span> <span class="n">revenue</span> <span class="o">&gt;=</span> <span class="mi">2000000</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+SELECT o.order_date,
+    round(sum(oi.order_item_order_id), 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date
+    HAVING revenue &gt;= 2000000
+ORDER BY order_date
+LIMIT 10
 </pre></div>
 </div>
 </div>
@@ -1071,9 +1266,9 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">current_date</span><span class="p">)</span> <span class="n">AS</span> <span class="n">q</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span><span class="nc">SELECT</span> <span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">q</span>
 </pre></div>
 </div>
 </div>
@@ -1081,28 +1276,28 @@
 <p>Let us see few more examples with respected to Nested Sub Queries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">order_count</span>
-  <span class="n">FROM</span> <span class="n">orders</span>
-  <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="p">)</span> <span class="n">q</span>
-<span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span>
+  <span class="nc">SELECT</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_count</span>
+  <span class="nc">FROM</span> <span class="n">orders</span>
+  <span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_date</span>
+<span class="o">)</span> <span class="n">q</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">AS</span> <span class="n">order_count</span>
-  <span class="n">FROM</span> <span class="n">orders</span>
-  <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">order_date</span>
-<span class="p">)</span> <span class="n">q</span>
-<span class="n">WHERE</span> <span class="n">q</span><span class="o">.</span><span class="n">order_count</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span>
+  <span class="nc">SELECT</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_count</span>
+  <span class="nc">FROM</span> <span class="n">orders</span>
+  <span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_date</span>
+<span class="o">)</span> <span class="n">q</span>
+<span class="nc">WHERE</span> <span class="n">q</span><span class="o">.</span><span class="n">order_count</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -1122,19 +1317,19 @@
 <p>Here is the example where we can filter data based on Window Functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span>
-  <span class="n">SELECT</span> <span class="n">t</span><span class="o">.*</span><span class="p">,</span>
-    <span class="n">dense_rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-      <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span>
-      <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-    <span class="p">)</span> <span class="n">AS</span> <span class="n">drnk</span>
-  <span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
-<span class="p">)</span> <span class="n">q</span>
-<span class="n">WHERE</span> <span class="n">drnk</span> <span class="o">&lt;=</span> <span class="mi">5</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">q</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span>
+  <span class="nc">SELECT</span> <span class="n">t</span><span class="o">.*,</span>
+    <span class="n">dense_rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+      <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span>
+      <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+    <span class="o">)</span> <span class="nc">AS</span> <span class="n">drnk</span>
+  <span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">t</span>
+<span class="o">)</span> <span class="n">q</span>
+<span class="nc">WHERE</span> <span class="n">drnk</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">q</span><span class="o">.</span><span class="n">order_date</span><span class="o">,</span> <span class="n">q</span><span class="o">.</span><span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
@@ -1152,44 +1347,44 @@
 <p>Let us come up with the query to compute daily product revenue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">USE</span> <span class="n">itversity_retail</span>
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DESCRIBE</span> <span class="n">orders</span>
+<span class="nc">DESCRIBE</span> <span class="n">orders</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">DESCRIBE</span> <span class="n">order_items</span>
+<span class="nc">DESCRIBE</span> <span class="n">order_items</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-       <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">,</span>
-       <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-<span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-<span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-<span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-<span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">100</span>
+SELECT o.order_date,
+       oi.order_item_product_id,
+       round(sum(oi.order_item_subtotal), 2) AS revenue
+FROM orders o JOIN order_items oi
+ON o.order_id = oi.order_item_order_id
+WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+GROUP BY o.order_date, oi.order_item_product_id
+ORDER BY o.order_date, revenue DESC
+LIMIT 100
 </pre></div>
 </div>
 </div>
@@ -1197,22 +1392,22 @@
 <p>Let us compute the rank for each product with in each date using revenue as criteria.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">SELECT</span> <span class="n">q</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">AS</span> <span class="n">rnk</span>
-<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-        <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">,</span>
-        <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-      <span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-      <span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-      <span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-      <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">q</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">35</span>
+SELECT q.*,
+  rank() OVER (
+    PARTITION BY order_date
+    ORDER BY revenue DESC
+  ) AS rnk
+FROM (SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal), 2) AS revenue
+      FROM orders o JOIN order_items oi
+      ON o.order_id = oi.order_item_order_id
+      WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+      GROUP BY o.order_date, oi.order_item_product_id) q
+ORDER BY order_date, revenue DESC
+LIMIT 35
 </pre></div>
 </div>
 </div>
@@ -1220,47 +1415,47 @@
 <p>Now let us see how we can filter the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">q</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">dense_rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">AS</span> <span class="n">drnk</span>
-<span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span>
-        <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">,</span>
-        <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">order_item_subtotal</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span> <span class="n">AS</span> <span class="n">revenue</span>
-      <span class="n">FROM</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">JOIN</span> <span class="n">order_items</span> <span class="n">oi</span>
-      <span class="n">ON</span> <span class="n">o</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_order_id</span>
-      <span class="n">WHERE</span> <span class="n">o</span><span class="o">.</span><span class="n">order_status</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;COMPLETE&#39;</span><span class="p">,</span> <span class="s1">&#39;CLOSED&#39;</span><span class="p">)</span>
-      <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">o</span><span class="o">.</span><span class="n">order_date</span><span class="p">,</span> <span class="n">oi</span><span class="o">.</span><span class="n">order_item_product_id</span><span class="p">)</span> <span class="n">q</span><span class="p">)</span> <span class="n">q1</span>
-<span class="n">WHERE</span> <span class="n">drnk</span> <span class="o">&lt;=</span> <span class="mi">5</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">35</span>
+SELECT * FROM (SELECT q.*,
+  dense_rank() OVER (
+    PARTITION BY order_date
+    ORDER BY revenue DESC
+  ) AS drnk
+FROM (SELECT o.order_date,
+        oi.order_item_product_id,
+        round(sum(oi.order_item_subtotal), 2) AS revenue
+      FROM orders o JOIN order_items oi
+      ON o.order_id = oi.order_item_order_id
+      WHERE o.order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;)
+      GROUP BY o.order_date, oi.order_item_product_id) q) q1
+WHERE drnk &lt;= 5
+ORDER BY order_date, revenue DESC
+LIMIT 35
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;DESCRIBE daily_product_revenue&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">false</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE daily_product_revenue&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">dpr</span><span class="o">.*</span><span class="p">,</span>
-  <span class="n">dense_rank</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span>
-    <span class="n">PARTITION</span> <span class="n">BY</span> <span class="n">order_date</span>
-    <span class="n">ORDER</span> <span class="n">BY</span> <span class="n">revenue</span> <span class="n">DESC</span>
-  <span class="p">)</span> <span class="n">AS</span> <span class="n">drnk</span>
-<span class="n">FROM</span> <span class="n">daily_product_revenue</span> <span class="n">AS</span> <span class="n">dpr</span><span class="p">)</span>
-<span class="n">WHERE</span> <span class="n">drnk</span> <span class="o">&lt;=</span> <span class="mi">5</span>
-<span class="n">ORDER</span> <span class="n">BY</span> <span class="n">order_date</span><span class="p">,</span> <span class="n">revenue</span> <span class="n">DESC</span>
-<span class="n">LIMIT</span> <span class="mi">35</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span><span class="nc">SELECT</span> <span class="n">dpr</span><span class="o">.*,</span>
+  <span class="n">dense_rank</span><span class="o">()</span> <span class="nc">OVER</span> <span class="o">(</span>
+    <span class="nc">PARTITION</span> <span class="nc">BY</span> <span class="n">order_date</span>
+    <span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+  <span class="o">)</span> <span class="nc">AS</span> <span class="n">drnk</span>
+<span class="nc">FROM</span> <span class="n">daily_product_revenue</span> <span class="nc">AS</span> <span class="n">dpr</span><span class="o">)</span>
+<span class="nc">WHERE</span> <span class="n">drnk</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+<span class="nc">ORDER</span> <span class="nc">BY</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">revenue</span> <span class="nc">DESC</span>
+<span class="nc">LIMIT</span> <span class="mi">35</span>
 </pre></div>
 </div>
 </div>
