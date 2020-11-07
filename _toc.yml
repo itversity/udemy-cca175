@@ -2,7 +2,7 @@
   sections:
     - file: spark-sql/01_getting_started
     - file: spark-sql/02_basic_transformation
-    - file: spark-sql/03_managing_tables_-_basic_ddl_and_dml
-    - file: spark-sql/04_managing_tables_-_dml_and_partitioning
+    - file: spark-sql/03_basic_ddl_and_dml
+    - file: spark-sql/04_dml_and_partitioning
     - file: spark-sql/05_overview_of_spark_sql_functions
     - file: spark-sql/06_windowing_functions
