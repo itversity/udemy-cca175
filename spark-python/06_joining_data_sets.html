@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Joining Data Sets &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Windowing Functions" href="07_windowing_functions.html" />
+    <link rel="prev" title="5. Basic Transformations" href="05_basic_transformations.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/06_joining_data_sets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/06_joining_data_sets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-datasets-for-joins">
+   6.1. Prepare Datasets for Joins
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   6.2. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#joining-data-frames">
+   6.3. Joining Data Frames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-joins">
+   6.4. Overview of Joins
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-1">
+   6.5. Solutions - Problem 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-2">
+   6.6. Solutions - Problem 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-3">
+   6.7. Solutions - Problem 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-4">
+   6.8. Solutions - Problem 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-5">
+   6.9. Solutions - Problem 5
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-6">
+   6.10. Solutions - Problem 6
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="joining-data-sets">
+<h1><span class="section-number">6. </span>Joining Data Sets<a class="headerlink" href="#joining-data-sets" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to join multiple Data Sets using Spark based APIs.</p>
+<div class="section" id="prepare-datasets-for-joins">
+<h2><span class="section-number">6.1. </span>Prepare Datasets for Joins<a class="headerlink" href="#prepare-datasets-for-joins" title="Permalink to this headline">¶</a></h2>
+<p>Let us prepare Dataset to join and get the details related to airports (origin and destination).</p>
+<ul class="simple">
+<li><p>Make sure airport-codes is in HDFS.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+hdfs dfs -ls /public/airlines_all/airport-codes
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">6.2. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start spark context for this Notebook so that we can execute the code provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.ui.port&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Joining Data Sets&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">master</span><span class="p">(</span><span class="s1">&#39;yarn&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;spark.sql.shuffle.partitions&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Analyze the Dataset to confirm if there is header and also how the data is structured.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">text</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Data is tab separated.</p></li>
+<li><p>There is header for the data set.</p></li>
+<li><p>Dataset have 4 fields - <strong>Country, State, City, IATA</strong></p></li>
+</ul>
+<p>Create DataFrame airport_codes applying appropriate Schema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Preview and Understand the data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get schema of <strong>airport_codes</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Preview the data</p></li>
+<li><p>Get the count of records</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the count of unique records and see if it is the same as total count.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;IATA&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If they are not equal, analyze the data and identify IATA codes which are repeated more than once.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">lit</span><span class="p">,</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_iata_count</span> <span class="o">=</span> <span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;IATA&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;iata_count&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;iata_count &gt; 1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_iata_count</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Filter out the duplicates using the most appropriate one and discard others.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IATA = &#39;Big&#39;&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;)&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get number of airports (IATA Codes) for each state in the US. Sort the data in descending order by count.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;) AND Country=&#39;USA&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_count_per_state</span> <span class="o">=</span> <span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="s2">&quot;State&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;IATACount&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;IATACount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_count_per_state</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="joining-data-frames">
+<h2><span class="section-number">6.3. </span>Joining Data Frames<a class="headerlink" href="#joining-data-frames" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to join Data Frames by using some problem statements. Use 2008 January data.</p>
+<ul class="simple">
+<li><p>Get number of flights departed from each of the US airport.</p></li>
+<li><p>Get number of flights departed from each of the state.</p></li>
+<li><p>Get the list of airports in the US from which flights are not departed.</p></li>
+<li><p>Check if there are any origins in airlines data which do not have record in airport-codes.</p></li>
+<li><p>Get the total number of flights from the airports that do not contain entries in airport-codes.</p></li>
+<li><p>Get the total number of flights per airport that do not contain entries in airport-codes.</p></li>
+</ul>
+</div>
+<div class="section" id="overview-of-joins">
+<h2><span class="section-number">6.4. </span>Overview of Joins<a class="headerlink" href="#overview-of-joins" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of joining Data Frames.</p>
+<ul class="simple">
+<li><p>Our data cannot be stored in one table. It will be stored in multiple tables and the tables might be related.</p></li>
+<li><p>When it comes to transactional systems, we typically define tables based on Normalization Principles.</p></li>
+<li><p>When it comes to data warehousing applications, we typically define tables using Dimensional Modeling.</p></li>
+<li><p>Either of the approach data is scattered into multiple tables and relationships are defined.</p></li>
+<li><p>Typically tables are related with one to one, one to many, many to many relationships.</p></li>
+<li><p>When we have 2 Data Sets that are related based on a common key we typically perform join.</p></li>
+<li><p>There are different types of joins.</p></li>
+<li><p>INNER JOIN</p></li>
+<li><p>OUTER JOIN (LEFT or RIGHT)</p></li>
+<li><p>FULL OUTER JOIN (a LEFT OUTER JOIN b UNION a RIGHT OUTER JOIN b)</p></li>
+</ul>
+</div>
+<div class="section" id="solutions-problem-1">
+<h2><span class="section-number">6.5. </span>Solutions - Problem 1<a class="headerlink" href="#solutions-problem-1" title="Permalink to this headline">¶</a></h2>
+<p>Get number of flights departed from each of the US airport.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;Dest&quot;</span><span class="p">,</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;) AND Country=&#39;USA&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;IATA&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="n">airport_codes</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="p">[</span><span class="s2">&quot;Origin&quot;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="n">airport_codes</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>airlines.join<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flight_count_per_airport</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightCount&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;FlightCount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flight_count_per_airport</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-2">
+<h2><span class="section-number">6.6. </span>Solutions - Problem 2<a class="headerlink" href="#solutions-problem-2" title="Permalink to this headline">¶</a></h2>
+<p>Get number of flights departed from each of the state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;) AND Country=&#39;USA&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flight_count_per_state</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;State&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="n">count</span><span class="p">(</span><span class="n">lit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightCount&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;FlightCount&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flight_count_per_state</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-3">
+<h2><span class="section-number">6.7. </span>Solutions - Problem 3<a class="headerlink" href="#solutions-problem-3" title="Permalink to this headline">¶</a></h2>
+<p>Get the list of airports in the US from which flights are not departed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;) AND Country=&#39;USA&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airports_not_used</span> <span class="o">=</span> <span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airlines</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> 
+           <span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airports_not_used</span> <span class="o">=</span> <span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airlines</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="o">.</span><span class="n">isNull</span><span class="p">())</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="s1">&#39;State&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;IATA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airports_not_used</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span> <span class="o">==</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;Origin IS NULL&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;City&#39;</span><span class="p">,</span> <span class="s1">&#39;State&#39;</span><span class="p">,</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="s1">&#39;IATA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airports_not_used</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-4">
+<h2><span class="section-number">6.8. </span>Solutions - Problem 4<a class="headerlink" href="#solutions-problem-4" title="Permalink to this headline">¶</a></h2>
+<p>Check if there are any origins in airlines data which do not have record in airport-codes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span> <span class="o">==</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IATA IS NULL&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span> <span class="o">==</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IATA IS NULL&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-5">
+<h2><span class="section-number">6.9. </span>Solutions - Problem 5<a class="headerlink" href="#solutions-problem-5" title="Permalink to this headline">¶</a></h2>
+<p>Get the total number of flights from the airports that do not contain entries in airport-codes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span> <span class="o">==</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IATA IS NULL&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-6">
+<h2><span class="section-number">6.10. </span>Solutions - Problem 6<a class="headerlink" href="#solutions-problem-6" title="Permalink to this headline">¶</a></h2>
+<p>Get the total number of flights per airport that do not contain entries in airport-codes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+<span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;!(State = &#39;Hawaii&#39; AND IATA = &#39;Big&#39;)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">,</span> <span class="n">airlines</span><span class="o">.</span><span class="n">Origin</span> <span class="o">==</span> <span class="n">airport_codes</span><span class="o">.</span><span class="n">IATA</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IATA IS NULL&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyspark2"
+        },
+        kernelOptions: {
+            kernelName: "pyspark2",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyspark2'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="05_basic_transformations.html" title="previous page"><span class="section-number">5. </span>Basic Transformations</a>
+    <a class='right-next' id="next-link" href="07_windowing_functions.html" title="next page"><span class="section-number">7. </span>Windowing Functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

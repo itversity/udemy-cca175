@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. Spark Metastore &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Getting Started" href="../spark-sql/01_getting_started.html" />
+    <link rel="prev" title="7. Windowing Functions" href="07_windowing_functions.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/08_spark_metastore.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/08_spark_metastore.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-spark-metastore">
+   8.1. Overview of Spark Metastore
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   8.2. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spark-catalog">
+   8.3. Spark Catalog
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-metastore-tables">
+   8.4. Creating Metastore Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     8.4.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-schema-for-tables">
+   8.5. Define Schema for Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     8.5.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inserting-into-existing-tables">
+   8.6. Inserting into Existing Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     8.6.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-and-processing-tables">
+   8.7. Reading and Processing Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     8.7.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-partitioned-tables">
+   8.8. Creating Partitioned Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-temp-views">
+   8.9. Creating Temp Views
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     8.9.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-spark-sql">
+   8.10. Using Spark SQL
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     8.10.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="spark-metastore">
+<h1><span class="section-number">8. </span>Spark Metastore<a class="headerlink" href="#spark-metastore" title="Permalink to this headline">¶</a></h1>
+<p>Let us understand how to interact with metastore tables using Spark based APIs.</p>
+<div class="section" id="overview-of-spark-metastore">
+<h2><span class="section-number">8.1. </span>Overview of Spark Metastore<a class="headerlink" href="#overview-of-spark-metastore" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of Spark Metastore and how we can leverage it to manage databases and tables on top of Big Data based file systems such as HDFS, s3 etc.</p>
+<ul class="simple">
+<li><p>Quite often we need to deal with structured data and the most popular way of processing structured data is by using Databases, Tables and then SQL.</p></li>
+<li><p>Spark Metastore (similar to Hive Metastore) will facilitate us to manage databases and tables.</p></li>
+<li><p>Typically Metastore is setup using traditional relational database technologies such as <strong>Oracle</strong>, <strong>MySQL</strong>, <strong>Postgres</strong> etc.</p></li>
+</ul>
+</div>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">8.2. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start spark context for this Notebook so that we can execute the code provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.ui.port&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Spark Metastore&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">master</span><span class="p">(</span><span class="s1">&#39;yarn&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;spark.sql.shuffle.partitions&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="spark-catalog">
+<h2><span class="section-number">8.3. </span>Spark Catalog<a class="headerlink" href="#spark-catalog" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of Spark Catalog. It is part of <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> object.</p>
+<ul class="simple">
+<li><p>We can permanently or temporarily create tables or views on top of data in a Data Frame.</p></li>
+<li><p>Metadata such as table names, column names, data types etc for these tables or views will be stored in Metastore. It is also known as catalog which is exposed as part of SparkSession object.</p></li>
+<li><p>Permanent tables can be grouped into databases in metastore. If not specified, the tables will be created in <strong>default</strong> database.</p></li>
+<li><p>Let us say <code class="docutils literal notranslate"><span class="pre">spark</span></code> is of type <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code>. There is an attribute as part of <code class="docutils literal notranslate"><span class="pre">spark</span></code> called as catalog and it is of type pyspark.sql.catalog.Catalog.</p></li>
+<li><p>We can access catalog using <code class="docutils literal notranslate"><span class="pre">spark.catalog</span></code>.</p></li>
+<li><p>There are several methods that is part of <code class="docutils literal notranslate"><span class="pre">spark.catalog</span></code>. We will explore them in the later topics.</p></li>
+<li><p>Following are some of the tasks that can be performed using <code class="docutils literal notranslate"><span class="pre">spark.catalog</span></code> object.</p></li>
+<li><p>Check current database and switch to different databases.</p></li>
+<li><p>Create permanent table in metastore.</p></li>
+<li><p>Create or drop temporary views.</p></li>
+<li><p>Register functions.</p></li>
+<li><p>All the above tasks can be performed using SQL style commands passed to <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="creating-metastore-tables">
+<h2><span class="section-number">8.4. </span>Creating Metastore Tables<a class="headerlink" href="#creating-metastore-tables" title="Permalink to this headline">¶</a></h2>
+<p>Data Frames can be written into Metastore Tables using APIs such as <code class="docutils literal notranslate"><span class="pre">saveAsTable</span></code> and <code class="docutils literal notranslate"><span class="pre">insertInto</span></code> available as part of write on top of objects of type Data Frame.</p>
+<ul class="simple">
+<li><p>We can create a new table using Data Frame using <code class="docutils literal notranslate"><span class="pre">saveAsTable</span></code>. We can also create an empty table by using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createTable</span></code> or <code class="docutils literal notranslate"><span class="pre">spark.catalog.createExternalTable</span></code>.</p></li>
+<li><p>We can also prefix the database name to write data into tables belong to a particular database. If the database is not specified then the session will be attached to default database.</p></li>
+<li><p>Databases can be created using <code class="docutils literal notranslate"><span class="pre">spark.sql(&quot;CREATE</span> <span class="pre">DATABASE</span> <span class="pre">database_name&quot;)</span></code>. We can list Databases using <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code> or <code class="docutils literal notranslate"><span class="pre">spark.catalog.listDatabases()</span></code></p></li>
+<li><p>We can use modes such as <code class="docutils literal notranslate"><span class="pre">append</span></code>, <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> and <code class="docutils literal notranslate"><span class="pre">error</span></code> with <code class="docutils literal notranslate"><span class="pre">saveAsTable</span></code>. Default is error.</p></li>
+<li><p>We can use modes such as <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> with <code class="docutils literal notranslate"><span class="pre">insertInto</span></code>. Default is append.</p></li>
+<li><p>When we use <code class="docutils literal notranslate"><span class="pre">saveAsTable</span></code>, following happens:</p></li>
+<li><p>Check for table if the table already exists. By default <code class="docutils literal notranslate"><span class="pre">saveAsTable</span></code> will throw exception.</p></li>
+<li><p>If the table does not exists the table will be created.</p></li>
+<li><p>Data from Data Frame will be copied into the table.</p></li>
+<li><p>We can alter the behavior by using mode. We can overwrite the existing table or we can append into it.</p></li>
+<li><p>We can list the tables using <code class="docutils literal notranslate"><span class="pre">spark.catalog.listTables</span></code> after switching to appropriate database using <code class="docutils literal notranslate"><span class="pre">spark.catalog.setCurrentDatabase</span></code>.</p></li>
+<li><p>We can also switch the database and list tables using <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>spark.catalog<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tasks">
+<h3><span class="section-number">8.4.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand how to write a Data Frame into Metastore tables and also list them.</p>
+<ul class="simple">
+<li><p>Create database by name db in the metastore. We need to use <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code> as there is no function to create database under <code class="docutils literal notranslate"><span class="pre">spark.catalog</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATE DATABASE </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_db&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>List the databases using both API as well as SQL approach. As we have too many databases in our environment, it might take too much time to return the results</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listDatabases</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create a Data Frame which contain one column by name <strong>dummy</strong> and one row with value <strong>X</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="p">)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;dummy STRING&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create a table by name dual for the above Data Frame in the database created.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="s2">&quot;dual&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;dual&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us drop the table <strong>dual</strong> and then database <strong>db</strong>. We need to use <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code> as <code class="docutils literal notranslate"><span class="pre">spark.catalog</span></code> does not have API to drop the tables or databases.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;DROP TABLE dual&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DROP DATABASE </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use CASCADE to drop database along with tables.</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DROP DATABASE </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_db CASCADE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-schema-for-tables">
+<h2><span class="section-number">8.5. </span>Define Schema for Tables<a class="headerlink" href="#define-schema-for-tables" title="Permalink to this headline">¶</a></h2>
+<p>When we want to create a table using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createTable</span></code> or using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createExternalTable</span></code>, we need to specify Schema.</p>
+<ul class="simple">
+<li><p>Schema can be inferred or we can pass schema using <code class="docutils literal notranslate"><span class="pre">StructType</span></code> object while creating the table..</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StructType</span></code> takes list of objects of type <code class="docutils literal notranslate"><span class="pre">StructField</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StructField</span></code> is built using column name and data type. All the data types are available under <code class="docutils literal notranslate"><span class="pre">pyspark.sql.types</span></code>.</p></li>
+<li><p>We need to pass table name and schema for <code class="docutils literal notranslate"><span class="pre">spark.catalog.createTable</span></code>.</p></li>
+<li><p>We have to pass path along with name and schema for <code class="docutils literal notranslate"><span class="pre">spark.catalog.createExternalTable</span></code>.</p></li>
+<li><p>We can use source to define file format along with applicable options. For example, if we want to create a table for CSV, then source will be csv and we can pass applicable options for CSV such as sep, header etc.</p></li>
+</ul>
+<div class="section" id="id1">
+<h3><span class="section-number">8.5.1. </span>Tasks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform tasks to create empty table using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createTable</span></code> or using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createExternalTable</span></code>.</p>
+<ul class="simple">
+<li><p>Create database <strong>hr_db</strong> and table <strong>employees</strong> with following fields. Let us create Database first and then we will see how to create table.</p></li>
+<li><p>employee_id of type Integer</p></li>
+<li><p>first_name of type String</p></li>
+<li><p>last_name of type String</p></li>
+<li><p>salary of type Float</p></li>
+<li><p>nationality of type String</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATE DATABASE IF NOT EXISTS </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_hr_db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_hr_db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>spark.catalog.createTable<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Build StructType object using StructField list.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StructField</span><span class="p">,</span> <span class="n">StructType</span><span class="p">,</span> \
+    <span class="n">IntegerType</span><span class="p">,</span> <span class="n">StringType</span><span class="p">,</span> <span class="n">FloatType</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesSchema</span> <span class="o">=</span> <span class="n">StructType</span><span class="p">([</span>
+    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;employee_id&quot;</span><span class="p">,</span> <span class="n">IntegerType</span><span class="p">()),</span>
+    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;last_name&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()),</span>
+    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;salary&quot;</span><span class="p">,</span> <span class="n">FloatType</span><span class="p">()),</span>
+    <span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">,</span> <span class="n">StringType</span><span class="p">())</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DROP TABLE employees&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create table by passing StructType object as schema.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">createTable</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">employeesSchema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>List the tables from database created.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listColumns</span><span class="p">(</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DESCRIBE FORMATTED employees&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create database by name <strong>{username}_airlines</strong> and create external table for <strong>airport-codes.txt</strong>.</p></li>
+<li><p>Data have header</p></li>
+<li><p>Fields in each record are delimited by a tab character.</p></li>
+<li><p>We can pass options such as sep, header, inferSchema etc to define the schema.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>spark.catalog.createExternalTable<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATE DATABASE IF NOT EXISTS </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>To create external table, we need to have write permissions over the path which we want to use.</p></li>
+<li><p>As we have only read permissions on <strong>/public/airlines_all/airport-codes</strong> we cannot use that path while creating external table.</p></li>
+<li><p>Let us copy the data to <strong>/user/<code class="docutils literal notranslate"><span class="pre">whoami</span></code>/airlines_all/airport-codes</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -mkdir -p /user/`whoami`/airlines_all
+hdfs dfs -cp -f /public/airlines_all/airport-codes /user/`whoami`/airlines_all
+hdfs dfs -ls /user/`whoami`/airlines_all/airport-codes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -tail /user/`whoami`/airlines_all/airport-codes/airport-codes-na.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+
+<span class="n">airport_codes_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/airlines_all/airport-codes&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DROP TABLE airport_codes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span> \
+    <span class="n">createExternalTable</span><span class="p">(</span><span class="s2">&quot;airport_codes&quot;</span><span class="p">,</span>
+                        <span class="n">path</span><span class="o">=</span><span class="n">airport_codes_path</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="s2">&quot;csv&quot;</span><span class="p">,</span>
+                        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+                        <span class="n">header</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+                        <span class="n">inferSchema</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+                       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;airport_codes&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DESCRIBE FORMATTED airport_codes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inserting-into-existing-tables">
+<h2><span class="section-number">8.6. </span>Inserting into Existing Tables<a class="headerlink" href="#inserting-into-existing-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can insert data into existing tables using <code class="docutils literal notranslate"><span class="pre">insertInto</span></code>.</p>
+<ul class="simple">
+<li><p>We can use modes such as <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> with <code class="docutils literal notranslate"><span class="pre">insertInto</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">append</span></code>.</p></li>
+<li><p>When we use <code class="docutils literal notranslate"><span class="pre">insertInto</span></code>, following happens:</p></li>
+<li><p>If the table does not exist, <code class="docutils literal notranslate"><span class="pre">insertInto</span></code> will throw an exception.</p></li>
+<li><p>If the table exists, by default data will be appended.</p></li>
+<li><p>We can alter the behavior by using keyword argument overwrite. It is by default False, we can pass True to replace existing data.</p></li>
+</ul>
+<div class="section" id="id2">
+<h3><span class="section-number">8.6.1. </span>Tasks<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand how to write a Data Frame into existing tables in the Metastore.</p>
+<ul class="simple">
+<li><p>Make sure hr_db database and employees table in hr_db are created.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listDatabases</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_hr_db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use employees Data Frame and insert data into the employees table in hr_db database. Make sure existing data is overwritten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Scott&quot;</span><span class="p">,</span> <span class="s2">&quot;Tiger&quot;</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="s2">&quot;united states&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Henry&quot;</span><span class="p">,</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="mf">1250.0</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Nick&quot;</span><span class="p">,</span> <span class="s2">&quot;Junior&quot;</span><span class="p">,</span> <span class="mf">750.0</span><span class="p">,</span> <span class="s2">&quot;united KINGDOM&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Bill&quot;</span><span class="p">,</span> <span class="s2">&quot;Gomes&quot;</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">,</span> <span class="s2">&quot;AUSTRALIA&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">employees</span><span class="p">,</span>
+    <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;employee_id INT, first_name STRING, last_name STRING,</span>
+<span class="s2">              salary FLOAT, nationality STRING</span>
+<span class="s2">           &quot;&quot;&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">insertInto</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s1">&#39;overwrite&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">insertInto</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-and-processing-tables">
+<h2><span class="section-number">8.7. </span>Reading and Processing Tables<a class="headerlink" href="#reading-and-processing-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us see how we can read tables using functions such as <code class="docutils literal notranslate"><span class="pre">spark.read.table</span></code> and process data using Data Frame APIs.</p>
+<ul class="simple">
+<li><p>Using Data Frame APIs - <code class="docutils literal notranslate"><span class="pre">spark.read.table(&quot;table_name&quot;)</span></code>.</p></li>
+<li><p>We can also prefix the database name to read tables belong to a particular database.</p></li>
+<li><p>When we read the table, it will result in a Data Frame.</p></li>
+<li><p>Once Data Frame is created we can use functions such as <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">sort</span></code> or <code class="docutils literal notranslate"><span class="pre">orderBy</span></code> to process the data in the Data Frame.</p></li>
+</ul>
+<div class="section" id="id3">
+<h3><span class="section-number">8.7.1. </span>Tasks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Let us see how we can create a table using data in a file and then read into a Data Frame.</p>
+<ul class="simple">
+<li><p>Create Database for <strong>airlines</strong> data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CREATE DATABASE IF NOT EXISTS </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create table by name <strong>airport-codes</strong> for file <strong>airport-codes.txt</strong>. The file contains header and each field in each row is delimited by a tab character.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;DROP TABLE </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_airlines.airport_codes&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_df</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">saveAsTable</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines.airport_codes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Read data from table and get number of airports by state.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;airport_codes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">airport_codes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DESCRIBE FORMATTED airport_codes&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-partitioned-tables">
+<h2><span class="section-number">8.8. </span>Creating Partitioned Tables<a class="headerlink" href="#creating-partitioned-tables" title="Permalink to this headline">¶</a></h2>
+<p>We can also create partitioned tables as part of Spark Metastore Tables.</p>
+<ul class="simple">
+<li><p>There are some challenges in creating partitioned tables directly using <code class="docutils literal notranslate"><span class="pre">spark.catalog.createTable</span></code>.</p></li>
+<li><p>But if the directories are similar to partitioned tables with data, we should be able to create partitioned tables. They are typically external tables.</p></li>
+<li><p>Let us create partitioned table for <code class="docutils literal notranslate"><span class="pre">orders</span></code> by <code class="docutils literal notranslate"><span class="pre">order_month</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;CREATE DATABASE IF NOT EXISTS </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_retail&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">_retail&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_path</span> <span class="o">=</span> <span class="s1">&#39;/public/retail_db/orders&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -ls /public/retail_db/orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">date_format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;DROP TABLE orders_part&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -ls /user/`whoami`/retail_db/orders_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -rm -R /user/`whoami`/retail_db/orders_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">orders_path</span><span class="p">,</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;order_id INT, order_date DATE,</span>
+<span class="s1">                  order_customer_id INT, order_status STRING</span>
+<span class="s1">               &#39;&#39;&#39;</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;order_month&#39;</span><span class="p">,</span> <span class="n">date_format</span><span class="p">(</span><span class="s1">&#39;order_date&#39;</span><span class="p">,</span> <span class="s1">&#39;yyyyMM&#39;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;order_month&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/retail_db/orders_part&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -ls -R /user/`whoami`/retail_db/orders_part
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/retail_db/orders_part/order_month=201308&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/retail_db/orders_part&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">catalog</span><span class="o">.</span> \
+    <span class="n">createTable</span><span class="p">(</span><span class="s1">&#39;orders_part&#39;</span><span class="p">,</span>
+                <span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;/user/</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s1">/retail_db/orders_part&#39;</span><span class="p">,</span>
+                <span class="n">source</span><span class="o">=</span><span class="s1">&#39;parquet&#39;</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">recoverPartitions</span><span class="p">(</span><span class="s1">&#39;orders_part&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s1">&#39;orders_part&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s1">&#39;SELECT order_month, count(1) FROM orders_part GROUP BY order_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-temp-views">
+<h2><span class="section-number">8.9. </span>Creating Temp Views<a class="headerlink" href="#creating-temp-views" title="Permalink to this headline">¶</a></h2>
+<p>So far we spoke about permanent metastore tables. Now let us understand how to create temporary views using a Data Frame.</p>
+<ul class="simple">
+<li><p>We can create temporary view for a Data Frame using <code class="docutils literal notranslate"><span class="pre">createTempView</span></code> or <code class="docutils literal notranslate"><span class="pre">createOrReplaceTempView</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">createOrReplaceTempView</span></code> will replace existing view, if it already exists.</p></li>
+<li><p>While tables in Metastore are permanent, views are temporary.</p></li>
+<li><p>Once the application exits, temporary views will be deleted or flushed out.</p></li>
+</ul>
+<div class="section" id="id4">
+<h3><span class="section-number">8.9.1. </span>Tasks<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to create temporary view and process the data using the temporary view.</p>
+<ul class="simple">
+<li><p>Create temporary view by name <strong>airport_codes_v</strong> for file <strong>airport-codes.txt</strong>. The file contains header and each field in each row is delimited by a tab character.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/public/airlines_all/airport-codes&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="n">airport_codes_path</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes_df</span><span class="o">.</span><span class="n">createTempView</span><span class="p">(</span><span class="s2">&quot;airport_codes_v&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Read data from view and get number of airports by state.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;airport_codes_v&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_codes</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>List the tables in the metastore and views.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-spark-sql">
+<h2><span class="section-number">8.10. </span>Using Spark SQL<a class="headerlink" href="#using-spark-sql" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can use Spark SQL to process data in Metastore Tables and Temporary Views.</p>
+<ul class="simple">
+<li><p>Once tables are created in metastore or temporary views are created, we can run queries against the tables to perform all standard transformations.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getuser</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">setCurrentDatabase</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">_airlines&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here are some of the transformations which can be performed.</p></li>
+<li><p>Row Level Transformations using functions in SELECT clause.</p></li>
+<li><p>Filtering using WHERE clause</p></li>
+<li><p>Aggregations using GROUP BY and aggregate functions.</p></li>
+<li><p>Sorting using ORDER BY or SORT BY</p></li>
+</ul>
+<div class="section" id="id5">
+<h3><span class="section-number">8.10.1. </span>Tasks<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform some tasks to understand how to process data using Spark SQL using Metastore Tables or Temporary Views.</p>
+<ul class="simple">
+<li><p>Make sure table or view created for airport-codes. We can use the table or view created in the previous step.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listTables</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Write a query to get number of airports per state in the US.</p></li>
+<li><p>Get only those states which have more than 10 airports.</p></li>
+<li><p>Make sure data is sorted in descending order by number of airports.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT state, count(1) AS airport_cnt</span>
+<span class="s2">           FROM airport_codes_v</span>
+<span class="s2">           GROUP BY state</span>
+<span class="s2">               HAVING count(1) &gt;= 10</span>
+<span class="s2">           ORDER BY airport_cnt DESC</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span> \
+  <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----+-----------+
+|state|airport_cnt|
++-----+-----------+
+|   CA|         29|
+|   TX|         26|
+|   AK|         25|
+|   BC|         22|
+|   NY|         18|
+|   ON|         18|
+|   MI|         18|
+|   FL|         18|
+|   MT|         14|
+|   PQ|         13|
+|   PA|         13|
+|   CO|         12|
+|   IL|         12|
+|   NC|         10|
+|   WY|         10|
++-----+-----------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_count</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;SELECT state, count(1) AS airport_cnt</span>
+<span class="s2">           FROM airport_codes_v</span>
+<span class="s2">           GROUP BY state</span>
+<span class="s2">               HAVING count(1) &gt;= 10</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">airport_count_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">airport_count</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">airport_count_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">states</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BC&#39;,
+ &#39;NY&#39;,
+ &#39;MI&#39;,
+ &#39;NC&#39;,
+ &#39;IL&#39;,
+ &#39;ON&#39;,
+ &#39;TX&#39;,
+ &#39;CO&#39;,
+ &#39;PA&#39;,
+ &#39;AK&#39;,
+ &#39;PQ&#39;,
+ &#39;CA&#39;,
+ &#39;MT&#39;,
+ &#39;WY&#39;,
+ &#39;FL&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airport_counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">airport_count_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">airport_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[22, 18, 18, 10, 12, 18, 26, 12, 13, 25, 13, 29, 14, 10, 18]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">states</span><span class="p">,</span> <span class="n">airport_counts</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;States&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Airport Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/08_spark_metastore_126_0.png" src="../_images/08_spark_metastore_126_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyspark2"
+        },
+        kernelOptions: {
+            kernelName: "pyspark2",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyspark2'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="07_windowing_functions.html" title="previous page"><span class="section-number">7. </span>Windowing Functions</a>
+    <a class='right-next' id="next-link" href="../spark-sql/01_getting_started.html" title="next page"><span class="section-number">1. </span>Getting Started</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

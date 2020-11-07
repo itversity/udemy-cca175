@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getting Started &#8212; My Jupyter Book</title>
+    <title>1. Getting Started &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basic Transformations" href="02_basic_transformations.html" />
-    <link rel="prev" title="CCA 175 - Spark and Hadoop Developer - Python" href="../spark_sql.html" />
+    <link rel="next" title="2. Basic Transformations" href="02_basic_transformations.html" />
+    <link rel="prev" title="8. Spark Metastore" href="../spark-python/08_spark_metastore.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,40 +89,92 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../spark_sql.html">
+  <a class="reference internal" href="../cca175_intro.html">
    CCA 175 - Spark and Hadoop Developer - Python
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Getting Started
+   1. Getting Started
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_basic_transformations.html">
-   Basic Transformations
+   2. Basic Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_basic_ddl_and_dml.html">
-   Basic DDL and DML
+   3. Basic DDL and DML
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_dml_and_partitioning.html">
-   DML and Partitioning
+   4. DML and Partitioning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_predefined_functions.html">
-   Pre-defined Functions
+   5. Pre-defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06_windowing_functions.html">
-   Windowing Functions
+   6. Windowing Functions
   </a>
  </li>
 </ul>
@@ -216,52 +268,52 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview-of-spark-documentation">
-   Overview of Spark Documentation
+   1.1. Overview of Spark Documentation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#launching-and-using-spark-sql">
-   Launching and Using Spark SQL
+   1.2. Launching and Using Spark SQL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview-of-spark-sql-properties">
-   Overview of Spark SQL Properties
+   1.3. Overview of Spark SQL Properties
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#running-os-commands-using-spark-sql">
-   Running OS Commands using Spark SQL
+   1.4. Running OS Commands using Spark SQL
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#understanding-warehouse-directory">
-   Understanding Warehouse Directory
+   1.5. Understanding Warehouse Directory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#managing-spark-metastore-databases">
-   Managing Spark Metastore Databases
+   1.6. Managing Spark Metastore Databases
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#managing-spark-metastore-tables">
-   Managing Spark Metastore Tables
+   1.7. Managing Spark Metastore Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#retrieve-metadata-of-tables">
-   Retrieve Metadata of Tables
+   1.8. Retrieve Metadata of Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#role-of-spark-or-hive-metastore">
-   Role of Spark or Hive Metastore
+   1.9. Role of Spark or Hive Metastore
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-getting-started-with-spark-sql">
-   Exercise - Getting Started with Spark SQL
+   1.10. Exercise - Getting Started with Spark SQL
   </a>
  </li>
 </ul>
@@ -276,7 +328,7 @@
               <div>
                 
   <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Let us get started to get into Spark SQL. In this module we will see how to launch and use Spark SQL.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
@@ -292,7 +344,7 @@
 <li><p>Role of Spark or Hive Metastore</p></li>
 </ul>
 <div class="section" id="overview-of-spark-documentation">
-<h2>Overview of Spark Documentation<a class="headerlink" href="#overview-of-spark-documentation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Overview of Spark Documentation<a class="headerlink" href="#overview-of-spark-documentation" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the details related to Spark Documentation. It is very important for you to get comfortable with Spark Documentation if you are aspiring for open book certification exams like CCA 175.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -310,7 +362,7 @@
 </ul>
 </div>
 <div class="section" id="launching-and-using-spark-sql">
-<h2>Launching and Using Spark SQL<a class="headerlink" href="#launching-and-using-spark-sql" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.2. </span>Launching and Using Spark SQL<a class="headerlink" href="#launching-and-using-spark-sql" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to launch Spark SQL CLI.</p>
 <ul class="simple">
 <li><p>Logon to the gateway node of the cluster.</p></li>
@@ -340,7 +392,7 @@
 </ul>
 </div>
 <div class="section" id="overview-of-spark-sql-properties">
-<h2>Overview of Spark SQL Properties<a class="headerlink" href="#overview-of-spark-sql-properties" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3. </span>Overview of Spark SQL Properties<a class="headerlink" href="#overview-of-spark-sql-properties" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand details about Spark SQL properties which control Spark SQL run time environment.</p>
 <ul class="simple">
 <li><p>Spark SQL inherits properties defined for Spark. There are some Spark SQL related properties as well and these are applicable even for Data Frames.</p></li>
@@ -414,7 +466,7 @@
 </div>
 </div>
 <div class="section" id="running-os-commands-using-spark-sql">
-<h2>Running OS Commands using Spark SQL<a class="headerlink" href="#running-os-commands-using-spark-sql" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.4. </span>Running OS Commands using Spark SQL<a class="headerlink" href="#running-os-commands-using-spark-sql" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to run OS commands using Spark SQL CLI.</p>
 <ul class="simple">
 <li><p>We can run OS commands using <strong>!</strong> at the beginning.</p>
@@ -444,7 +496,7 @@
 </div>
 </div>
 <div class="section" id="understanding-warehouse-directory">
-<h2>Understanding Warehouse Directory<a class="headerlink" href="#understanding-warehouse-directory" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5. </span>Understanding Warehouse Directory<a class="headerlink" href="#understanding-warehouse-directory" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the details related to Spark Metastore Warehouse Directory.</p>
 <ul class="simple">
 <li><p>A Database in Spark SQL is nothing but directory in underlying file system like HDFS.</p></li>
@@ -470,7 +522,7 @@
 </div>
 </div>
 <div class="section" id="managing-spark-metastore-databases">
-<h2>Managing Spark Metastore Databases<a class="headerlink" href="#managing-spark-metastore-databases" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.6. </span>Managing Spark Metastore Databases<a class="headerlink" href="#managing-spark-metastore-databases" title="Permalink to this headline">¶</a></h2>
 <p>Let us undestand how to manage Spark Metastore Databases.</p>
 <ul class="simple">
 <li><p>Make a habit of reviewing Language Manual.</p></li>
@@ -632,7 +684,7 @@ CREATE DATABASE itversity_demo LOCATION &#39;/user/itversity/custom/itversity_de
 </div>
 </div>
 <div class="section" id="managing-spark-metastore-tables">
-<h2>Managing Spark Metastore Tables<a class="headerlink" href="#managing-spark-metastore-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.7. </span>Managing Spark Metastore Tables<a class="headerlink" href="#managing-spark-metastore-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us create our first Spark Metastore table. We will also have a look into how to list the tables.</p>
 <ul class="simple">
 <li><p>We will get into details related to DDL Commands at a later point in time.</p></li>
@@ -709,7 +761,7 @@ CREATE DATABASE itversity_demo LOCATION &#39;/user/itversity/custom/itversity_de
 </ul>
 </div>
 <div class="section" id="retrieve-metadata-of-tables">
-<h2>Retrieve Metadata of Tables<a class="headerlink" href="#retrieve-metadata-of-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.8. </span>Retrieve Metadata of Tables<a class="headerlink" href="#retrieve-metadata-of-tables" title="Permalink to this headline">¶</a></h2>
 <p>As the table is created, let us understand how to get the metadata of a table.</p>
 <ul class="simple">
 <li><p>We can get metadata of Hive Tables using several commands.</p>
@@ -780,7 +832,7 @@ CREATE DATABASE itversity_demo LOCATION &#39;/user/itversity/custom/itversity_de
 </div>
 </div>
 <div class="section" id="role-of-spark-or-hive-metastore">
-<h2>Role of Spark or Hive Metastore<a class="headerlink" href="#role-of-spark-or-hive-metastore" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.9. </span>Role of Spark or Hive Metastore<a class="headerlink" href="#role-of-spark-or-hive-metastore" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand the role of Spark Metastore or Hive Metasore. We need to first understand details related to Metadata generated for Spark Metastore tables.</p>
 <ul class="simple">
 <li><p>When we create a Spark Metastore table, there is metadata associated with it.</p>
@@ -802,7 +854,7 @@ CREATE DATABASE itversity_demo LOCATION &#39;/user/itversity/custom/itversity_de
 </ul>
 </div>
 <div class="section" id="exercise-getting-started-with-spark-sql">
-<h2>Exercise - Getting Started with Spark SQL<a class="headerlink" href="#exercise-getting-started-with-spark-sql" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.10. </span>Exercise - Getting Started with Spark SQL<a class="headerlink" href="#exercise-getting-started-with-spark-sql" title="Permalink to this headline">¶</a></h2>
 <p>Let’s do a simple exercise to conclude this section.</p>
 <ul class="simple">
 <li><p>Launch Spark SQL (don’t use database) (use spark-sql command). Here is the script for our labs. In other environments, you can skip last line. I have also included commands to launch Spark using Scala or Python (for CCA 175 Certification purpose)</p></li>
@@ -876,8 +928,8 @@ CREATE DATABASE itversity_demo LOCATION &#39;/user/itversity/custom/itversity_de
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../spark_sql.html" title="previous page">CCA 175 - Spark and Hadoop Developer - Python</a>
-    <a class='right-next' id="next-link" href="02_basic_transformations.html" title="next page">Basic Transformations</a>
+    <a class='left-prev' id="prev-link" href="../spark-python/08_spark_metastore.html" title="previous page"><span class="section-number">8. </span>Spark Metastore</a>
+    <a class='right-next' id="next-link" href="02_basic_transformations.html" title="next page"><span class="section-number">2. </span>Basic Transformations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pre-defined Functions &#8212; My Jupyter Book</title>
+    <title>5. Pre-defined Functions &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Windowing Functions" href="06_windowing_functions.html" />
-    <link rel="prev" title="DML and Partitioning" href="04_dml_and_partitioning.html" />
+    <link rel="next" title="6. Windowing Functions" href="06_windowing_functions.html" />
+    <link rel="prev" title="4. DML and Partitioning" href="04_dml_and_partitioning.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,40 +89,92 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../spark_sql.html">
+  <a class="reference internal" href="../cca175_intro.html">
    CCA 175 - Spark and Hadoop Developer - Python
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
-   Getting Started
+   1. Getting Started
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_basic_transformations.html">
-   Basic Transformations
+   2. Basic Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_basic_ddl_and_dml.html">
-   Basic DDL and DML
+   3. Basic DDL and DML
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_dml_and_partitioning.html">
-   DML and Partitioning
+   4. DML and Partitioning
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Pre-defined Functions
+   5. Pre-defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06_windowing_functions.html">
-   Windowing Functions
+   6. Windowing Functions
   </a>
  </li>
 </ul>
@@ -216,101 +268,101 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview-of-functions">
-   Overview of Functions
+   5.1. Overview of Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#validating-functions">
-   Validating Functions
+   5.2. Validating Functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#string-manipulation-functions">
-   String Manipulation Functions
+   5.3. String Manipulation Functions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#case-conversion-and-length">
-     Case Conversion and Length
+     5.3.1. Case Conversion and Length
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extracting-data-substr-and-split">
-     Extracting Data - substr and split
+     5.3.2. Extracting Data - substr and split
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#trimming-and-padding-functions">
-     Trimming and Padding Functions
+     5.3.3. Trimming and Padding Functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reverse-and-concatenating-multiple-strings">
-     Reverse and Concatenating multiple strings
+     5.3.4. Reverse and Concatenating multiple strings
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#date-manipulation-functions">
-   Date Manipulation Functions
+   5.4. Date Manipulation Functions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#getting-current-date-and-timestamp">
-     Getting Current Date and Timestamp
+     5.4.1. Getting Current Date and Timestamp
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#date-arithmetic">
-     Date Arithmetic
+     5.4.2. Date Arithmetic
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#beginning-date-or-time-trunc-and-date-trunc">
-     Beginning Date or Time - trunc and date_trunc
+     5.4.3. Beginning Date or Time - trunc and date_trunc
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extracting-information-using-date-format">
-     Extracting information using date_format
+     5.4.4. Extracting information using date_format
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#extracting-information-calendar-functions">
-     Extracting information - Calendar functions
+     5.4.5. Extracting information - Calendar functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dealing-with-unix-timestamp">
-     Dealing with Unix Timestamp
+     5.4.6. Dealing with Unix Timestamp
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#overview-of-numeric-functions">
-     Overview of Numeric Functions
+     5.4.7. Overview of Numeric Functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-type-conversion">
-   Data Type Conversion
+   5.5. Data Type Conversion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#handling-null-values">
-   Handling NULL Values
+   5.6. Handling NULL Values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-case-and-when">
-   Using CASE and WHEN
+   5.7. Using CASE and WHEN
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#query-example-word-count">
-   Query Example - Word Count
+   5.8. Query Example - Word Count
   </a>
  </li>
 </ul>
@@ -325,7 +377,7 @@
               <div>
                 
   <div class="section" id="pre-defined-functions">
-<h1>Pre-defined Functions<a class="headerlink" href="#pre-defined-functions" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Pre-defined Functions<a class="headerlink" href="#pre-defined-functions" title="Permalink to this headline">¶</a></h1>
 <p>Let us go through the functions that can be used while processing the data. These are typically applied on columns to get derived values from existing column values.</p>
 <ul class="simple">
 <li><p>Overview of Functions</p></li>
@@ -355,7 +407,7 @@
 </div>
 </div>
 <div class="section" id="overview-of-functions">
-<h2>Overview of Functions<a class="headerlink" href="#overview-of-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Overview of Functions<a class="headerlink" href="#overview-of-functions" title="Permalink to this headline">¶</a></h2>
 <p>Let us get overview of pre-defined functions in Spark SQL.</p>
 <ul class="simple">
 <li><p>We can get list of functions by running <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">functions</span></code></p></li>
@@ -412,7 +464,7 @@
 </div>
 </div>
 <div class="section" id="validating-functions">
-<h2>Validating Functions<a class="headerlink" href="#validating-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Validating Functions<a class="headerlink" href="#validating-functions" title="Permalink to this headline">¶</a></h2>
 <p>Let us see how we can validate Spark SQL functions.</p>
 <ul class="simple">
 <li><p>Spark SQL follows MySQL style. To validate functions we can just use SELECT clause - e. g.: <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">current_date;</span></code></p></li>
@@ -551,7 +603,7 @@ SELECT substr(&#39;Hello World&#39;, 1, 5) AS result FROM dual
 </div>
 </div>
 <div class="section" id="string-manipulation-functions">
-<h2>String Manipulation Functions<a class="headerlink" href="#string-manipulation-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.3. </span>String Manipulation Functions<a class="headerlink" href="#string-manipulation-functions" title="Permalink to this headline">¶</a></h2>
 <p>We use string manipulation functions quite extensively. Here are some of the important functions which we typically use.</p>
 <ul class="simple">
 <li><p>Case Conversion - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
@@ -562,7 +614,7 @@ SELECT substr(&#39;Hello World&#39;, 1, 5) AS result FROM dual
 <li><p>Concatenating multiple strings <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code></p></li>
 </ul>
 <div class="section" id="case-conversion-and-length">
-<h3>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.1. </span>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to perform case conversion functions of a string and also length of a string.</p>
 <ul class="simple">
 <li><p>Case Conversion Functions - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
@@ -635,7 +687,7 @@ SELECT length(&#39;hEllo wOrlD&#39;) AS result
 </div>
 </div>
 <div class="section" id="extracting-data-substr-and-split">
-<h3>Extracting Data - substr and split<a class="headerlink" href="#extracting-data-substr-and-split" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.2. </span>Extracting Data - substr and split<a class="headerlink" href="#extracting-data-substr-and-split" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to extract data from strings using <code class="docutils literal notranslate"><span class="pre">substr</span></code>/<code class="docutils literal notranslate"><span class="pre">substring</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p>
 <ul class="simple">
 <li><p>We can get syntax and symantecs of the functions using <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FUNCTION</span></code></p></li>
@@ -763,7 +815,7 @@ SELECT explode(split(&#39;2013-07-25&#39;, &#39;-&#39;)) AS result
 </div>
 </div>
 <div class="section" id="trimming-and-padding-functions">
-<h3>Trimming and Padding Functions<a class="headerlink" href="#trimming-and-padding-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.3. </span>Trimming and Padding Functions<a class="headerlink" href="#trimming-and-padding-functions" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to trim or remove leading and/or trailing spaces in a string.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ltrim</span></code> is used to remove the spaces on the left side of the string.</p></li>
@@ -841,7 +893,7 @@ SELECT length(trim(&#39;     Hello World       &#39;)) AS result
 </div>
 </div>
 <div class="section" id="reverse-and-concatenating-multiple-strings">
-<h3>Reverse and Concatenating multiple strings<a class="headerlink" href="#reverse-and-concatenating-multiple-strings" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.3.4. </span>Reverse and Concatenating multiple strings<a class="headerlink" href="#reverse-and-concatenating-multiple-strings" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to reverse a string as well as concatenate multiple strings.</p>
 <ul class="simple">
 <li><p>We can use <code class="docutils literal notranslate"><span class="pre">reverse</span></code> to reverse a string.</p></li>
@@ -922,7 +974,7 @@ FROM orders LIMIT 10
 </div>
 </div>
 <div class="section" id="date-manipulation-functions">
-<h2>Date Manipulation Functions<a class="headerlink" href="#date-manipulation-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.4. </span>Date Manipulation Functions<a class="headerlink" href="#date-manipulation-functions" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through some of the important date manipulation functions.</p>
 <ul class="simple">
 <li><p>Getting Current Date and Timestamp</p></li>
@@ -932,7 +984,7 @@ FROM orders LIMIT 10
 <li><p>Dealing with unix timestamp using <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code>, <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code></p></li>
 </ul>
 <div class="section" id="getting-current-date-and-timestamp">
-<h3>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.1. </span>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to get the details about current or today’s date as well as current timestamp.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">current_date</span></code> is the function or operator which will return today’s date.</p></li>
@@ -983,7 +1035,7 @@ FROM orders LIMIT 10
 </div>
 </div>
 <div class="section" id="date-arithmetic">
-<h3>Date Arithmetic<a class="headerlink" href="#date-arithmetic" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.2. </span>Date Arithmetic<a class="headerlink" href="#date-arithmetic" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to perform arithmetic on dates or timestamps.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">date_add</span></code> can be used to add or subtract days.</p></li>
@@ -1092,7 +1144,7 @@ SELECT add_months(&#39;2019-05-31&#39;, 1) AS result
 </div>
 </div>
 <div class="section" id="beginning-date-or-time-trunc-and-date-trunc">
-<h3>Beginning Date or Time - trunc and date_trunc<a class="headerlink" href="#beginning-date-or-time-trunc-and-date-trunc" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.3. </span>Beginning Date or Time - trunc and date_trunc<a class="headerlink" href="#beginning-date-or-time-trunc-and-date-trunc" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">trunc</span></code> and <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> on dates or timestamps and get beginning date of the period.</p>
 <ul class="simple">
 <li><p>We can use <strong>MM</strong> to get beginning date of the month.</p></li>
@@ -1175,7 +1227,7 @@ SELECT date_trunc(&#39;HOUR&#39;, current_timestamp) AS hour_beginning
 </div>
 </div>
 <div class="section" id="extracting-information-using-date-format">
-<h3>Extracting information using date_format<a class="headerlink" href="#extracting-information-using-date-format" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.4. </span>Extracting information using date_format<a class="headerlink" href="#extracting-information-using-date-format" title="Permalink to this headline">¶</a></h3>
 <p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">date_format</span></code> to extract information from date or timestamp.</p>
 <p>Here is how we can get date related information such as year, month, day etc from date or timestamp.</p>
 <div class="cell docutils container">
@@ -1369,7 +1421,7 @@ SELECT date_format(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 </div>
 </div>
 <div class="section" id="extracting-information-calendar-functions">
-<h3>Extracting information - Calendar functions<a class="headerlink" href="#extracting-information-calendar-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.5. </span>Extracting information - Calendar functions<a class="headerlink" href="#extracting-information-calendar-functions" title="Permalink to this headline">¶</a></h3>
 <p>We can get year, month, day etc from date or timestamp using functions. There are functions such as <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">dayofmonth</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">weekofyear</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code> etc available for us.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,7 +1508,7 @@ SELECT date_format(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
 </div>
 </div>
 <div class="section" id="dealing-with-unix-timestamp">
-<h3>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.6. </span>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h3>
 <p>Let us go through the functions that can be used to deal with Unix Timestamp.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code> can be used to convert Unix epoch to regular timestamp.</p></li>
@@ -1542,7 +1594,7 @@ SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd HH:mm:ss&#39
 </div>
 </div>
 <div class="section" id="overview-of-numeric-functions">
-<h3>Overview of Numeric Functions<a class="headerlink" href="#overview-of-numeric-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.4.7. </span>Overview of Numeric Functions<a class="headerlink" href="#overview-of-numeric-functions" title="Permalink to this headline">¶</a></h3>
 <p>Here are some of the numeric functions we might use quite often.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">abs</span></code> - always return positive number</p></li>
@@ -1771,7 +1823,7 @@ SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd HH:mm:ss&#39
 </div>
 </div>
 <div class="section" id="data-type-conversion">
-<h2>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.5. </span>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can type cast to change the data type of extracted value to its original type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1875,7 +1927,7 @@ FROM orders_single_column LIMIT 10
 </div>
 </div>
 <div class="section" id="handling-null-values">
-<h2>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to handle nulls using specific functions in Spark SQL.</p>
 <ul class="simple">
 <li><p>By default if we try to add or concatenate null to another column or expression or literal, it will return null.</p></li>
@@ -2122,7 +2174,7 @@ SELECT concat(&#39;Hello&#39;, NULL) AS result
 </div>
 </div>
 <div class="section" id="using-case-and-when">
-<h2>Using CASE and WHEN<a class="headerlink" href="#using-case-and-when" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>Using CASE and WHEN<a class="headerlink" href="#using-case-and-when" title="Permalink to this headline">¶</a></h2>
 <p>At times we might have to select values from multiple columns conditionally.</p>
 <ul class="simple">
 <li><p>We can use <code class="docutils literal notranslate"><span class="pre">CASE</span></code> and <code class="docutils literal notranslate"><span class="pre">WHEN</span></code> for that.</p></li>
@@ -2242,7 +2294,7 @@ ORDER BY updated_order_status
 </div>
 </div>
 <div class="section" id="query-example-word-count">
-<h2>Query Example - Word Count<a class="headerlink" href="#query-example-word-count" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.8. </span>Query Example - Word Count<a class="headerlink" href="#query-example-word-count" title="Permalink to this headline">¶</a></h2>
 <p>Let us see how we can perform word count using Spark SQL. Using word count as an example we will understand how we can come up with the solution using pre-defined functions available.</p>
 <ul class="simple">
 <li><p>Create table by name lines.</p></li>
@@ -2412,8 +2464,8 @@ INSERT INTO lines VALUES
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="04_dml_and_partitioning.html" title="previous page">DML and Partitioning</a>
-    <a class='right-next' id="next-link" href="06_windowing_functions.html" title="next page">Windowing Functions</a>
+    <a class='left-prev' id="prev-link" href="04_dml_and_partitioning.html" title="previous page"><span class="section-number">4. </span>DML and Partitioning</a>
+    <a class='right-next' id="next-link" href="06_windowing_functions.html" title="next page"><span class="section-number">6. </span>Windowing Functions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

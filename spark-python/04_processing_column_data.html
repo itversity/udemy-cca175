@@ -1,0 +1,2125 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Processing Column Data &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Basic Transformations" href="05_basic_transformations.html" />
+    <link rel="prev" title="3. Data Processing - Overview" href="03_data_processing_overview.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/04_processing_column_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/04_processing_column_data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-pre-defined-functions">
+   4.1. Introduction to Pre-defined Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   4.2. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-dummy-data-frame">
+   4.3. Create Dummy Data Frame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#categories-of-functions">
+   4.4. Categories of Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-functions-col-and-lit">
+   4.5. Special Functions - col and lit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-case-conversion-and-length">
+   4.6. String Manipulation - Case Conversion and Length
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     4.6.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-substring">
+   4.7. String Manipulation - substring
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     4.7.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-split">
+   4.8. String Manipulation - split
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     4.8.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-concatenating-of-strings">
+   4.9. String Manipulation - Concatenating of Strings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     4.9.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-padding">
+   4.10. String Manipulation - Padding
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     4.10.1. Tasks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     4.10.2. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-trimming">
+   4.11. String Manipulation - Trimming
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4.11.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#date-and-time-overview">
+   4.12. Date and Time - Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#date-and-time-arithmetic">
+   4.13. Date and Time - Arithmetic
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     4.13.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#date-and-time-trunc-and-date-trunc">
+   4.14. Date and Time - trunc and date_trunc
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     4.14.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#date-and-time-extracting-information">
+   4.15. Date and Time - Extracting Information
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     4.15.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dealing-with-unix-timestamp">
+   4.16. Dealing with Unix Timestamp
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     4.16.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   4.17. Conclusion
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="processing-column-data">
+<h1><span class="section-number">4. </span>Processing Column Data<a class="headerlink" href="#processing-column-data" title="Permalink to this headline">¶</a></h1>
+<p>As part of this module we will explore the functions available under <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code> to derive new values from existing column values with in a Data Frame.</p>
+<div class="section" id="introduction-to-pre-defined-functions">
+<h2><span class="section-number">4.1. </span>Introduction to Pre-defined Functions<a class="headerlink" href="#introduction-to-pre-defined-functions" title="Permalink to this headline">¶</a></h2>
+<p>We typically process data in the columns using functions in <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code>. Let us understand details about these functions in detail as part of this module.</p>
+<ul class="simple">
+<li><p>Let us recap about Functions or APIs to process Data Frames.</p></li>
+<li><p>Projection - <code class="docutils literal notranslate"><span class="pre">select</span></code> or <code class="docutils literal notranslate"><span class="pre">withColumn</span></code></p></li>
+<li><p>Filtering - <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code></p></li>
+<li><p>Grouping data by key and perform aggregations - <code class="docutils literal notranslate"><span class="pre">groupBy</span></code></p></li>
+<li><p>Sorting data - <code class="docutils literal notranslate"><span class="pre">sort</span></code> or <code class="docutils literal notranslate"><span class="pre">orderBy</span></code></p></li>
+<li><p>We can pass column names or literals or expressions to all the Data Frame APIs.</p></li>
+<li><p>Expressions include arithmetic operations, transformations using functions from <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code>.</p></li>
+<li><p>There are approximately 300 functions under <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code>.</p></li>
+<li><p>We will talk about some of the important functions used for String Manipulation, Date Manipulation etc.</p></li>
+</ul>
+</div>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">4.2. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start spark context for this Notebook so that we can execute the code provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Processing Column Data&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-dummy-data-frame">
+<h2><span class="section-number">4.3. </span>Create Dummy Data Frame<a class="headerlink" href="#create-dummy-data-frame" title="Permalink to this headline">¶</a></h2>
+<p>Let us go ahead and create dummy data from to explore functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Oracle dual (view)</span>
+<span class="c1">// dual - dummy CHAR(1)</span>
+<span class="c1">// &quot;X&quot; - One record</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">printSchema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once Data Frame is created, we can use to understand how to use functions. For example, to get current date, we can run <code class="docutils literal notranslate"><span class="pre">df.select(current_date()).show()</span></code>.</p>
+<p>It is similar to Oracle Query <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">sysdate</span> <span class="pre">FROM</span> <span class="pre">dual</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.current_date</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">.</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;current_date&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is another example of creating Data Frame using collection of employees. We will be using this Data Frame to explore all the important functions to process column data in detail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">printSchema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="categories-of-functions">
+<h2><span class="section-number">4.4. </span>Categories of Functions<a class="headerlink" href="#categories-of-functions" title="Permalink to this headline">¶</a></h2>
+<p>There are approximately 300 functions under <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code>. At a higher level they can be grouped into a few categories.</p>
+<ul class="simple">
+<li><p>String Manipulation Functions</p></li>
+<li><p>Case Conversion - <code class="docutils literal notranslate"><span class="pre">lower</span></code>,  <code class="docutils literal notranslate"><span class="pre">upper</span></code></p></li>
+<li><p>Getting Length -  <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>Extracting substrings - <code class="docutils literal notranslate"><span class="pre">substring</span></code>, <code class="docutils literal notranslate"><span class="pre">split</span></code></p></li>
+<li><p>Trimming - <code class="docutils literal notranslate"><span class="pre">trim</span></code>, <code class="docutils literal notranslate"><span class="pre">ltrim</span></code>, <code class="docutils literal notranslate"><span class="pre">rtrim</span></code></p></li>
+<li><p>Padding - <code class="docutils literal notranslate"><span class="pre">lpad</span></code>, <code class="docutils literal notranslate"><span class="pre">rpad</span></code></p></li>
+<li><p>Concatenating string - <code class="docutils literal notranslate"><span class="pre">concat</span></code></p></li>
+<li><p>Date Manipulation Functions</p></li>
+<li><p>Getting current date and time - <code class="docutils literal notranslate"><span class="pre">current_date</span></code>, <code class="docutils literal notranslate"><span class="pre">current_timestamp</span></code></p></li>
+<li><p>Date Arithmetic - <code class="docutils literal notranslate"><span class="pre">date_add</span></code>, <code class="docutils literal notranslate"><span class="pre">date_sub</span></code>, <code class="docutils literal notranslate"><span class="pre">datediff</span></code>, <code class="docutils literal notranslate"><span class="pre">months_between</span></code>, <code class="docutils literal notranslate"><span class="pre">add_months</span></code>, <code class="docutils literal notranslate"><span class="pre">next_day</span></code></p></li>
+<li><p>Beginning and Ending Date or Time - <code class="docutils literal notranslate"><span class="pre">last_day</span></code>, <code class="docutils literal notranslate"><span class="pre">trunc</span></code>, <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code></p></li>
+<li><p>Formatting Date - <code class="docutils literal notranslate"><span class="pre">date_format</span></code></p></li>
+<li><p>Extracting Information - <code class="docutils literal notranslate"><span class="pre">dayofyear</span></code>, <code class="docutils literal notranslate"><span class="pre">dayofmonth</span></code>, <code class="docutils literal notranslate"><span class="pre">dayofweek</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code></p></li>
+<li><p>Aggregate Functions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">countDistinct</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+<li><p>Other Functions - We will explore depending on the use cases.</p></li>
+</ul>
+</div>
+<div class="section" id="special-functions-col-and-lit">
+<h2><span class="section-number">4.5. </span>Special Functions - col and lit<a class="headerlink" href="#special-functions-col-and-lit" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand special functions such as col and lit.</p>
+<ul class="simple">
+<li><p>First let us create Data Frame for demo purposes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>For Data Frame APIs such as <code class="docutils literal notranslate"><span class="pre">select</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">orderBy</span></code> etc we can pass column names as strings.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// to use operators such as $ in place of functions like col</span>
+<span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative using col function</span>
+<span class="c1">// $ is shorthand operator for col from implicits</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.col</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative by passing column names as strings.</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="s">&quot;last_name&quot;</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// We have to pass all the column names as strings or column type (using col or $)</span>
+<span class="c1">// This will not work</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="s">&quot;last_name&quot;</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If there are no transformations on any column in any function then we should be able to pass all column names as strings.</p></li>
+<li><p>If not we need to pass all columns as type column by using col function or its shorthand operator $.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">).</span>
+    <span class="n">count</span><span class="o">.</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>However, if we want to apply any transformation using functions then passing column names as strings to some of the functions will not suffice. We have to pass them as column type.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.upper</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">//This code fails as upper is not valid function on string</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">col</span></code> is the function which will convert column name from string type to <strong>Column</strong> type. We can also refer column names as <strong>Column</strong> type using Data Frame name.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">upper</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">)),</span> <span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">))).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternate using $</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="n">upper</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
+    <span class="n">count</span><span class="o">.</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">).</span><span class="n">desc</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative - we can also refer column names using Data Frame like this</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">employeesDF</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">)).</span><span class="n">desc</span><span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sometimes, we want to add a literal to the column values. For example, we might want to concatenate first_name and last_name with separated by comma and space in between.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Both the below approaches fail.</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.concat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="s">&quot;, &quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Same as above</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="s">&quot;, &quot;</span><span class="o">,</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">))).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Referring columns using Data Frame</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">employeesDF</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="s">&quot;, &quot;</span><span class="o">,</span> <span class="n">employeesDF</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">))).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If we pass the literals directly in the form of string or numeric type, then it will fail. We have to convert literals to column type by using <code class="docutils literal notranslate"><span class="pre">lit</span></code> function.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">concat</span><span class="o">,</span> <span class="n">col</span><span class="o">,</span> <span class="n">lit</span><span class="o">}</span>
+
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> 
+                  <span class="n">lit</span><span class="o">(</span><span class="s">&quot;, &quot;</span><span class="o">),</span> 
+                  <span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">)</span>
+                 <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">)</span>
+          <span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-case-conversion-and-length">
+<h2><span class="section-number">4.6. </span>String Manipulation - Case Conversion and Length<a class="headerlink" href="#string-manipulation-case-conversion-and-length" title="Permalink to this headline">¶</a></h2>
+<p>Let us check the functions which can convert the case of the column values which are of type string and also get the length.</p>
+<ul class="simple">
+<li><p>Convert all the alphabetic characters in a string to <strong>uppercase</strong> - <code class="docutils literal notranslate"><span class="pre">upper</span></code></p></li>
+<li><p>Convert all the alphabetic characters in a string to <strong>lowercase</strong> - <code class="docutils literal notranslate"><span class="pre">lower</span></code></p></li>
+<li><p>Convert first character in a string to <strong>uppercase</strong> - <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
+<li><p>Get <strong>number of characters in a string</strong> - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>All the 4 functions take column type argument.</p></li>
+</ul>
+<div class="section" id="tasks">
+<h3><span class="section-number">4.6.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform tasks to understand the behavior of case conversion functions and length.</p>
+<ul class="simple">
+<li><p>Use employees data and create a Data Frame.</p></li>
+<li><p>Apply all 4 functions on <strong>nationality</strong> and see the results.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">lower</span><span class="o">,</span> <span class="n">upper</span><span class="o">,</span> <span class="n">initcap</span><span class="o">,</span> <span class="n">length</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+  <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;nationality&quot;</span><span class="o">).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_upper&quot;</span><span class="o">,</span> <span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_lower&quot;</span><span class="o">,</span> <span class="n">lower</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_initcap&quot;</span><span class="o">,</span> <span class="n">initcap</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_length&quot;</span><span class="o">,</span> <span class="n">length</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
+  <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-substring">
+<h2><span class="section-number">4.7. </span>String Manipulation - substring<a class="headerlink" href="#string-manipulation-substring" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can extract substrings using function  <code class="docutils literal notranslate"><span class="pre">substring</span></code>.</p>
+<ul class="simple">
+<li><p>If we are processing <strong>fixed length columns</strong> then we use <code class="docutils literal notranslate"><span class="pre">substring</span></code> to extract the information.</p></li>
+<li><p>Here are some of the examples for <strong>fixed length columns</strong> and the use cases for which we typically extract information..</p></li>
+<li><p>9 Digit Social Security Number. We typically extract last 4 digits and provide it to the tele verification applications..</p></li>
+<li><p>16 Digit Credit Card Number. We typically use first 4 digit number to identify Credit Card Provider and last 4 digits for the purpose of tele verification.</p></li>
+<li><p>Data coming from MainFrames systems are quite often fixed length. We might have to extract the information and store in multiple columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">substring</span></code> function takes 3 arguments, <strong>column</strong>, <strong>position</strong>, <strong>length</strong>. We can also provide position from the end by passing negative value.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;Hello World&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">5</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.substring</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">),</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">5</span><span class="o">)).</span>
+  <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">),</span> <span class="o">-</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">)).</span>
+  <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3><span class="section-number">4.7.1. </span>Tasks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to extract information from fixed length strings.</p>
+<ul class="simple">
+<li><p>Create a list for employees with name, ssn and phone_number.</p></li>
+<li><p>SSN Format <strong>3 2 4</strong> - Fixed Length with 9 digits</p></li>
+<li><p>Phone Number Format - Country Code is variable and remaining phone number have 10 digits:</p></li>
+<li><p>Country Code - one to 3 digits</p></li>
+<li><p>Area Code - 3 digits</p></li>
+<li><p>Phone Number Prefix - 3 digits</p></li>
+<li><p>Phone Number Remaining - 4 digits</p></li>
+<li><p>All the 4 parts are separated by spaces</p></li>
+<li><p>Create a Dataframe with column names name, ssn and phone_number</p></li>
+<li><p>Extract last 4 digits from the phone number.</p></li>
+<li><p>Extract last 4 digits from SSN.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.substring</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;ssn&quot;</span><span class="o">).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;phone_last4&quot;</span><span class="o">,</span> <span class="n">substring</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="o">-</span><span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ssn_last4&quot;</span><span class="o">,</span> <span class="n">substring</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;ssn&quot;</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-split">
+<h2><span class="section-number">4.8. </span>String Manipulation - split<a class="headerlink" href="#string-manipulation-split" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can extract substrings using  <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p>
+<ul class="simple">
+<li><p>If we are processing <strong>variable length columns</strong> with <strong>delimiter</strong> then we use <code class="docutils literal notranslate"><span class="pre">split</span></code> to extract the information.</p></li>
+<li><p>Here are some of the examples for <strong>variable length columns</strong> and the use cases for which we typically extract information.</p></li>
+<li><p>Address where we store House Number, Street Name, City, State and Zip Code comma separated. We might want to extract City and State for demographics reports.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split</span></code> takes 2 arguments, <strong>column</strong> and <strong>delimiter</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">split</span></code> convert each string into array and we can access the elements using index.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World, how are you&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World, how are you&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">2</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Most of the problems can be solved either by using <code class="docutils literal notranslate"><span class="pre">substring</span></code> or <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p></li>
+</ul>
+<div class="section" id="id2">
+<h3><span class="section-number">4.8.1. </span>Tasks<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to extract information from fixed length strings as well as delimited variable length strings.</p>
+<ul class="simple">
+<li><p>Create a list for employees with name, ssn and phone_number.</p></li>
+<li><p>SSN Format <strong>3 2 4</strong> - Fixed Length with 9 digits</p></li>
+<li><p>Phone Number Format - Country Code is variable and remaining phone number have 10 digits:</p></li>
+<li><p>Country Code - one to 3 digits</p></li>
+<li><p>Area Code - 3 digits</p></li>
+<li><p>Phone Number Prefix - 3 digits</p></li>
+<li><p>Phone Number Remaining - 4 digits</p></li>
+<li><p>All the 4 parts are separated by spaces</p></li>
+<li><p>Create a Dataframe with column names name, ssn and phone_number</p></li>
+<li><p>Extract area code and last 4 digits from the phone number.</p></li>
+<li><p>Extract last 4 digits from SSN.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.split</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;ssn&quot;</span><span class="o">).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;area_code&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">1</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;phone_last4&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">3</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ssn_last4&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;ssn&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">2</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-concatenating-of-strings">
+<h2><span class="section-number">4.9. </span>String Manipulation - Concatenating of Strings<a class="headerlink" href="#string-manipulation-concatenating-of-strings" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to concatenate strings using <code class="docutils literal notranslate"><span class="pre">concat</span></code> function.</p>
+<ul class="simple">
+<li><p>We can pass a variable number of strings to <code class="docutils literal notranslate"><span class="pre">concat</span></code> function.</p></li>
+<li><p>It will return one string concatenating all the strings.</p></li>
+<li><p>If we have to concatenate literal in between then we have to use <code class="docutils literal notranslate"><span class="pre">lit</span></code> function.</p></li>
+</ul>
+<div class="section" id="id3">
+<h3><span class="section-number">4.9.1. </span>Tasks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand more about
+<code class="docutils literal notranslate"><span class="pre">concat</span></code> function.</p>
+<ul class="simple">
+<li><p>Let’s create a Data Frame and explore <code class="docutils literal notranslate"><span class="pre">concat</span></code> function.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create a new column by name <strong>full_name</strong> concatenating <strong>first_name</strong> and <strong>last_name</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.concat</span>
+<span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">,</span> <span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Improvise by adding a <strong>comma followed by a space</strong> in between <strong>first_name</strong> and <strong>last_name</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">concat</span><span class="o">,</span> <span class="n">lit</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">,</span> <span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;, &quot;</span><span class="o">),</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-padding">
+<h2><span class="section-number">4.10. </span>String Manipulation - Padding<a class="headerlink" href="#string-manipulation-padding" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to pad characters at the beginning or at the end of strings.</p>
+<ul class="simple">
+<li><p>We typically pad characters to build fixed length values or records.</p></li>
+<li><p>Fixed length values or records are extensively used in Mainframes based systems.</p></li>
+<li><p>Length of each and every field in fixed length records is predetermined and if the value of the field is less than the predetermined length then we pad with a standard character.</p></li>
+<li><p>In terms of numeric fields we pad with zero on the leading or left side. For non numeric fields, we pad with some standard character on leading or trailing side.</p></li>
+<li><p>We use <code class="docutils literal notranslate"><span class="pre">lpad</span></code> to pad a string with a specific character on leading or left side and <code class="docutils literal notranslate"><span class="pre">rpad</span></code> to pad on trailing or right side.</p></li>
+<li><p>Both lpad and rpad, take 3 arguments - column or expression, desired length and the character need to be padded.</p></li>
+</ul>
+<div class="section" id="id4">
+<h3><span class="section-number">4.10.1. </span>Tasks<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform simple tasks to understand the syntax of <code class="docutils literal notranslate"><span class="pre">lpad</span></code> or <code class="docutils literal notranslate"><span class="pre">rpad</span></code>.</p>
+<ul class="simple">
+<li><p>Create a Dataframe with single value and single column.</p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">lpad</span></code> to pad with - to Hello to make it 10 characters.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">lpad</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">),</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">4.10.2. </span>Tasks<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform the task to understand how to use pad functions to convert our data into fixed length records.</p>
+<ul class="simple">
+<li><p>Let’s take the <strong>employees</strong> Dataframe</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employees</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;Scott&quot;</span><span class="o">,</span> <span class="s">&quot;Tiger&quot;</span><span class="o">,</span> <span class="mf">1000.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united states&quot;</span><span class="o">,</span> <span class="s">&quot;+1 123 456 7890&quot;</span><span class="o">,</span> <span class="s">&quot;123 45 6789&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Henry&quot;</span><span class="o">,</span> <span class="s">&quot;Ford&quot;</span><span class="o">,</span> <span class="mf">1250.0</span><span class="o">,</span> 
+                      <span class="s">&quot;India&quot;</span><span class="o">,</span> <span class="s">&quot;+91 234 567 8901&quot;</span><span class="o">,</span> <span class="s">&quot;456 78 9123&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Nick&quot;</span><span class="o">,</span> <span class="s">&quot;Junior&quot;</span><span class="o">,</span> <span class="mf">750.0</span><span class="o">,</span> 
+                      <span class="s">&quot;united KINGDOM&quot;</span><span class="o">,</span> <span class="s">&quot;+44 111 111 1111&quot;</span><span class="o">,</span> <span class="s">&quot;222 33 4444&quot;</span>
+                     <span class="o">),</span>
+                     <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="s">&quot;Bill&quot;</span><span class="o">,</span> <span class="s">&quot;Gomes&quot;</span><span class="o">,</span> <span class="mf">1500.0</span><span class="o">,</span> 
+                      <span class="s">&quot;AUSTRALIA&quot;</span><span class="o">,</span> <span class="s">&quot;+61 987 654 3210&quot;</span><span class="o">,</span> <span class="s">&quot;789 12 6118&quot;</span>
+                     <span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
+    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
+         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
+         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
+         <span class="s">&quot;ssn&quot;</span>
+        <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Use <strong>pad</strong> functions to convert each of the field into fixed length and concatenate. Here are the details for each of the fields.</p></li>
+<li><p>Length of the employee_id should be 5 characters and should be padded with zero.</p></li>
+<li><p>Length of first_name and last_name should be 10 characters and should be padded with - on the right side.</p></li>
+<li><p>Length of salary should be 10 characters and should be padded with zero.</p></li>
+<li><p>Length of the nationality should be 15 characters and should be padded with - on the right side.</p></li>
+<li><p>Length of the phone_number should be 17 characters and should be padded with - on the right side.</p></li>
+<li><p>Length of the ssn can be left as is. It is 11 characters.</p></li>
+<li><p>Create a new Dataframe <strong>empFixedDF</strong> with column name <strong>employee</strong>. Preview the data by disabling truncate.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lpad</span><span class="o">,</span> <span class="n">rpad</span><span class="o">,</span> <span class="n">concat</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">empFixedDF</span> <span class="o">=</span> <span class="n">employeesDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>
+    <span class="n">concat</span><span class="o">(</span>
+        <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> 
+        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
+        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span>
+        <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;salary&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> 
+        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="mi">15</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
+        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="mi">17</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
+        <span class="n">$</span><span class="s">&quot;ssn&quot;</span>
+    <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;employee&quot;</span><span class="o">)</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">empFixedDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-trimming">
+<h2><span class="section-number">4.11. </span>String Manipulation - Trimming<a class="headerlink" href="#string-manipulation-trimming" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to trim unwanted leading and trailing characters around a string.</p>
+<ul class="simple">
+<li><p>We typically use trimming to remove unnecessary characters from fixed length records.</p></li>
+<li><p>Fixed length records are extensively used in Mainframes and we might have to process it using Spark.</p></li>
+<li><p>As part of processing we might want to remove leading or trailing characters such as 0 in case of numeric types and space or some standard character in case of alphanumeric types.</p></li>
+<li><p>As of now Spark trim functions take the column as argument and remove leading or trailing spaces.</p></li>
+<li><p>Trim spaces towards left - <code class="docutils literal notranslate"><span class="pre">ltrim</span></code></p></li>
+<li><p>Trim spaces towards right - <code class="docutils literal notranslate"><span class="pre">rtrim</span></code></p></li>
+<li><p>Trim spaces on both sides - <code class="docutils literal notranslate"><span class="pre">trim</span></code></p></li>
+</ul>
+<div class="section" id="id6">
+<h3><span class="section-number">4.11.1. </span>Tasks<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to use trim functions to remove spaces on left or right or both.</p>
+<ul class="simple">
+<li><p>Create a Dataframe with one column and one record.</p></li>
+<li><p>Apply trim functions to trim spaces.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">ltrim</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">,</span> <span class="n">trim</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;   Hello.    &quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">,</span> <span class="n">trim</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ltrim&quot;</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;rtrim&quot;</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;trim&quot;</span><span class="o">,</span> <span class="n">trim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
+  <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ltrim&quot;</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;rtrim&quot;</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
+  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;trim&quot;</span><span class="o">,</span> <span class="n">trim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)).</span>
+  <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-and-time-overview">
+<h2><span class="section-number">4.12. </span>Date and Time - Overview<a class="headerlink" href="#date-and-time-overview" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview about Date and Time using available functions.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">current_date</span></code> to get today’s server date.</p></li>
+<li><p>Date will be returned using <strong>yyyy-MM-dd</strong> format.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">current_timestamp</span></code> to get current server time.</p></li>
+<li><p>Timestamp will be returned using <strong>yyyy-MM-dd HH:mm:ss:SSS</strong> format.</p></li>
+<li><p>Hours will be by default in 24 hour format.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">current_date</span><span class="o">,</span> <span class="n">current_timestamp</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-and-time-arithmetic">
+<h2><span class="section-number">4.13. </span>Date and Time - Arithmetic<a class="headerlink" href="#date-and-time-arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>Let us perform Date and Time Arithmetic using relevant functions.</p>
+<ul class="simple">
+<li><p>Adding days to a date or timestamp - <code class="docutils literal notranslate"><span class="pre">date_add</span></code></p></li>
+<li><p>Subtracting days from a date or timestamp - <code class="docutils literal notranslate"><span class="pre">date_sub</span></code></p></li>
+<li><p>Getting difference between 2 dates or timestamps - <code class="docutils literal notranslate"><span class="pre">datediff</span></code></p></li>
+<li><p>Getting a number of months between 2 dates or timestamps - <code class="docutils literal notranslate"><span class="pre">months_between</span></code></p></li>
+<li><p>Adding months to a date or timestamp - <code class="docutils literal notranslate"><span class="pre">add_months</span></code></p></li>
+<li><p>Getting next day from a given date - <code class="docutils literal notranslate"><span class="pre">next_day</span></code></p></li>
+<li><p>All the functions are self explanatory. We can apply these on standard date or timestamp. All the functions return date even when applied on timestamp field.</p></li>
+</ul>
+<div class="section" id="id7">
+<h3><span class="section-number">4.13.1. </span>Tasks<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform some tasks related to date arithmetic.</p>
+<ul class="simple">
+<li><p>Get help on each and every function first and understand what all arguments need to be passed.</p></li>
+<li><p>Create a Dataframe by name datetimesDF with columns date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="s">&quot;2014-02-28&quot;</span><span class="o">,</span> <span class="s">&quot;2014-02-28 10:00:00.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2016-02-29&quot;</span><span class="o">,</span> <span class="s">&quot;2016-02-29 08:08:08.999&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2017-10-31&quot;</span><span class="o">,</span> <span class="s">&quot;2017-12-31 11:59:59.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2019-11-30&quot;</span><span class="o">,</span> <span class="s">&quot;2019-08-31 00:00:00.000&quot;</span><span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Add 10 days to both date and time values.</p></li>
+<li><p>Subtract 10 days from both date and time values.</p></li>
+<li><p>Get the difference between current_date and date values as well as current_timestamp and time values.</p></li>
+<li><p>Get the number of months between current_date and date values as well as current_timestamp and time values.</p></li>
+<li><p>Add 3 months to both date values as well as time values.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">date_add</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_add_date&quot;</span><span class="o">,</span> <span class="n">date_add</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_add_time&quot;</span><span class="o">,</span> <span class="n">date_add</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_sub_date&quot;</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_sub_time&quot;</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">current_date</span><span class="o">,</span> <span class="n">current_timestamp</span><span class="o">,</span> <span class="n">datediff</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;datediff_date&quot;</span><span class="o">,</span> <span class="n">datediff</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;datediff_time&quot;</span><span class="o">,</span> <span class="n">datediff</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">months_between</span><span class="o">,</span> <span class="n">add_months</span><span class="o">,</span> <span class="n">round</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;months_between_date&quot;</span><span class="o">,</span> <span class="n">round</span><span class="o">(</span><span class="n">months_between</span><span class="o">(</span><span class="n">current_date</span><span class="o">(),</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;months_between_time&quot;</span><span class="o">,</span> <span class="n">round</span><span class="o">(</span><span class="n">months_between</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">(),</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;add_months_date&quot;</span><span class="o">,</span> <span class="n">add_months</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;add_months_time&quot;</span><span class="o">,</span> <span class="n">add_months</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-and-time-trunc-and-date-trunc">
+<h2><span class="section-number">4.14. </span>Date and Time - trunc and date_trunc<a class="headerlink" href="#date-and-time-trunc-and-date-trunc" title="Permalink to this headline">¶</a></h2>
+<p>In Data Warehousing we quite often run to date reports such as week to date, month to date, year to date etc.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">trunc</span></code> or <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> for the same to get the beginning date of the week, month, current year etc by passing date or timestamp to it.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">trunc</span></code> to get beginning date of the month or year by passing date or timestamp to it - for example <code class="docutils literal notranslate"><span class="pre">trunc(current_date(),</span> <span class="pre">&quot;MM&quot;)</span></code> will give the first of the current month.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> to get beginning date of the month or year as well as beginning time of the day or hour by passing timestamp to it.</p></li>
+<li><p>Get beginning date based on month - <code class="docutils literal notranslate"><span class="pre">date_trunc(&quot;MM&quot;,</span> <span class="pre">current_timestamp())</span></code></p></li>
+<li><p>Get beginning time based on day - <code class="docutils literal notranslate"><span class="pre">date_trunc(&quot;DAY&quot;,</span> <span class="pre">current_timestamp())</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">trunc</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">4.14.1. </span>Tasks<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand trunc and date_trunc in detail.</p>
+<ul class="simple">
+<li><p>Create a Dataframe by name datetimesDF with columns date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="s">&quot;2014-02-28&quot;</span><span class="o">,</span> <span class="s">&quot;2014-02-28 10:00:00.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2016-02-29&quot;</span><span class="o">,</span> <span class="s">&quot;2016-02-29 08:08:08.999&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2017-10-31&quot;</span><span class="o">,</span> <span class="s">&quot;2017-12-31 11:59:59.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2019-11-30&quot;</span><span class="o">,</span> <span class="s">&quot;2019-08-31 00:00:00.000&quot;</span><span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get beginning month date using date field and beginning year date using time field.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.trunc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_trunc&quot;</span><span class="o">,</span> <span class="n">trunc</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;MM&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_trunc&quot;</span><span class="o">,</span> <span class="n">trunc</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;YY&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get beginning hour time using date and time field.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_trunc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dt&quot;</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">(</span><span class="s">&quot;HOUR&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dt&quot;</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">(</span><span class="s">&quot;HOUR&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-and-time-extracting-information">
+<h2><span class="section-number">4.15. </span>Date and Time - Extracting Information<a class="headerlink" href="#date-and-time-extracting-information" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to extract information from dates or times using functions.</p>
+<ul class="simple">
+<li><p>We can use date_format to extract the required information in a desired format from date or timestamp.</p></li>
+<li><p>There are also specific functions to extract year, month, day with in a week, a day with in a month, day with in a year etc.</p></li>
+</ul>
+<div class="section" id="id9">
+<h3><span class="section-number">4.15.1. </span>Tasks<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to extract the information we need from date or timestamp.</p>
+<ul class="simple">
+<li><p>Create a Dataframe by name datetimesDF with columns date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="s">&quot;2014-02-28&quot;</span><span class="o">,</span> <span class="s">&quot;2014-02-28 10:00:00.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2016-02-29&quot;</span><span class="o">,</span> <span class="s">&quot;2016-02-29 08:08:08.999&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2017-10-31&quot;</span><span class="o">,</span> <span class="s">&quot;2017-12-31 11:59:59.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="s">&quot;2019-11-30&quot;</span><span class="o">,</span> <span class="s">&quot;2019-08-31 00:00:00.000&quot;</span><span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get year from fields date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_year&quot;</span><span class="o">,</span> <span class="n">year</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_year&quot;</span><span class="o">,</span> <span class="n">year</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get one or two digit month from fields date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.month</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_month&quot;</span><span class="o">,</span> <span class="n">month</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_month&quot;</span><span class="o">,</span> <span class="n">month</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get year and month in yyyyMM format from date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_ym&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMM&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_ym&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMM&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get day with in a week, a day with in a month and day within a year from date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">dayofweek</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dow&quot;</span><span class="o">,</span> <span class="n">dayofweek</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dow&quot;</span><span class="o">,</span> <span class="n">dayofweek</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dom&quot;</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dom&quot;</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_doy&quot;</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_doy&quot;</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the information from time in yyyyMMddHHmmss format.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_ts&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMMddHHmmss&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dealing-with-unix-timestamp">
+<h2><span class="section-number">4.16. </span>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to deal with Unix Timestamp in Spark.</p>
+<ul class="simple">
+<li><p>It is an integer and started from January 1st 1970 Midnight UTC.</p></li>
+<li><p>Beginning time is also known as epoch and is incremented by 1 every second.</p></li>
+<li><p>We can convert Unix Timestamp to regular date or timestamp and vice versa.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> to convert regular date or timestamp to a unix timestamp value. For example <code class="docutils literal notranslate"><span class="pre">unix_timestamp(lit(&quot;2019-11-19</span> <span class="pre">00:00:00&quot;))</span></code></p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code> to convert unix timestamp to regular date or timestamp. For example <code class="docutils literal notranslate"><span class="pre">from_unixtime(lit(1574101800))</span></code></p></li>
+<li><p>We can also pass format to both the functions.</p></li>
+</ul>
+<div class="section" id="id10">
+<h3><span class="section-number">4.16.1. </span>Tasks<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand how to deal with Unix Timestamp.</p>
+<ul class="simple">
+<li><p>Create a Dataframe by name datetimesDF with columns dateid, date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">((</span><span class="mi">20140228</span><span class="o">,</span> <span class="s">&quot;2014-02-28&quot;</span><span class="o">,</span> <span class="s">&quot;2014-02-28 10:00:00.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="mi">20160229</span><span class="o">,</span> <span class="s">&quot;2016-02-29&quot;</span><span class="o">,</span> <span class="s">&quot;2016-02-29 08:08:08.999&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="mi">20171031</span><span class="o">,</span> <span class="s">&quot;2017-10-31&quot;</span><span class="o">,</span> <span class="s">&quot;2017-12-31 11:59:59.123&quot;</span><span class="o">),</span>
+                     <span class="o">(</span><span class="mi">20191130</span><span class="o">,</span> <span class="s">&quot;2019-11-30&quot;</span><span class="o">,</span> <span class="s">&quot;2019-08-31 00:00:00.000&quot;</span><span class="o">)</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dateid&quot;</span><span class="o">,</span> <span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get unix timestamp for dateid, date and time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_date_id&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dateid&quot;</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;string&quot;</span><span class="o">),</span> <span class="s">&quot;yyyyMMdd&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_date&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_time&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create a Dataframe by name unixtimesDF with one column unixtime using 4 values. You can use the unix timestamp generated for time column in previous task.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">unixtimes</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="mi">1393561800</span><span class="o">,</span>
+                     <span class="mi">1456713488</span><span class="o">,</span>
+                     <span class="mi">1514701799</span><span class="o">,</span>
+                     <span class="mi">1567189800</span>
+                    <span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">unixtimesDF</span> <span class="o">=</span> <span class="n">unixtimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;unixtime&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">unixtimesDF</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get date in yyyyMMdd format and also complete timestamp.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.from_unixtime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">unixtimesDF</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="n">from_unixtime</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;unixtime&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMMdd&quot;</span><span class="o">)).</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="n">from_unixtime</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;unixtime&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2><span class="section-number">4.17. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>As part of this module we have gone through list of functions that can be applied on top of columns for row level transformations.</p>
+<ul class="simple">
+<li><p>There are approximately 300 pre-defined functions.</p></li>
+<li><p>Functions can be broadly categorized into String Manipulation Functions, Date Manipulation Functions, Numeric Functions etc.</p></li>
+<li><p>Typically when we read data from source, we get data in the form of strings and we need to apply functions to apply standardization rules, data type conversion, transformation rules etc.</p></li>
+<li><p>Most of these functions can be used while projection using <code class="docutils literal notranslate"><span class="pre">select</span></code>, <code class="docutils literal notranslate"><span class="pre">selectExpr</span></code>, <code class="docutils literal notranslate"><span class="pre">withColumn</span></code> etc as well as part of <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code>, <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>, <code class="docutils literal notranslate"><span class="pre">orderBy</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code> etc.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">selectExpr</span></code> we need to use the functions using SQL Style syntax.</p></li>
+<li><p>There are special functions such as <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">lit</span></code>. <code class="docutils literal notranslate"><span class="pre">col</span></code> is used to pass column names as column type for some of the functions while <code class="docutils literal notranslate"><span class="pre">lit</span></code> is used to pass literals as values as part of expressions (eg: <code class="docutils literal notranslate"><span class="pre">concat($&quot;first_name&quot;,</span> <span class="pre">lit(&quot;,</span> <span class="pre">&quot;),</span> <span class="pre">$&quot;last_name&quot;)</span></code>).</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "apache_toree_scala"
+        },
+        kernelOptions: {
+            kernelName: "apache_toree_scala",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'apache_toree_scala'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_data_processing_overview.html" title="previous page"><span class="section-number">3. </span>Data Processing - Overview</a>
+    <a class='right-next' id="next-link" href="05_basic_transformations.html" title="next page"><span class="section-number">5. </span>Basic Transformations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

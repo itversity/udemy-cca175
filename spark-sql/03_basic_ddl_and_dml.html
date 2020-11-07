@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basic DDL and DML &#8212; My Jupyter Book</title>
+    <title>3. Basic DDL and DML &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DML and Partitioning" href="04_dml_and_partitioning.html" />
-    <link rel="prev" title="Basic Transformations" href="02_basic_transformations.html" />
+    <link rel="next" title="4. DML and Partitioning" href="04_dml_and_partitioning.html" />
+    <link rel="prev" title="2. Basic Transformations" href="02_basic_transformations.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,40 +89,92 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../spark_sql.html">
+  <a class="reference internal" href="../cca175_intro.html">
    CCA 175 - Spark and Hadoop Developer - Python
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
-   Getting Started
+   1. Getting Started
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_basic_transformations.html">
-   Basic Transformations
+   2. Basic Transformations
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Basic DDL and DML
+   3. Basic DDL and DML
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_dml_and_partitioning.html">
-   DML and Partitioning
+   4. DML and Partitioning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_predefined_functions.html">
-   Pre-defined Functions
+   5. Pre-defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06_windowing_functions.html">
-   Windowing Functions
+   6. Windowing Functions
   </a>
  </li>
 </ul>
@@ -216,67 +268,67 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#create-spark-metastore-tables">
-   Create Spark Metastore Tables
+   3.1. Create Spark Metastore Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview-of-data-types">
-   Overview of Data Types
+   3.2. Overview of Data Types
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-comments">
-   Adding Comments
+   3.3. Adding Comments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-data-into-tables-local">
-   Loading Data into Tables - Local
+   3.4. Loading Data into Tables - Local
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-data-into-tables-hdfs">
-   Loading Data into Tables - HDFS
+   3.5. Loading Data into Tables - HDFS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-data-append-and-overwrite">
-   Loading Data - Append and Overwrite
+   3.6. Loading Data - Append and Overwrite
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-external-tables">
-   Creating External Tables
+   3.7. Creating External Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#managed-tables-vs-external-tables">
-   Managed Tables vs. External Tables
+   3.8. Managed Tables vs. External Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#overview-of-file-formats">
-   Overview of File Formats
+   3.9. Overview of File Formats
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dropping-tables-and-databases">
-   Dropping Tables and Databases
+   3.10. Dropping Tables and Databases
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#truncating-tables">
-   Truncating Tables
+   3.11. Truncating Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#managed-tables-exercise">
-   Managed Tables - Exercise
+   3.12. Managed Tables - Exercise
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#validation">
-     Validation
+     3.12.1. Validation
     </a>
    </li>
   </ul>
@@ -293,7 +345,7 @@
               <div>
                 
   <div class="section" id="basic-ddl-and-dml">
-<h1>Basic DDL and DML<a class="headerlink" href="#basic-ddl-and-dml" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3. </span>Basic DDL and DML<a class="headerlink" href="#basic-ddl-and-dml" title="Permalink to this headline">¶</a></h1>
 <p>As part of this section we will primarily focus on basic DDL and DML using Spark Metastore.</p>
 <ul class="simple">
 <li><p>Create Spark Metastore Tables</p></li>
@@ -347,7 +399,7 @@
 </pre></div>
 </div>
 <div class="section" id="create-spark-metastore-tables">
-<h2>Create Spark Metastore Tables<a class="headerlink" href="#create-spark-metastore-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Create Spark Metastore Tables<a class="headerlink" href="#create-spark-metastore-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to create tables in Spark Metastore. We will be focusing on syntax and semantics.</p>
 <ul class="simple">
 <li><p>Let us drop and recreate the table. We need to determine table type, file format based up on the files that will be copied to the table. If the file format is delimited text file then we need to understand field delimiter as well.</p>
@@ -693,7 +745,7 @@ INSERT INTO students VALUES (&#39;Scott&#39;, &#39;Tiger&#39;, 1, NULL, NULL)
 </div>
 </div>
 <div class="section" id="overview-of-data-types">
-<h2>Overview of Data Types<a class="headerlink" href="#overview-of-data-types" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Overview of Data Types<a class="headerlink" href="#overview-of-data-types" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of Data Types.</p>
 <ul class="simple">
 <li><p>Syntactically Hive and Spark SQL are almost same.</p></li>
@@ -925,7 +977,7 @@ INSERT INTO students VALUES
 </div>
 </div>
 <div class="section" id="adding-comments">
-<h2>Adding Comments<a class="headerlink" href="#adding-comments" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Adding Comments<a class="headerlink" href="#adding-comments" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to create table with comments in Hive using orders as example.</p>
 <ul class="simple">
 <li><p>We can specify comments for both columns as well as tables using COMMENT keyword.</p></li>
@@ -1024,7 +1076,7 @@ CREATE TABLE orders (
 </div>
 </div>
 <div class="section" id="loading-data-into-tables-local">
-<h2>Loading Data into Tables - Local<a class="headerlink" href="#loading-data-into-tables-local" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Loading Data into Tables - Local<a class="headerlink" href="#loading-data-into-tables-local" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to load data into Spark Metastore tables. We can load either from local file system or from HDFS.</p>
 <ul class="simple">
 <li><p>Data should be in sync with Spark Metastore table structure.</p></li>
@@ -1137,7 +1189,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; INTO TABLE orders
 </div>
 </div>
 <div class="section" id="loading-data-into-tables-hdfs">
-<h2>Loading Data into Tables - HDFS<a class="headerlink" href="#loading-data-into-tables-hdfs" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Loading Data into Tables - HDFS<a class="headerlink" href="#loading-data-into-tables-hdfs" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can load data from HDFS location into Spark Metastore table.</p>
 <ul class="simple">
 <li><p>We can use load command with out <strong>LOCAL</strong> to get data from HDFS location into Spark Metastore Table.</p></li>
@@ -1297,7 +1349,7 @@ LOAD DATA INPATH &#39;/user/itversity/retail_db/orders&#39;
 </ul>
 </div>
 <div class="section" id="loading-data-append-and-overwrite">
-<h2>Loading Data - Append and Overwrite<a class="headerlink" href="#loading-data-append-and-overwrite" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Loading Data - Append and Overwrite<a class="headerlink" href="#loading-data-append-and-overwrite" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand different approaches to load the data into Spark Metastore table.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">INTO</span> <span class="pre">TABLE</span></code> will append in the existing table</p></li>
@@ -1454,7 +1506,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="creating-external-tables">
-<h2>Creating External Tables<a class="headerlink" href="#creating-external-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Creating External Tables<a class="headerlink" href="#creating-external-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to create external table in Spark Metastore using orders as example. Also we will see how to load data into external table.</p>
 <ul class="simple">
 <li><p>We just need to add <strong>EXTERNAL</strong> keyword in the <strong>CREATE</strong> clause and <strong>LOCATION</strong> after <strong>STORED AS</strong> clause or just <strong>LOCATION</strong> as part of <strong>CREATE TABLE</strong> statement.</p></li>
@@ -1571,7 +1623,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="managed-tables-vs-external-tables">
-<h2>Managed Tables vs. External Tables<a class="headerlink" href="#managed-tables-vs-external-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.8. </span>Managed Tables vs. External Tables<a class="headerlink" href="#managed-tables-vs-external-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us compare and contrast between Managed Tables and External Tables.</p>
 <ul class="simple">
 <li><p>When we say EXTERNAL and specify LOCATION or LOCATION alone as part of CREATE TABLE, it makes the table EXTERNAL.</p></li>
@@ -1660,7 +1712,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="overview-of-file-formats">
-<h2>Overview of File Formats<a class="headerlink" href="#overview-of-file-formats" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.9. </span>Overview of File Formats<a class="headerlink" href="#overview-of-file-formats" title="Permalink to this headline">¶</a></h2>
 <p>Let us go through the details about different file formats supported by STORED AS Clause.</p>
 <ul class="simple">
 <li><p>Go to this <a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">page</a> and review supported file formats.</p></li>
@@ -1774,7 +1826,7 @@ INSERT INTO students VALUES
 </div>
 </div>
 <div class="section" id="dropping-tables-and-databases">
-<h2>Dropping Tables and Databases<a class="headerlink" href="#dropping-tables-and-databases" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.10. </span>Dropping Tables and Databases<a class="headerlink" href="#dropping-tables-and-databases" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to DROP Spark Metastore Tables as well as Databases.</p>
 <ul class="simple">
 <li><p>We can use <strong>DROP TABLE</strong> command to drop the table.. Let us drop orders table</p></li>
@@ -1864,7 +1916,7 @@ INSERT INTO students VALUES
 </div>
 </div>
 <div class="section" id="truncating-tables">
-<h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.11. </span>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to truncate tables.</p>
 <ul class="simple">
 <li><p><strong>TRUNCATE</strong> works only for managed tables. Only data will be deleted, structure will be retained.</p></li>
@@ -2002,7 +2054,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="managed-tables-exercise">
-<h2>Managed Tables - Exercise<a class="headerlink" href="#managed-tables-exercise" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.12. </span>Managed Tables - Exercise<a class="headerlink" href="#managed-tables-exercise" title="Permalink to this headline">¶</a></h2>
 <p>Let us use NYSE data and see how we can create tables in Spark Metastore.</p>
 <ul class="simple">
 <li><p>Duration: <strong>30 Minutes</strong></p></li>
@@ -2023,7 +2075,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 <li><p>Make sure the data is copied into the table as per the structure defined and validate.</p></li>
 </ul>
 <div class="section" id="validation">
-<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.12.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
 <p>Run the following queries to ensure that you will be able to read the data.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DESCRIBE</span> <span class="n">FORMATTED</span> <span class="n">YOUR_OS_USER_NAME_nyse</span><span class="o">.</span><span class="n">nyse_eod</span><span class="p">;</span>
 <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">YOUR_OS_USER_NAME_nyse</span><span class="o">.</span><span class="n">nyse_eod</span> <span class="n">LIMIT</span> <span class="mi">10</span>
@@ -2088,8 +2140,8 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="02_basic_transformations.html" title="previous page">Basic Transformations</a>
-    <a class='right-next' id="next-link" href="04_dml_and_partitioning.html" title="next page">DML and Partitioning</a>
+    <a class='left-prev' id="prev-link" href="02_basic_transformations.html" title="previous page"><span class="section-number">2. </span>Basic Transformations</a>
+    <a class='right-next' id="next-link" href="04_dml_and_partitioning.html" title="next page"><span class="section-number">4. </span>DML and Partitioning</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Quick Recap of Python &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Data Processing - Overview" href="03_data_processing_overview.html" />
+    <link rel="prev" title="1. Getting Started" href="01_getting_started.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/02_quick_recap_of_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/02_quick_recap_of_python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-engineering-life-cycle">
+   2.1. Data Engineering Life Cycle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-cli-or-jupyter-notebook">
+   2.2. Python CLI or Jupyter Notebook
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     2.2.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-programming-constructs">
+   2.3. Basic Programming Constructs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     2.3.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#developing-functions">
+   2.4. Developing Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2.4.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lambda-functions">
+   2.5. Lambda Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     2.5.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-collections-and-tuples">
+   2.6. Overview of Collections and Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.6.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-pandas-data-frames">
+   2.7. Overview of Pandas Data Frames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     2.7.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-pandas">
+   2.8. Limitations of Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-life-cycle">
+   2.9. Development Life Cycle
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.9.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.10. Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="quick-recap-of-python">
+<h1><span class="section-number">2. </span>Quick Recap of Python<a class="headerlink" href="#quick-recap-of-python" title="Permalink to this headline">¶</a></h1>
+<p>Let us quickly recap of some of the core programming concepts of Python before we get into Spark.</p>
+<div class="section" id="data-engineering-life-cycle">
+<h2><span class="section-number">2.1. </span>Data Engineering Life Cycle<a class="headerlink" href="#data-engineering-life-cycle" title="Permalink to this headline">¶</a></h2>
+<p>Let us first understand the Data Engineering Life Cycle. We typically read the data, process it by applying business rules and write the data back to different targets</p>
+<ul class="simple">
+<li><p>Read the data from different sources.</p></li>
+<li><p>Files</p></li>
+<li><p>Databases</p></li>
+<li><p>Mainframes</p></li>
+<li><p>APIs</p></li>
+<li><p>Processing the data</p></li>
+<li><p>Row Level Transformations</p></li>
+<li><p>Aggregations</p></li>
+<li><p>Sorting</p></li>
+<li><p>Ranking</p></li>
+<li><p>Joining multiple data sets</p></li>
+<li><p>Write data to different targets.</p></li>
+<li><p>Files</p></li>
+<li><p>Databases</p></li>
+<li><p>Mainframes</p></li>
+<li><p>APIs</p></li>
+</ul>
+</div>
+<div class="section" id="python-cli-or-jupyter-notebook">
+<h2><span class="section-number">2.2. </span>Python CLI or Jupyter Notebook<a class="headerlink" href="#python-cli-or-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>We can use Python CLI or Jupyter Notebook to explore APIs.</p>
+<ul class="simple">
+<li><p>We can launch Python CLI using <code class="docutils literal notranslate"><span class="pre">python</span></code> command.</p></li>
+<li><p>We can launch the Jupyter Notebook using the <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> command.</p></li>
+<li><p>A web service will be started on port number 8888 by default.</p></li>
+<li><p>We can go to the browser and connect to the web server using IP address and port number.</p></li>
+<li><p>We should be able to explore code in interactive fashion.</p></li>
+<li><p>We can issue magic commands such as %%sh to run shell commands, %%md to document using markdown etc.</p></li>
+</ul>
+<div class="section" id="tasks">
+<h3><span class="section-number">2.2.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform these tasks to just recollect how to use Python CLI or Jupyter Notebook.</p>
+<ul class="simple">
+<li><p>Create variables i and j assigning 10 and 20.5 respectively.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mf">20.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Add the values and assign it to res.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the type of i, j and res.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the help on int.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get the help on startswith that is available on str.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-programming-constructs">
+<h2><span class="section-number">2.3. </span>Basic Programming Constructs<a class="headerlink" href="#basic-programming-constructs" title="Permalink to this headline">¶</a></h2>
+<p>Let us recollect some of the basic programming constructs of Python.</p>
+<ul class="simple">
+<li><p>Comparison Operations (==, !=, &lt;, &gt;, &lt;=, &gt;=, etc)</p>
+<ul>
+<li><p>All the comparison operators return a True or False (Boolean value)</p></li>
+</ul>
+</li>
+<li><p>Conditionals (if)</p>
+<ul>
+<li><p>We typically use comparison operators as part of conditionals.</p></li>
+</ul>
+</li>
+<li><p>Loops (for)</p>
+<ul>
+<li><p>We can iterate through collection using <mark>for i in l</mark> where l is a standard collection such as list or set.</p></li>
+<li><p>Python provides special function called as <mark>range</mark> which will return a collection of integers between the given range. It excludes the upper bound value.</p></li>
+</ul>
+</li>
+<li><p>In Python, scope is defined by indentation.</p></li>
+</ul>
+<div class="section" id="id1">
+<h3><span class="section-number">2.3.1. </span>Tasks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to quickly recap basic programming constructs of Python.</p>
+<ul class="simple">
+<li><p>Get all the odd numbers between 1 and 15.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Print all those numbers which are divisible by 3 from the above list.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">2</span><span class="p">)):</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">3</span> == 0): print(i)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="developing-functions">
+<h2><span class="section-number">2.4. </span>Developing Functions<a class="headerlink" href="#developing-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to develop functions using Python as programming language.</p>
+<ul class="simple">
+<li><p>Function starts with <mark>def</mark> followed by function name.</p></li>
+<li><p>Parameters can be of different types.</p>
+<ul>
+<li><p>Required</p></li>
+<li><p>Keyword</p></li>
+<li><p>Variable Number</p></li>
+<li><p>Functions</p></li>
+</ul>
+</li>
+<li><p>Functions which take another function as an argument is called higher order functions.</p></li>
+</ul>
+<div class="section" id="id2">
+<h3><span class="section-number">2.4.1. </span>Tasks<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to understand how to develop functions in Python.</p>
+<ul class="simple">
+<li><p>Sum of integers between lower bound and upper bound using formula.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumOfN</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">sumOfN</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumOfIntegers</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">sumOfN</span><span class="p">(</span><span class="n">ub</span><span class="p">)</span> <span class="o">-</span> <span class="n">sumOfN</span><span class="p">(</span><span class="n">lb</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">sumOfIntegers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of integers between lower bound and upper bound using loops.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumOfIntegers</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">sumOfIntegers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of squares of integers between lower bound and upper bound using loops.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumOfSquares</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">e</span>
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">sumOfSquares</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of the even numbers between lower bound and upper bound using loops.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sumOfEvens</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span> <span class="k">if</span> <span class="n">e</span><span class="o">%</span><span class="k">2</span>==0 else 0
+    <span class="k">return</span> <span class="n">total</span>
+
+<span class="n">sumOfEvens</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lambda-functions">
+<h2><span class="section-number">2.5. </span>Lambda Functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us recap details related to lambda functions.</p>
+<ul class="simple">
+<li><p>We can develop functions with out names. They are called Lambda Functions and also known as Anonymous Functions.</p></li>
+<li><p>We typically use them to pass as arguments to higher order functions which takes functions as arguments</p></li>
+</ul>
+<div class="section" id="id3">
+<h3><span class="section-number">2.5.1. </span>Tasks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks related to lambda functions.</p>
+<ul class="simple">
+<li><p>Create a generic function mySum which is supposed to perform arithmetic using integers within a range.</p>
+<ul>
+<li><p>It takes 3 arguments - lb, ub and f.</p></li>
+<li><p>Function f should be invoked inside the function on each element within the range.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mySum</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lb</span><span class="p">,</span> <span class="n">ub</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">f</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of integers between lower bound and upper bound using mySum.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mySum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of squares of integers between lower bound and upper bound using mySum.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mySum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sum of the even numbers between lower bound and upper bound using mySum.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mySum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> == 0 else 0)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-collections-and-tuples">
+<h2><span class="section-number">2.6. </span>Overview of Collections and Tuples<a class="headerlink" href="#overview-of-collections-and-tuples" title="Permalink to this headline">¶</a></h2>
+<p>Let’s quickly recap about Collections and Tuples in Python. We will primarily talk about collections and tuples that comes as part of Python standard library such as <mark>list</mark>, <mark>set</mark>,<mark> dict</mark> and <mark>tuple.</mark></p>
+<ul class="simple">
+<li><p>Group of elements with length and index - <mark>list</mark></p></li>
+<li><p>Group of unique elements - <mark>set</mark></p></li>
+<li><p>Group of key value pairs - <mark>dict</mark></p></li>
+<li><p>While list, set and dict contain group of homogeneous elements, tuple contains group of heterogeneous elements.</p></li>
+<li><p>We can consider list, set and dict as a table in a database and tuple as a row or record in a given table.</p></li>
+<li><p>Typically we create list of tuples or set of tuples and dict is nothing but collection of tuples with 2 elements and key is unique.</p></li>
+<li><p>We typically use Map Reduce APIs to process the data in collections. There are also some pre-defined functions such as <mark>len</mark>, <mark>sum</mark>,<mark> min</mark>,<mark> max</mark> etc for aggregating data in collections.</p></li>
+</ul>
+<div class="section" id="id4">
+<h3><span class="section-number">2.6.1. </span>Tasks<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to quickly recap details about Collections and Tuples in Python. We will also quickly recap about Map Reduce APIs.</p>
+<ul class="simple">
+<li><p>Create a collection of orders by reading data from a file.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+ls -ltr /data/retail_db/orders/part-00000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/orders/part-00000&quot;</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">orders_path</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">read</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get all unique order statuses. Make sure data is sorted in alphabetical order.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">orders</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of all unique dates.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="n">o</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">orders</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sort the data in orders in ascending order by order_customer_id and then order_date.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">k</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Create a collection of order_items by reading data from a file.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/order_items/part-00000&quot;</span>
+<span class="n">order_items</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">order_items_path</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">read</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">splitlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get revenue for a given order_item_order_id.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_order_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="n">order_id</span><span class="p">):</span>
+    <span class="n">order_items_filtered</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">oi</span><span class="p">:</span> 
+                                  <span class="nb">int</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> 
+                                  <span class="n">order_items</span>
+                                 <span class="p">)</span>
+    <span class="n">order_items_map</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">oi</span><span class="p">:</span> 
+                          <span class="nb">float</span><span class="p">(</span><span class="n">oi</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">4</span><span class="p">]),</span> 
+                          <span class="n">order_items_filtered</span>
+                         <span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">order_items_map</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">get_order_revenue</span><span class="p">(</span><span class="n">order_items</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-pandas-data-frames">
+<h2><span class="section-number">2.7. </span>Overview of Pandas Data Frames<a class="headerlink" href="#overview-of-pandas-data-frames" title="Permalink to this headline">¶</a></h2>
+<p>While collections are typically the group of objects or tuples or simple strings, we need to parse them to further process the data. This process is tedious at times.</p>
+<ul class="simple">
+<li><p>With Data Frames we can define the structure.</p></li>
+<li><p>Data Frame is nothing but group of rows where each row have multiple attributes with names.</p></li>
+<li><p>Data Frame is similar to a Database Table or Spreadsheet with Header.</p></li>
+<li><p>Pandas provide rich and simple functions to convert data in files into Data Frames and process them</p></li>
+<li><p>Data can be read from files into Data Frame using functions such as read_csv.</p></li>
+<li><p>We can perform all standard operations on Data Frames.</p>
+<ul>
+<li><p>Projection or Selection</p></li>
+<li><p>Filtering</p></li>
+<li><p>Aggregations</p></li>
+<li><p>Joins</p></li>
+<li><p>Sorting</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id5">
+<h3><span class="section-number">2.7.1. </span>Tasks<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks to recap the usage of Pandas Data Frames.</p>
+<ul class="simple">
+<li><p>Read order items data from the location on your system. In mine it is /data/retail_db/order_items/part-00000. Use the information below to define schema.</p></li>
+<li><p>It has 6 fields with the below names in the same order as specified below.</p></li>
+<li><p>order_item_id</p></li>
+<li><p>order_item_order_id</p></li>
+<li><p>order_item_product_id</p></li>
+<li><p>order_item_quantity</p></li>
+<li><p>order_item_subtotal</p></li>
+<li><p>order_item_product_price</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">order_items_path</span> <span class="o">=</span> <span class="s2">&quot;/data/retail_db/order_items/part-00000&quot;</span>
+<span class="n">order_items</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span> \
+    <span class="n">read_csv</span><span class="p">(</span><span class="n">order_items_path</span><span class="p">,</span>
+             <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;order_item_id&quot;</span><span class="p">,</span> <span class="s2">&quot;order_item_order_id&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;order_item_product_id&quot;</span><span class="p">,</span> <span class="s2">&quot;order_item_quantity&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">,</span> <span class="s2">&quot;order_item_product_price&quot;</span>
+                   <span class="p">]</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Project order_item_order_id and order_item_subtotal</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="p">[[</span><span class="s2">&quot;order_item_id&quot;</span><span class="p">,</span> <span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Filter for order_item_order_id 2</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;order_item_order_id == 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Compute revenue for order_item_order_id 2</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">query</span><span class="p">(</span><span class="s2">&quot;order_item_order_id == 2&quot;</span><span class="p">)[</span><span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="nb">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get number of items and revenue for each order id. Give alias to the order revenue as <strong>revenue</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;order_item_order_id&quot;</span><span class="p">)[</span><span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="nb">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;order_item_order_id&quot;</span><span class="p">)[</span><span class="s2">&quot;order_item_subtotal&quot;</span><span class="p">]</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">([</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span><span class="o">.</span> \
+    <span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sum&#39;</span><span class="p">:</span> <span class="s1">&#39;revenue&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="limitations-of-pandas">
+<h2><span class="section-number">2.8. </span>Limitations of Pandas<a class="headerlink" href="#limitations-of-pandas" title="Permalink to this headline">¶</a></h2>
+<p>We can use Pandas for data processing. It provides rich APIs to read data from different sources, process the data and then write it to different targets.</p>
+<ul class="simple">
+<li><p>Pandas works well for light weight data processing.</p></li>
+<li><p>Pandas is typically single threaded, which means only one process take care of processing the data.</p></li>
+<li><p>As data volume grows, the processing time might grow exponentially and also run into resource contention.</p></li>
+<li><p>It is not trivial to use distributed processing using Pandas APIs. We will end up struggling with multi threading rather than business logic.</p></li>
+<li><p>There are Distributed Computing Frameworks such as Hadoop Map Reduce, Spark etc to take care of data processing at scale on multi node Hadoop or Spark Clusters.</p></li>
+<li><p>Both Hadoop Map Reduce and Spark comes with Distributed Computing Frameworks as well as APIs.</p></li>
+</ul>
+<p><strong>Pandas is typically used for light weight Data Processing and Spark is used for Data Processing at Scale.</strong></p>
+</div>
+<div class="section" id="development-life-cycle">
+<h2><span class="section-number">2.9. </span>Development Life Cycle<a class="headerlink" href="#development-life-cycle" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand the development life cycle. We typically use IDEs such as PyCharm to develop Python based applications.</p>
+<ul class="simple">
+<li><p>Create Project - retail</p></li>
+<li><p>Choose the interpreter 3.x</p></li>
+<li><p>Make sure plugins such as pandas are installed.</p></li>
+<li><p>Create config.py script for externalizing run time parameters such as input path, output path etc.</p></li>
+<li><p>Create app folder for the source code.</p></li>
+</ul>
+<div class="section" id="id6">
+<h3><span class="section-number">2.9.1. </span>Tasks<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Let us develop a simple application to understand end to end development life cycle.</p>
+<ul class="simple">
+<li><p>Read the data from order_items</p></li>
+<li><p>Get revenue for each order id</p></li>
+<li><p>Save the output which contain order id and revenue to a file.</p></li>
+</ul>
+<p>Click <a class="reference external" href="https://github.com/dgadiraju/python-retail/tree/v1.0">here</a> for the complete code for the above tasks.</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Let us perform few exercises to understand how to process the data. We will use LinkedIn data to perform some basic data processing using Python.</p>
+<ul class="simple">
+<li><p>Get LinkedIn archive.</p>
+<ul>
+<li><p>Go to https://linkedin.com</p></li>
+<li><p>Me on top -&gt; Settings &amp; Privacy</p></li>
+<li><p>Then go to “How LinkedIn users your data” -&gt; Getting a copy of your data</p></li>
+<li><p>Register and download. You will get a link as part of the email.</p></li>
+</ul>
+</li>
+<li><p>Data contain multiple CSV files. We will limit the analysis to <strong>Contacts.csv</strong> and <strong>Connections.csv</strong>.</p></li>
+<li><p>Get the number of <strong>contacts</strong> with out email ids.</p></li>
+<li><p>Get the number of <strong>contacts</strong> from each source.</p></li>
+<li><p>Get the number of <strong>connections</strong> with each title.</p></li>
+<li><p>Get the number of <strong>connections</strong> from each company.</p></li>
+<li><p>Get the number of <strong>contacts</strong> for each month in the year 2018.</p></li>
+<li><p>Use Postgres or MySQL as databases (you can setup in your laptop) and write connections data to the database</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyspark2"
+        },
+        kernelOptions: {
+            kernelName: "pyspark2",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyspark2'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page"><span class="section-number">1. </span>Getting Started</a>
+    <a class='right-next' id="next-link" href="03_data_processing_overview.html" title="next page"><span class="section-number">3. </span>Data Processing - Overview</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1295 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Data Processing - Overview &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Processing Column Data" href="04_processing_column_data.html" />
+    <link rel="prev" title="2. Quick Recap of Python" href="02_quick_recap_of_python.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/03_data_processing_overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/03_data_processing_overview.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pre-requisites-and-module-introduction">
+   3.1. Pre-requisites and Module Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   3.2. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-spark-read-apis">
+   3.3. Overview of Spark read APIs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understand-airlines-data">
+   3.4. Understand airlines data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inferring-schema">
+   3.5. Inferring Schema
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previewing-airlines-data">
+   3.6. Previewing airlines data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-data-frame-apis">
+   3.7. Overview of Data Frame APIs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     3.7.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-functions">
+   3.8. Overview of Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     3.8.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-spark-write-apis">
+   3.9. Overview of Spark Write APIs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reorganizing-airlines-data">
+   3.10. Reorganizing airlines data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#previewing-reorganized-data">
+   3.11. Previewing reorganized data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-and-understand-data">
+   3.12. Analyze and Understand Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusion">
+   3.13. Conclusion
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-processing-overview">
+<h1><span class="section-number">3. </span>Data Processing - Overview<a class="headerlink" href="#data-processing-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pre-requisites-and-module-introduction">
+<h2><span class="section-number">3.1. </span>Pre-requisites and Module Introduction<a class="headerlink" href="#pre-requisites-and-module-introduction" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand prerequisites before getting into the module.</p>
+<ul class="simple">
+<li><p>Good understanding of Data Processing using Python.</p></li>
+<li><p>Data Processing Life Cycle</p></li>
+<li><p>Reading Data from files</p></li>
+<li><p>Processing Data using APIs</p></li>
+<li><p>Writing Processed Data back to files</p></li>
+<li><p>We can also use Databases as sources and sinks. It will be covered at a later point in time.</p></li>
+<li><p>We can also read data in streaming fashion which is out of the scope of this course.</p></li>
+</ul>
+<p>We will get an overview of the Data Processing Life Cycle by the end of the module.</p>
+<ul class="simple">
+<li><p>Read airlines data from the file.</p></li>
+<li><p>Preview the schema and data to understand the characteristics of the data.</p></li>
+<li><p>Get an overview of Data Frame APIs as well as functions used to process the data.</p></li>
+<li><p>Check if there are any duplicates in the data.</p></li>
+<li><p>Get an overview of how to write data in Data Frames to Files using File Formats such as Parquet using Compression.</p></li>
+<li><p>Reorganize the data by month with different file format and using partitioning strategy.</p></li>
+<li><p>We will deep dive into Data Frame APIs to process the data in subsequent modules.</p></li>
+</ul>
+</div>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">3.2. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start Spark Context using SparkSession.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> is a class that is part of <code class="docutils literal notranslate"><span class="pre">pyspark.sql</span></code> package.</p></li>
+<li><p>It is a wrapper on top of Spark Context.</p></li>
+<li><p>When Spark application is submitted using <code class="docutils literal notranslate"><span class="pre">spark-submit</span></code> or <code class="docutils literal notranslate"><span class="pre">spark-shell</span></code> or <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>, a web service called as Spark Context will be started.</p></li>
+<li><p>Spark Context maintains the context of all the jobs that are submitted until it is killed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> is nothing but wrapper on top of Spark Context.</p></li>
+<li><p>We need to first create SparkSession object with any name. But typically we use <code class="docutils literal notranslate"><span class="pre">spark</span></code>. Once it is created, several APIs will be exposed including <code class="docutils literal notranslate"><span class="pre">read</span></code>.</p></li>
+<li><p>We need to at least set Application Name and also specify the execution mode in which Spark Context should run while creating <code class="docutils literal notranslate"><span class="pre">SparkSession</span></code> object.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">appName</span></code> to specify name for the application and <code class="docutils literal notranslate"><span class="pre">master</span></code> to specify the execution mode.</p></li>
+<li><p>Below is the sample code snippet which will start the Spark Session object for us.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="c1"># spark.stop()</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.ui.port&#39;</span><span class="p">,</span> <span class="s1">&#39;12903&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Data Processing - Overview&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">master</span><span class="p">(</span><span class="s1">&#39;yarn&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-spark-read-apis">
+<h2><span class="section-number">3.3. </span>Overview of Spark read APIs<a class="headerlink" href="#overview-of-spark-read-apis" title="Permalink to this headline">¶</a></h2>
+<p>Let us get the overview of Spark read APIs to read files of different formats.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">spark</span></code> has a bunch of APIs to read data from files of different formats.</p></li>
+<li><p>All APIs are exposed under <code class="docutils literal notranslate"><span class="pre">spark.read</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - to read single column data from text files as well as reading each of the whole text file as one record.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csv</span></code>- to read text files with delimiters. Default is a comma, but we can use other delimiters as well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json</span></code> - to read data from JSON files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">orc</span></code> - to read data from ORC files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parquet</span></code> - to read data from Parquet files.</p></li>
+<li><p>We can also read data from other file formats by plugging in and by using <code class="docutils literal notranslate"><span class="pre">spark.read.format</span></code></p></li>
+<li><p>We can also pass options based on the file formats.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inferSchema</span></code> - to infer the data types of the columns based on the data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code> - to use header to get the column names in case of text files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">schema</span></code> - to explicitly specify the schema.</p></li>
+<li><p>We can get the help on APIs like <code class="docutils literal notranslate"><span class="pre">spark.read.csv</span></code> using <code class="docutils literal notranslate"><span class="pre">help(spark.read.csv)</span></code>.</p></li>
+<li><p>Reading delimited data from text files.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/public/retail_db/orders&#39;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            order_id INT, </span>
+<span class="s1">            order_date STRING, </span>
+<span class="s1">            order_customer_id INT, </span>
+<span class="s1">            order_status STRING</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Reading JSON data from text files. We can infer schema from the data as each JSON object contain both column name and value.</p></li>
+<li><p>Example for JSON</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s1">&#39;order_id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;order_date&#39;</span><span class="p">:</span> <span class="s1">&#39;2013-07-25 00:00:00.0&#39;</span><span class="p">,</span> <span class="s1">&#39;order_customer_id&#39;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span> <span class="s1">&#39;order_status&#39;</span><span class="p">:</span> <span class="s1">&#39;COMPLETE&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">json</span><span class="p">(</span><span class="s1">&#39;/public/retail_db_json/orders&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="understand-airlines-data">
+<h2><span class="section-number">3.4. </span>Understand airlines data<a class="headerlink" href="#understand-airlines-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us read one of the files and understand more about the data to determine right API with right options to process data later.</p>
+<ul class="simple">
+<li><p>Our airlines data is in text file format.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">spark.read.text</span></code> on one of the files to preview the data and understand the following</p></li>
+<li><p>Whether header is present in files or not.</p></li>
+<li><p>Field Delimiter that is being used.</p></li>
+<li><p>Once we determine details about header and field delimiter we can use <code class="docutils literal notranslate"><span class="pre">spark.read.csv</span></code> with appropriate options to read the data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">text</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-00000&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">airlines</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Data have header and each field is delimited by a comma.</p></li>
+</ul>
+</div>
+<div class="section" id="inferring-schema">
+<h2><span class="section-number">3.5. </span>Inferring Schema<a class="headerlink" href="#inferring-schema" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can quickly get schema using one file and apply on other files.</p>
+<ul class="simple">
+<li><p>We can pass the file name pattern to <code class="docutils literal notranslate"><span class="pre">spark.read.csv</span></code> and read all the data in files under <strong>hdfs://public/airlines_all/airlines</strong> into Data Frame.</p></li>
+<li><p>We can use options such as <code class="docutils literal notranslate"><span class="pre">header</span></code> and <code class="docutils literal notranslate"><span class="pre">inferSchema</span></code> to assign names and data types.</p></li>
+<li><p>However <code class="docutils literal notranslate"><span class="pre">inferSchema</span></code> will end up going through the entire data to assign schema. We can use samplingRatio to process fraction of data and then infer the schema.</p></li>
+<li><p>In case if the data in all the files have similar structure, we should be able to get the schema using one file and then apply it on others.</p></li>
+<li><p>In our airlines data schema is consistent across all the files and hence we should be able to get the schema by going through one file and apply on the entire dataset.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_part_00000</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-00000&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">airlines_part_00000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_part_00000</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_part_00000</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_schema</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-00000&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">airlines_schema</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="n">airlines_schema</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part*&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">airlines</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="previewing-airlines-data">
+<h2><span class="section-number">3.6. </span>Previewing airlines data<a class="headerlink" href="#previewing-airlines-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us preview the airlines data to understand more about it.</p>
+<ul class="simple">
+<li><p>As we have too many files, we will just process one file and preview the data.</p></li>
+<li><p>File Name: <strong>hdfs://public/airlines_all/airlines/part-00000</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spark.read.csv</span></code> will create a variable of type Data Frame.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_schema</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-00000&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="n">airlines_schema</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part*&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A Data Frame will have structure or schema.</p>
+<ul class="simple">
+<li><p>We can print the schema using <code class="docutils literal notranslate"><span class="pre">airlines.printSchema()</span></code></p></li>
+<li><p>We can preview the data using <code class="docutils literal notranslate"><span class="pre">airlines.show()</span></code>. By default it shows 20 records and some of the column values might be truncated for readability purpose.</p></li>
+<li><p>We can review the details of show by using <code class="docutils literal notranslate"><span class="pre">help(airlines.show)</span></code></p></li>
+<li><p>We can pass custom number of records and say <code class="docutils literal notranslate"><span class="pre">truncate=False</span></code> to show complete information of all the records requested. It will facilitate us to preview all columns with desired number of records.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can get the number of records or rows in a Data Frame using <code class="docutils literal notranslate"><span class="pre">airlines.count()</span></code></p></li>
+<li><p>In Databricks Notebook, we can use <code class="docutils literal notranslate"><span class="pre">display</span></code> to preview the data using Visualization feature</p></li>
+<li><p>We can perform all kinds of standard transformations on our data. We need to have good knowledge of functions on Data Frames as well as functions on columns to apply all standard transformations.</p></li>
+<li><p>Let us also validate if there are duplicates in our data, if yes we will remove duplicates while reorganizing the data later.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_schema</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-00000&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="n">airlines_schema</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/airlines_all/airlines/part-0000*&quot;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-data-frame-apis">
+<h2><span class="section-number">3.7. </span>Overview of Data Frame APIs<a class="headerlink" href="#overview-of-data-frame-apis" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of Data Frame APIs to process data in Data Frames.</p>
+<ul class="simple">
+<li><p>Row Level Transformations or Projection of Data can be done using <code class="docutils literal notranslate"><span class="pre">select</span></code>, <code class="docutils literal notranslate"><span class="pre">selectExpr</span></code>, <code class="docutils literal notranslate"><span class="pre">withColumn</span></code>, <code class="docutils literal notranslate"><span class="pre">drop</span></code> on Data Frame.</p></li>
+<li><p>We typically apply functions from <code class="docutils literal notranslate"><span class="pre">pyspark.sql.functions</span></code> on columns using <code class="docutils literal notranslate"><span class="pre">select</span></code> and <code class="docutils literal notranslate"><span class="pre">withColumn</span></code></p></li>
+<li><p>Filtering is typically done either by using <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code> on Data Frame.</p></li>
+<li><p>We can pass the condition to <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code> either by using SQL Style or Programming Language Style.</p></li>
+<li><p>Global Aggregations can be performed directly on the Data Frame.</p></li>
+<li><p>By Key or Grouping Aggregations are typically performed using <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> and then aggregate functions using <code class="docutils literal notranslate"><span class="pre">agg</span></code></p></li>
+<li><p>We can sort the data in Data Frame using <code class="docutils literal notranslate"><span class="pre">sort</span></code> or <code class="docutils literal notranslate"><span class="pre">orderBy</span></code></p></li>
+<li><p>We will talk about Window Functions later. We can use use Window Functions for some advanced Aggregations and Ranking.</p></li>
+</ul>
+<div class="section" id="tasks">
+<h3><span class="section-number">3.7.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to project the data using different options such as <code class="docutils literal notranslate"><span class="pre">select</span></code>, <code class="docutils literal notranslate"><span class="pre">selectExpr</span></code>, <code class="docutils literal notranslate"><span class="pre">withColumn</span></code>, <code class="docutils literal notranslate"><span class="pre">drop.</span></code></p>
+<ul class="simple">
+<li><p>Create Dataframe <strong>employees</strong> using Collection</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Scott&quot;</span><span class="p">,</span> <span class="s2">&quot;Tiger&quot;</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="s2">&quot;united states&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Henry&quot;</span><span class="p">,</span> <span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="mf">1250.0</span><span class="p">,</span> <span class="s2">&quot;India&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Nick&quot;</span><span class="p">,</span> <span class="s2">&quot;Junior&quot;</span><span class="p">,</span> <span class="mf">750.0</span><span class="p">,</span> <span class="s2">&quot;united KINGDOM&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;Bill&quot;</span><span class="p">,</span> <span class="s2">&quot;Gomes&quot;</span><span class="p">,</span> <span class="mf">1500.0</span><span class="p">,</span> <span class="s2">&quot;AUSTRALIA&quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">createDataFrame</span><span class="p">(</span><span class="n">employees</span><span class="p">,</span>
+                    <span class="n">schema</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;employee_id INT, first_name STRING, </span>
+<span class="s2">                    last_name STRING, salary FLOAT, nationality STRING&quot;&quot;&quot;</span>
+                   <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Project employee first name and last name.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Project all the fields except for Nationality</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span> \
+    <span class="n">drop</span><span class="p">(</span><span class="s2">&quot;nationality&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>We will explore most of the APIs to process data in Data Frames as we get into the data processing at a later point in time</strong></p>
+</div>
+</div>
+<div class="section" id="overview-of-functions">
+<h2><span class="section-number">3.8. </span>Overview of Functions<a class="headerlink" href="#overview-of-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of different functions that are available to process data in columns.</p>
+<ul class="simple">
+<li><p>While Data Frame APIs work on the Data Frame, at times we might want to apply functions on column values.</p></li>
+<li><p>Functions to process column values are available under <code class="docutils literal notranslate"><span class="pre">pyspark.sql.functions</span></code>. These are typically used in select or withColumn on top of Data Frame.</p></li>
+<li><p>There are approximately 300 pre-defined functions available for us.</p></li>
+<li><p>Some of the important functions can be broadly categorized into String Manipulation, Date Manipulation, Numeric Functions and Aggregate Functions.</p></li>
+<li><p>String Manipulation Functions</p></li>
+<li><p>Concatenating Strings - <code class="docutils literal notranslate"><span class="pre">concat</span></code></p></li>
+<li><p>Getting Length - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>Trimming Strings - <code class="docutils literal notranslate"><span class="pre">trim</span></code>,<code class="docutils literal notranslate"> <span class="pre">rtrim</span></code>, <code class="docutils literal notranslate"><span class="pre">ltrim</span></code></p></li>
+<li><p>Padding Strings - <code class="docutils literal notranslate"><span class="pre">lpad</span></code>, <code class="docutils literal notranslate"><span class="pre">rpad</span></code></p></li>
+<li><p>Extracting Strings - <code class="docutils literal notranslate"><span class="pre">split</span></code>, <code class="docutils literal notranslate"><span class="pre">substring</span></code></p></li>
+<li><p>Date Manipulation Functions</p></li>
+<li><p>Date Arithmetic - <code class="docutils literal notranslate"><span class="pre">date_add</span></code>, <code class="docutils literal notranslate"><span class="pre">date_sub</span></code>, <code class="docutils literal notranslate"><span class="pre">datediff</span></code>, <code class="docutils literal notranslate"><span class="pre">add_months</span></code></p></li>
+<li><p>Date Extraction - <code class="docutils literal notranslate"><span class="pre">dayofmonth</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code></p></li>
+<li><p>Get beginning period - <code class="docutils literal notranslate"><span class="pre">trunc</span></code>, <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code></p></li>
+<li><p>Numeric Functions - <code class="docutils literal notranslate"><span class="pre">abs</span></code>, <code class="docutils literal notranslate"><span class="pre">greatest</span></code></p></li>
+<li><p>Aggregate Functions - <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+</ul>
+<div class="section" id="id1">
+<h3><span class="section-number">3.8.1. </span>Tasks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform a task to understand how functions are typically used.</p>
+<ul class="simple">
+<li><p>Project full name by concatenating first name and last name along with other fields excluding first name and last name.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">lit</span><span class="p">,</span> <span class="n">concat</span>
+
+<span class="n">employeesDF</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;full_name&quot;</span><span class="p">,</span> <span class="n">concat</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="n">lit</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">),</span> <span class="s2">&quot;last_name&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">drop</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;employee_id&quot;</span><span class="p">,</span>
+           <span class="n">concat</span><span class="p">(</span><span class="s2">&quot;first_name&quot;</span><span class="p">,</span> <span class="n">lit</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">),</span> <span class="s2">&quot;last_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;full_name&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;nationality&quot;</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span> \
+    <span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;employee_id&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;concat(first_name, &#39;, &#39;, last_name) AS full_name&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;salary&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;nationality&quot;</span>
+              <span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>We will explore most of the functions as we get into the data processing at a later point in time</strong></p>
+</div>
+</div>
+<div class="section" id="overview-of-spark-write-apis">
+<h2><span class="section-number">3.9. </span>Overview of Spark Write APIs<a class="headerlink" href="#overview-of-spark-write-apis" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can write Data Frames to different file formats.</p>
+<ul class="simple">
+<li><p>All the batch write APIs are grouped under write which is exposed to Data Frame objects.</p></li>
+<li><p>All APIs are exposed under spark.read</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - to write single column data to text files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csv</span></code> - to write to text files with delimiters. Default is a comma, but we can use other delimiters as well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json</span></code> - to write data to JSON files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">orc</span></code> - to write data to ORC files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parquet</span></code> - to write data to Parquet files.</p></li>
+<li><p>We can also write data to other file formats by plugging in and by using <code class="docutils literal notranslate"><span class="pre">write.format</span></code>, for example <strong>avro</strong></p></li>
+<li><p>We can use options based on the type using which we are writing the Data Frame to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compression</span></code> - Compression codec (<code class="docutils literal notranslate"><span class="pre">gzip</span></code>, <code class="docutils literal notranslate"><span class="pre">snappy</span></code> etc)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sep</span></code> - to specify delimiters while writing into text files using <strong>csv</strong></p></li>
+<li><p>We can <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> the directories or <code class="docutils literal notranslate"><span class="pre">append</span></code> to existing directories using <code class="docutils literal notranslate"><span class="pre">mode</span></code></p></li>
+<li><p>Create copy of orders data in <strong>parquet</strong> file format with no compression. If the folder already exists overwrite it. Target Location: <strong>/user/[YOUR_USER_NAME]/retail_db/orders</strong></p></li>
+<li><p>When you pass options, if there are typos then options will be ignored rather than failing. Be careful and make sure that output is validated.</p></li>
+<li><p>By default the number of files in the output directory is equal to number of tasks that are used to process the data in the last stage. However, we might want to control number of files so that we don’t run into too many small files issue.</p></li>
+<li><p>We can control number of files by using <code class="docutils literal notranslate"><span class="pre">coalesce</span></code>. It has to be invoked on top of Data Frame before invoking <code class="docutils literal notranslate"><span class="pre">write</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/public/retail_db/orders&#39;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">schema</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            order_id INT, </span>
+<span class="s1">            order_date STRING, </span>
+<span class="s1">            order_customer_id INT, </span>
+<span class="s1">            order_status STRING</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="s1">&#39;/user/training/retail_db/orders&#39;</span><span class="p">,</span> 
+            <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;overwrite&#39;</span><span class="p">,</span> 
+            <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;none&#39;</span>
+           <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternative approach - using option</span>
+<span class="n">orders</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">mode</span><span class="p">(</span><span class="s1">&#39;overwrite&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s1">&#39;compression&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="s1">&#39;/user/training/retail_db/orders&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternative approach - using format</span>
+<span class="n">orders</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">mode</span><span class="p">(</span><span class="s1">&#39;overwrite&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s1">&#39;compression&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">format</span><span class="p">(</span><span class="s1">&#39;parquet&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">save</span><span class="p">(</span><span class="s1">&#39;/user/training/retail_db/orders&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -ls /user/training/retail_db/orders
+
+# File extension should not contain compression algorithms such as snappy.
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Read order_items data from <strong>/public/retail_db_json/order_items</strong> and write it to pipe delimited files with gzip compression. Target Location: <strong>/user/[YOUR_USER_NAME]/retail_db/order_items</strong>. Make sure to validate.</p></li>
+<li><p>Ignore the error if the target location already exists. Also make sure to write into only one file. We can use <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> for it.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">coalesce</span></code> will be covered in detail at a later point in time</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">order_items</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">json</span><span class="p">(</span><span class="s1">&#39;/public/retail_db_json/order_items&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using format</span>
+<span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">mode</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s1">&#39;compression&#39;</span><span class="p">,</span> <span class="s1">&#39;gzip&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s1">&#39;sep&#39;</span><span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">format</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">save</span><span class="p">(</span><span class="s1">&#39;/user/training/retail_db/order_items&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternative approach - using keyword arguments</span>
+<span class="n">order_items</span><span class="o">.</span> \
+    <span class="n">coalesce</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/user/training/retail_db/order_items&#39;</span><span class="p">,</span>
+        <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span>
+        <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sh</span>
+
+hdfs dfs -ls /user/training/retail_db/order_items
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reorganizing-airlines-data">
+<h2><span class="section-number">3.10. </span>Reorganizing airlines data<a class="headerlink" href="#reorganizing-airlines-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us reorganize our airlines data to fewer files where data is compressed and also partitioned by Month.</p>
+<ul class="simple">
+<li><p>We have ~1920 files of ~64MB Size.</p></li>
+<li><p>Data is in the range of 1987 October and 2008 December (255 months)</p></li>
+<li><p>By default it uses ~1920 threads to process the data and it might end up with too many small files. We can avoid that by using repartition and then partition by the month.</p></li>
+<li><p>Here are the steps we are going to follow to partition by flight month and save the data to /user/[YOUR_USER_NAME]/airlines.</p></li>
+<li><p>Read one file first and get the schema.</p></li>
+<li><p>Read the entire data by applying the schema from the previous step.</p></li>
+<li><p>Add additional column flightmonth using withColumn by using lpad on month column and concat functions. We need to do this as the month in our data set is of type integer and we want to pad with 0 for months till september to format it into YYYYMM.</p></li>
+<li><p>Repartition the data into 255 based on the number of months using flightmonth</p></li>
+<li><p>Partition the data by partitionBy while writing the data to the target location.</p></li>
+<li><p>We will use parquet file format which will automatically compresses data using Snappy algorithm.</p></li>
+</ul>
+<p><strong>This process will take time, once it is done we will review the target location to which data is copied by partitioning using month</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="c1"># spark.stop()</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.dynamicAllocation.enabled&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.executor.instances&#39;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Data Processing - Overview&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">master</span><span class="p">(</span><span class="s1">&#39;yarn&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">concat</span><span class="p">,</span> <span class="n">lpad</span>
+
+<span class="n">airlines_schema</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/public/airlines_all/airlines/part-00000&#39;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span><span class="o">.</span> \
+    <span class="n">schema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="n">airlines_schema</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/public/airlines_all/airlines/part*&#39;</span><span class="p">,</span>
+        <span class="n">header</span><span class="o">=</span><span class="kc">True</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">airlines</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">parquet</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.sql.shuffle.partitions&quot;</span><span class="p">,</span> <span class="s2">&quot;255&quot;</span><span class="p">)</span>
+<span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;flightmonth&#39;</span><span class="p">,</span> <span class="n">concat</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">lpad</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)))</span><span class="o">.</span> \
+    <span class="n">repartition</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;flightmonth&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">write</span><span class="o">.</span> \
+    <span class="n">mode</span><span class="p">(</span><span class="s1">&#39;overwrite&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;flightmonth&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="nb">format</span><span class="p">(</span><span class="s1">&#39;parquet&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">save</span><span class="p">(</span><span class="s1">&#39;/user/training/airlines-part&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="previewing-reorganized-data">
+<h2><span class="section-number">3.11. </span>Previewing reorganized data<a class="headerlink" href="#previewing-reorganized-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us preview the data using reorganized data.</p>
+<ul class="simple">
+<li><p>We will use new location going forward - <strong>/public/airlines_all/airlines-part</strong>. Data is already copied into that location.</p></li>
+<li><p>We have partitioned data by month and stored in that location.</p></li>
+<li><p>Instead of using complete data set we will read the data from one partition <strong>/public/airlines_all/airlines-part/flightmonth=200801</strong></p></li>
+<li><p>First let us create a DataFrame object by using <code class="docutils literal notranslate"><span class="pre">spark.read.parquet(&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;)</span></code> - let’s say airlines.</p></li>
+<li><p>We can get the schema of the DataFrame using <code class="docutils literal notranslate"><span class="pre">airlines.printSchema()</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">airlines.show()</span></code> or <code class="docutils literal notranslate"><span class="pre">airlines.show(100,</span> <span class="pre">truncate=False)</span></code>  to preview the data.</p></li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">display(airlines)</span></code> to get airlines data in tabular format as part of Databricks Notebook.</p></li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">airlines.describe().show()</span></code> to get some statistics about the Data Frame and <code class="docutils literal notranslate"><span class="pre">airlines.count()</span></code> to get the number of records in the DataFrame.</p></li>
+</ul>
+</div>
+<div class="section" id="analyze-and-understand-data">
+<h2><span class="section-number">3.12. </span>Analyze and Understand Data<a class="headerlink" href="#analyze-and-understand-data" title="Permalink to this headline">¶</a></h2>
+<p>Let us analyze and understand more about the data in detail using data of 2008 January.</p>
+<ul class="simple">
+<li><p>First let us read the data for the month of 2008 January.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+
+<span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get number of records - <code class="docutils literal notranslate"><span class="pre">airlines.count()</span></code></p></li>
+<li><p>Go through the list of columns and understand the purpose of them.</p>
+<ul>
+<li><p>Year</p></li>
+<li><p>Month</p></li>
+<li><p>DayOfMonth</p></li>
+<li><p>CRSDepTime - Scheduled Departure Time</p></li>
+<li><p>DepTime - Actual Departure Time.</p></li>
+<li><p>DepDelay - Departure Delay in Minutes</p></li>
+<li><p>CRSArrTime - Scheduled Arrival Time</p></li>
+<li><p>ArrTime - Actual Arrival Time.</p></li>
+<li><p>ArrDelay - Arrival Delay in Minutes.</p></li>
+<li><p>UniqueCarrier - Carrier or Airlines</p></li>
+<li><p>FlightNum - Flight Number</p></li>
+<li><p>Distance - Distance between Origin and Destination</p></li>
+<li><p>IsDepDelayed - this is set to yes for those flights where departure is delayed.</p></li>
+<li><p>IsArrDelayed – this is set to yes for those flights where arrival is delayed.</p></li>
+</ul>
+</li>
+<li><p>Get number of unique origins</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get number of unique destinations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s2">&quot;Dest&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get all unique carriers</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;UniqueCarrier&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">distinct</span><span class="p">()</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2><span class="section-number">3.13. </span>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>Let us recap about key takeaways from this module.</p>
+<ul class="simple">
+<li><p>APIs to read the data from files into Data Frame.</p></li>
+<li><p>Previewing Schema and the data in Data Frame.</p></li>
+<li><p>Overview of Data Frame APIs and Functions</p></li>
+<li><p>Writing data from Data Frame into Files</p></li>
+<li><p>Reorganizing the airlines data by month</p></li>
+<li><p>Simple APIs to analyze the data.
+Now it is time for us to deep dive into APIs to perform all the standard transformations as part of Data Processing.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyspark2"
+        },
+        kernelOptions: {
+            kernelName: "pyspark2",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyspark2'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="02_quick_recap_of_python.html" title="previous page"><span class="section-number">2. </span>Quick Recap of Python</a>
+    <a class='right-next' id="next-link" href="04_processing_column_data.html" title="next page"><span class="section-number">4. </span>Processing Column Data</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

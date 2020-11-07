@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DML and Partitioning &#8212; My Jupyter Book</title>
+    <title>4. DML and Partitioning &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pre-defined Functions" href="05_predefined_functions.html" />
-    <link rel="prev" title="Basic DDL and DML" href="03_basic_ddl_and_dml.html" />
+    <link rel="next" title="5. Pre-defined Functions" href="05_predefined_functions.html" />
+    <link rel="prev" title="3. Basic DDL and DML" href="03_basic_ddl_and_dml.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,40 +89,92 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../spark_sql.html">
+  <a class="reference internal" href="../cca175_intro.html">
    CCA 175 - Spark and Hadoop Developer - Python
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
-   Getting Started
+   1. Getting Started
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="02_basic_transformations.html">
-   Basic Transformations
+   2. Basic Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_basic_ddl_and_dml.html">
-   Basic DDL and DML
+   3. Basic DDL and DML
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   DML and Partitioning
+   4. DML and Partitioning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_predefined_functions.html">
-   Pre-defined Functions
+   5. Pre-defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06_windowing_functions.html">
-   Windowing Functions
+   6. Windowing Functions
   </a>
  </li>
 </ul>
@@ -216,57 +268,57 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction-to-partitioning">
-   Introduction to Partitioning
+   4.1. Introduction to Partitioning
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-tables-using-parquet">
-   Creating Tables using Parquet
+   4.2. Creating Tables using Parquet
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#load-vs-insert">
-   LOAD vs. INSERT
+   4.3. LOAD vs. INSERT
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inserting-data-using-stage-table">
-   Inserting Data using Stage Table
+   4.4. Inserting Data using Stage Table
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-partitioned-tables">
-   Creating Partitioned Tables
+   4.5. Creating Partitioned Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-partitions-to-tables">
-   Adding Partitions to Tables
+   4.6. Adding Partitions to Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loading-into-partitions">
-   Loading into Partitions
+   4.7. Loading into Partitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inserting-data-into-partitions">
-   Inserting Data into Partitions
+   4.8. Inserting Data into Partitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-dynamic-partition-mode">
-   Using Dynamic Partition Mode
+   4.9. Using Dynamic Partition Mode
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-partitioned-tables">
-   Exercise - Partitioned Tables
+   4.10. Exercise - Partitioned Tables
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#validation">
-     Validation
+     4.10.1. Validation
     </a>
    </li>
   </ul>
@@ -283,7 +335,7 @@
               <div>
                 
   <div class="section" id="dml-and-partitioning">
-<h1>DML and Partitioning<a class="headerlink" href="#dml-and-partitioning" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>DML and Partitioning<a class="headerlink" href="#dml-and-partitioning" title="Permalink to this headline">¶</a></h1>
 <p>As part of this section we will continue understanding further concepts related to DML and also get into the details related to partitioning tables. With respect to DML, earlier we have seen how to use LOAD command, now we will see how to use INSERT command primarily to get query results copied into a table.</p>
 <ul class="simple">
 <li><p>Introduction to Partitioning</p></li>
@@ -392,7 +444,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="introduction-to-partitioning">
-<h2>Introduction to Partitioning<a class="headerlink" href="#introduction-to-partitioning" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>Introduction to Partitioning<a class="headerlink" href="#introduction-to-partitioning" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of partitioning of Spark Metastore tables.</p>
 <ul class="simple">
 <li><p>It is similar to list partitioning where each partition is equal to a particular value for a given column.</p></li>
@@ -403,7 +455,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </ul>
 </div>
 <div class="section" id="creating-tables-using-parquet">
-<h2>Creating Tables using Parquet<a class="headerlink" href="#creating-tables-using-parquet" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>Creating Tables using Parquet<a class="headerlink" href="#creating-tables-using-parquet" title="Permalink to this headline">¶</a></h2>
 <p>Let us create order_items table using Parquet file format. By default, the files of table using Parquet file format are compressed using Snappy algorithm.</p>
 <ul class="simple">
 <li><p>A table with parquet file format can be external.</p></li>
@@ -494,7 +546,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
 </div>
 </div>
 <div class="section" id="load-vs-insert">
-<h2>LOAD vs. INSERT<a class="headerlink" href="#load-vs-insert" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>LOAD vs. INSERT<a class="headerlink" href="#load-vs-insert" title="Permalink to this headline">¶</a></h2>
 <p>Let us compare and contrast LOAD and INSERT commands. These are the main approaches using which we get data into Spark Metastore tables.</p>
 <ul class="simple">
 <li><p>LOAD will copy the files by dividing them into blocks.</p></li>
@@ -581,7 +633,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39;
 </div>
 </div>
 <div class="section" id="inserting-data-using-stage-table">
-<h2>Inserting Data using Stage Table<a class="headerlink" href="#inserting-data-using-stage-table" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>Inserting Data using Stage Table<a class="headerlink" href="#inserting-data-using-stage-table" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to insert data into order_items with Parquet file format.</p>
 <p>As data is in text file format and our table is created with Parquet file format, we will not be able to use LOAD command to load the data.</p>
 <div class="cell docutils container">
@@ -791,7 +843,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39; INTO TABLE order_it
 </div>
 </div>
 <div class="section" id="creating-partitioned-tables">
-<h2>Creating Partitioned Tables<a class="headerlink" href="#creating-partitioned-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.5. </span>Creating Partitioned Tables<a class="headerlink" href="#creating-partitioned-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to create partitioned table and get data into that table.</p>
 <ul class="simple">
 <li><p>Earlier we have already created orders table. We will use that as reference and create partitioned table.</p></li>
@@ -871,7 +923,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39; INTO TABLE order_it
 </div>
 </div>
 <div class="section" id="adding-partitions-to-tables">
-<h2>Adding Partitions to Tables<a class="headerlink" href="#adding-partitions-to-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6. </span>Adding Partitions to Tables<a class="headerlink" href="#adding-partitions-to-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can add static partitions to Partitioned tables in Spark Metastore.</p>
 <ul class="simple">
 <li><p>We can add partitions using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command with <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">PARTITION</span></code>.</p></li>
@@ -1027,7 +1079,7 @@ ALTER TABLE orders_part ADD PARTITION (order_month=&#39;2013-07&#39;)
 </div>
 </div>
 <div class="section" id="loading-into-partitions">
-<h2>Loading into Partitions<a class="headerlink" href="#loading-into-partitions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7. </span>Loading into Partitions<a class="headerlink" href="#loading-into-partitions" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to use load command to load data into partitioned tables.</p>
 <ul class="simple">
 <li><p>We need to make sure that file format of the file which is being loaded into table is same as the file format used while creating the table.</p></li>
@@ -1135,7 +1187,7 @@ LOAD DATA LOCAL INPATH &#39;/home/itversity/orders/orders_201310&#39;
 </div>
 </div>
 <div class="section" id="inserting-data-into-partitions">
-<h2>Inserting Data into Partitions<a class="headerlink" href="#inserting-data-into-partitions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.8. </span>Inserting Data into Partitions<a class="headerlink" href="#inserting-data-into-partitions" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to use insert to get data into static partitions in Spark Metastore from existing table called as orders.</p>
 <ul class="simple">
 <li><p>Let us recap what is covered so far related to partitioned tables.</p>
@@ -1206,7 +1258,7 @@ INSERT INTO TABLE orders_part PARTITION (order_month=201311)
 </div>
 </div>
 <div class="section" id="using-dynamic-partition-mode">
-<h2>Using Dynamic Partition Mode<a class="headerlink" href="#using-dynamic-partition-mode" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.9. </span>Using Dynamic Partition Mode<a class="headerlink" href="#using-dynamic-partition-mode" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can insert data into partitioned table using dynamic partition mode.</p>
 <ul class="simple">
 <li><p>Using dynamic partition mode we need not pre create the partitions. Partitions will be automatically created when we issue INSERT command in dynamic partition mode.</p></li>
@@ -1330,7 +1382,7 @@ WHERE order_date &gt;= &#39;2013-12-01 00:00:00.0&#39;
 </ul>
 </div>
 <div class="section" id="exercise-partitioned-tables">
-<h2>Exercise - Partitioned Tables<a class="headerlink" href="#exercise-partitioned-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.10. </span>Exercise - Partitioned Tables<a class="headerlink" href="#exercise-partitioned-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us take care of this exercise related to partitioning to self evaluate our comfort level in working with partitioned tables.</p>
 <ul class="simple">
 <li><p>Duration: <strong>30 Minutes</strong></p></li>
@@ -1357,7 +1409,7 @@ WHERE order_date &gt;= &#39;2013-12-01 00:00:00.0&#39;
 </li>
 </ul>
 <div class="section" id="validation">
-<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.10.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
 <p>Here are the instructions to validate the results.</p>
 <ul class="simple">
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-ls</span> <span class="pre">/user/YOUR_OS_USER_NAME/warehouse/YOUR_OS_USER_NAME_nyse.db/nyse_eod_part</span></code></p></li>
@@ -1413,8 +1465,8 @@ WHERE order_date &gt;= &#39;2013-12-01 00:00:00.0&#39;
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="03_basic_ddl_and_dml.html" title="previous page">Basic DDL and DML</a>
-    <a class='right-next' id="next-link" href="05_predefined_functions.html" title="next page">Pre-defined Functions</a>
+    <a class='left-prev' id="prev-link" href="03_basic_ddl_and_dml.html" title="previous page"><span class="section-number">3. </span>Basic DDL and DML</a>
+    <a class='right-next' id="next-link" href="05_predefined_functions.html" title="next page"><span class="section-number">5. </span>Pre-defined Functions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

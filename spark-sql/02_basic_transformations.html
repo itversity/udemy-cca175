@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basic Transformations &#8212; My Jupyter Book</title>
+    <title>2. Basic Transformations &#8212; My Jupyter Book</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basic DDL and DML" href="03_basic_ddl_and_dml.html" />
-    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+    <link rel="next" title="3. Basic DDL and DML" href="03_basic_ddl_and_dml.html" />
+    <link rel="prev" title="1. Getting Started" href="01_getting_started.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,40 +89,92 @@
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../spark_sql.html">
+  <a class="reference internal" href="../cca175_intro.html">
    CCA 175 - Spark and Hadoop Developer - Python
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
-   Getting Started
+   1. Getting Started
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Basic Transformations
+   2. Basic Transformations
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="03_basic_ddl_and_dml.html">
-   Basic DDL and DML
+   3. Basic DDL and DML
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="04_dml_and_partitioning.html">
-   DML and Partitioning
+   4. DML and Partitioning
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="05_predefined_functions.html">
-   Pre-defined Functions
+   5. Pre-defined Functions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06_windowing_functions.html">
-   Windowing Functions
+   6. Windowing Functions
   </a>
  </li>
 </ul>
@@ -216,52 +268,52 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#spark-sql-overview">
-   Spark SQL – Overview
+   2.1. Spark SQL – Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#define-problem-statement">
-   Define Problem Statement
+   2.2. Define Problem Statement
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#preparing-tables">
-   Preparing Tables
+   2.3. Preparing Tables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#projecting-data">
-   Projecting Data
+   2.4. Projecting Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtering-data">
-   Filtering Data
+   2.5. Filtering Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#joining-tables-inner">
-   Joining Tables - Inner
+   2.6. Joining Tables - Inner
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#joining-tables-outer">
-   Joining Tables - Outer
+   2.7. Joining Tables - Outer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aggregating-data">
-   Aggregating Data
+   2.8. Aggregating Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sorting-data">
-   Sorting Data
+   2.9. Sorting Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conclusion-final-solution">
-   Conclusion - Final Solution
+   2.10. Conclusion - Final Solution
   </a>
  </li>
 </ul>
@@ -276,7 +328,7 @@
               <div>
                 
   <div class="section" id="basic-transformations">
-<h1>Basic Transformations<a class="headerlink" href="#basic-transformations" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Basic Transformations<a class="headerlink" href="#basic-transformations" title="Permalink to this headline">¶</a></h1>
 <p>As part of this section we will see basic transformations we can perform on top of Data Frames such as filtering, aggregations, joins etc using SQL. We will build end to end solution by taking a simple problem statement.</p>
 <ul class="simple">
 <li><p>Spark SQL – Overview</p></li>
@@ -313,7 +365,7 @@
 </pre></div>
 </div>
 <div class="section" id="spark-sql-overview">
-<h2>Spark SQL – Overview<a class="headerlink" href="#spark-sql-overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Spark SQL – Overview<a class="headerlink" href="#spark-sql-overview" title="Permalink to this headline">¶</a></h2>
 <p>Let us get an overview of Spark SQL.</p>
 <p>Here are the standard operations which we typically perform as part of processing the data. In Spark we can perform these using Data Frame APIs or <strong>Spark SQL</strong>.</p>
 <ul class="simple">
@@ -373,7 +425,7 @@
 </div>
 </div>
 <div class="section" id="define-problem-statement">
-<h2>Define Problem Statement<a class="headerlink" href="#define-problem-statement" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>Define Problem Statement<a class="headerlink" href="#define-problem-statement" title="Permalink to this headline">¶</a></h2>
 <p>Let us define problemt statement to get an overview of basic transformations using Spark SQL.</p>
 <ul class="simple">
 <li><p>Get Daily Product Revenue using orders and order_items data set.</p></li>
@@ -408,7 +460,7 @@
 </ul>
 </div>
 <div class="section" id="preparing-tables">
-<h2>Preparing Tables<a class="headerlink" href="#preparing-tables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Preparing Tables<a class="headerlink" href="#preparing-tables" title="Permalink to this headline">¶</a></h2>
 <p>Let us prepare the tables to solve the problem.</p>
 <ul class="simple">
 <li><p>Make sure database is created.</p></li>
@@ -747,7 +799,7 @@ LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39; INTO TABLE order_it
 </div>
 </div>
 <div class="section" id="projecting-data">
-<h2>Projecting Data<a class="headerlink" href="#projecting-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Projecting Data<a class="headerlink" href="#projecting-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand different aspects of projecting data. We primarily using <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> to project the data.</p>
 <ul class="simple">
 <li><p>We can project all columns using <code class="docutils literal notranslate"><span class="pre">*</span></code> or some columns using column names.</p></li>
@@ -888,7 +940,7 @@ FROM orders LIMIT 10
 </div>
 </div>
 <div class="section" id="filtering-data">
-<h2>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.5. </span>Filtering Data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can filter the data in Spark SQL.</p>
 <ul class="simple">
 <li><p>We use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause to filter the data.</p></li>
@@ -1337,7 +1389,7 @@ INSERT INTO students VALUES
 </div>
 </div>
 <div class="section" id="joining-tables-inner">
-<h2>Joining Tables - Inner<a class="headerlink" href="#joining-tables-inner" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.6. </span>Joining Tables - Inner<a class="headerlink" href="#joining-tables-inner" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to join data from multiple tables.</p>
 <ul class="simple">
 <li><p><strong>Spark SQL</strong> supports ASCII style join (<strong>JOIN with ON</strong>).</p></li>
@@ -1624,7 +1676,7 @@ LIMIT 10
 </div>
 </div>
 <div class="section" id="joining-tables-outer">
-<h2>Joining Tables - Outer<a class="headerlink" href="#joining-tables-outer" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7. </span>Joining Tables - Outer<a class="headerlink" href="#joining-tables-outer" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to perform outer joins using Spark SQL. There are 3 different types of outer joins.</p>
 <ul class="simple">
 <li><p>LEFT OUTER JOIN (default) - Get all the records from both the datasets which satisfies JOIN condition along with those records which are in the left side table but not in the right side table.</p></li>
@@ -1869,7 +1921,7 @@ WHERE oi.order_item_order_id IS NULL
 </div>
 </div>
 <div class="section" id="aggregating-data">
-<h2>Aggregating Data<a class="headerlink" href="#aggregating-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.8. </span>Aggregating Data<a class="headerlink" href="#aggregating-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to aggregate the data.</p>
 <ul class="simple">
 <li><p>We can perform global aggregations as well as aggregations by key.</p></li>
@@ -2159,7 +2211,7 @@ LIMIT 10
 </div>
 </div>
 <div class="section" id="sorting-data">
-<h2>Sorting Data<a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.9. </span>Sorting Data<a class="headerlink" href="#sorting-data" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to sort the data using <strong>Spark SQL</strong>.</p>
 <ul class="simple">
 <li><p>We typically perform sorting as final step.</p></li>
@@ -2276,7 +2328,7 @@ LIMIT 10
 </div>
 </div>
 <div class="section" id="conclusion-final-solution">
-<h2>Conclusion - Final Solution<a class="headerlink" href="#conclusion-final-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.10. </span>Conclusion - Final Solution<a class="headerlink" href="#conclusion-final-solution" title="Permalink to this headline">¶</a></h2>
 <p>Let us review the Final Solution for our problem statement <strong>daily_product_revenue</strong>.</p>
 <ul class="simple">
 <li><p>Prepare tables</p>
@@ -2559,8 +2611,8 @@ ORDER BY o.order_date,
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
-    <a class='right-next' id="next-link" href="03_basic_ddl_and_dml.html" title="next page">Basic DDL and DML</a>
+    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page"><span class="section-number">1. </span>Getting Started</a>
+    <a class='right-next' id="next-link" href="03_basic_ddl_and_dml.html" title="next page"><span class="section-number">3. </span>Basic DDL and DML</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

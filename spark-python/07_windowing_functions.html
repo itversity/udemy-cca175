@@ -1,0 +1,1306 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7. Windowing Functions &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. Spark Metastore" href="08_spark_metastore.html" />
+    <link rel="prev" title="6. Joining Data Sets" href="06_joining_data_sets.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-python/07_windowing_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/07_windowing_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   7.1. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-windowing-functions">
+   7.2. Overview of Windowing Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregate-functions">
+   7.3. Aggregate Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-rowsbetween-and-rangebetween">
+   7.4. Using rowsBetween and rangeBetween
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ranking-functions">
+   7.5. Ranking Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     7.5.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytic-functions">
+   7.6. Analytic Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-lead">
+     7.6.1. Using LEAD
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-lead-with-7">
+     7.6.2. Using LEAD with 7
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="windowing-functions">
+<h1><span class="section-number">7. </span>Windowing Functions<a class="headerlink" href="#windowing-functions" title="Permalink to this headline">¶</a></h1>
+<p>As part of this module let us get into Windowing Functions.</p>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">7.1. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start spark context for this Notebook so that we can execute the code provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
+
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span> \
+    <span class="n">builder</span><span class="o">.</span> \
+    <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.ui.port&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">appName</span><span class="p">(</span><span class="s1">&#39;Windowing Functions&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">master</span><span class="p">(</span><span class="s1">&#39;yarn&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;spark.sql.shuffle.partitions&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-windowing-functions">
+<h2><span class="section-number">7.2. </span>Overview of Windowing Functions<a class="headerlink" href="#overview-of-windowing-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of Windowing Functions.</p>
+<ul class="simple">
+<li><p>First let us understand relevance of these functions using <code class="docutils literal notranslate"><span class="pre">employees</span></code> data set.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employeesPath</span> <span class="o">=</span> <span class="s1">&#39;/public/hr_db/employees&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="nb">format</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">option</span><span class="p">(</span><span class="s1">&#39;sep&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;employee_id INT, </span>
+<span class="s1">              first_name STRING, </span>
+<span class="s1">              last_name STRING, </span>
+<span class="s1">              email STRING,</span>
+<span class="s1">              phone_number STRING, </span>
+<span class="s1">              hire_date STRING, </span>
+<span class="s1">              job_id STRING, </span>
+<span class="s1">              salary FLOAT,</span>
+<span class="s1">              commission_pct STRING,</span>
+<span class="s1">              manager_id STRING, </span>
+<span class="s1">              department_id STRING</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">load</span><span class="p">(</span><span class="n">employeesPath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span>
+<span class="n">employees</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;employee_id&#39;</span><span class="p">,</span> 
+           <span class="n">col</span><span class="p">(</span><span class="s1">&#39;department_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;department_id&#39;</span><span class="p">),</span> 
+           <span class="s1">&#39;salary&#39;</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;department_id&#39;</span><span class="p">,</span> <span class="s1">&#39;salary&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+-------+
+|employee_id|department_id| salary|
++-----------+-------------+-------+
+|        178|         null| 7000.0|
+|        200|           10| 4400.0|
+|        202|           20| 6000.0|
+|        201|           20|13000.0|
+|        119|           30| 2500.0|
+|        118|           30| 2600.0|
+|        117|           30| 2800.0|
+|        116|           30| 2900.0|
+|        115|           30| 3100.0|
+|        114|           30|11000.0|
+|        203|           40| 6500.0|
+|        132|           50| 2100.0|
+|        136|           50| 2200.0|
+|        128|           50| 2200.0|
+|        127|           50| 2400.0|
+|        135|           50| 2400.0|
+|        140|           50| 2500.0|
+|        144|           50| 2500.0|
+|        191|           50| 2500.0|
+|        182|           50| 2500.0|
++-----------+-------------+-------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us say we want to compare individual salary with department wise salary expense.</p></li>
+<li><p>Here is one of the approach which require self join.</p>
+<ul>
+<li><p>Compute department wise expense usig <code class="docutils literal notranslate"><span class="pre">groupBy</span></code> and <code class="docutils literal notranslate"><span class="pre">agg</span></code>.</p></li>
+<li><p>Join with <strong>employees</strong> again on department_id.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">department_expense</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;department_id&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="s1">&#39;salary&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;expense&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">department_expense</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------------+--------+
+|department_id| expense|
++-------------+--------+
+|           80|304500.0|
+|           90| 58000.0|
+|           60| 28800.0|
+|           20| 19000.0|
+|           70| 10000.0|
+|          110| 20300.0|
+|          100| 51600.0|
+|           30| 24900.0|
+|           50|156400.0|
+|           10|  4400.0|
+|           40|  6500.0|
+|         null|  7000.0|
++-------------+--------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">employees</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="s1">&#39;employee_id&#39;</span><span class="p">,</span> <span class="s1">&#39;department_id&#39;</span><span class="p">,</span> <span class="s1">&#39;salary&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">join</span><span class="p">(</span><span class="n">department_expense</span><span class="p">,</span> <span class="n">employees</span><span class="o">.</span><span class="n">department_id</span> <span class="o">==</span> <span class="n">department_expense</span><span class="o">.</span><span class="n">department_id</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">employees</span><span class="o">.</span><span class="n">department_id</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s1">&#39;salary&#39;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-----------+-------------+-------+-------------+--------+
+|employee_id|department_id| salary|department_id| expense|
++-----------+-------------+-------+-------------+--------+
+|        200|           10| 4400.0|           10|  4400.0|
+|        113|          100| 6900.0|          100| 51600.0|
+|        111|          100| 7700.0|          100| 51600.0|
+|        112|          100| 7800.0|          100| 51600.0|
+|        110|          100| 8200.0|          100| 51600.0|
+|        109|          100| 9000.0|          100| 51600.0|
+|        108|          100|12000.0|          100| 51600.0|
+|        206|          110| 8300.0|          110| 20300.0|
+|        205|          110|12000.0|          110| 20300.0|
+|        202|           20| 6000.0|           20| 19000.0|
+|        201|           20|13000.0|           20| 19000.0|
+|        119|           30| 2500.0|           30| 24900.0|
+|        118|           30| 2600.0|           30| 24900.0|
+|        117|           30| 2800.0|           30| 24900.0|
+|        116|           30| 2900.0|           30| 24900.0|
+|        115|           30| 3100.0|           30| 24900.0|
+|        114|           30|11000.0|           30| 24900.0|
+|        203|           40| 6500.0|           40|  6500.0|
+|        132|           50| 2100.0|           50|156400.0|
+|        128|           50| 2200.0|           50|156400.0|
++-----------+-------------+-------+-------------+--------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>However, using this approach is not very efficient and also overly complicated. Windowing functions actually simplify the logic and also runs efficiently</strong></p>
+<p>Now let us get into the details related to Windowing functions.</p>
+<ul class="simple">
+<li><p>Main package <code class="docutils literal notranslate"><span class="pre">pyspark.sql.window</span></code></p></li>
+<li><p>It has classes such as <code class="docutils literal notranslate"><span class="pre">Window</span></code> and <code class="docutils literal notranslate"><span class="pre">WindowSpec</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Window</span></code> have APIs such as <code class="docutils literal notranslate"><span class="pre">partitionBy</span></code>, <code class="docutils literal notranslate"><span class="pre">orderBy</span></code> etc</p></li>
+<li><p>These APIs (such as <code class="docutils literal notranslate"><span class="pre">partitionBy</span></code>) return <code class="docutils literal notranslate"><span class="pre">WindowSpec</span></code> object. We can pass <code class="docutils literal notranslate"><span class="pre">WindowSpec</span></code> object to over on functions such as <code class="docutils literal notranslate"><span class="pre">rank()</span></code>, <code class="docutils literal notranslate"><span class="pre">dense_rank()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code> etc</p></li>
+<li><p>Syntax: <code class="docutils literal notranslate"><span class="pre">sum().over(spec)</span></code> where <code class="docutils literal notranslate"><span class="pre">spec</span> <span class="pre">=</span> <span class="pre">Window.partitionBy('ColumnName')</span></code></p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Functions</p></th>
+<th class="text-align:center head"><p>API or Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aggregate Functions</p></td>
+<td class="text-align:center"><p><ul><li>sum</li><li>avg</li><li>min</li><li>max</li></ul></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ranking Functions</p></td>
+<td class="text-align:center"><p><ul><li>rank</li><li>dense_rank</li></ul><ul><li>percent_rank</li><li>row_number</li> <li>ntile</li></ul></p></td>
+</tr>
+<tr class="row-even"><td><p>Analytic Functions</p></td>
+<td class="text-align:center"><p><ul><li>cume_dist</li><li>first</li><li>last</li><li>lead</li> <li>lag</li></ul></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aggregate-functions">
+<h2><span class="section-number">7.3. </span>Aggregate Functions<a class="headerlink" href="#aggregate-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us see how to perform aggregations within each group while projecting the raw data that is used to perform the aggregation.</p>
+<ul class="simple">
+<li><p>We have functions such as <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code> etc which can be used to aggregate the data.</p></li>
+<li><p>We need to create <code class="docutils literal notranslate"><span class="pre">WindowSpec</span></code> object using <code class="docutils literal notranslate"><span class="pre">partitionBy</span></code> to get aggregations within each group.</p></li>
+<li><p>Typically we don’t need to sort the data to perform aggregations, however if we want to perform cumulative aggregations using rowsBetween, then we have to sort the data using cumulative criteria.</p></li>
+<li><p>Let us try to get total departure delay, minimum departure delay, maximum departure delay and average departure delay for each day for each airport. We will ignore all those flights which are departured early or ontime.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+  <span class="n">read</span><span class="o">.</span> \
+  <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">lpad</span><span class="p">,</span> <span class="n">concat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">avg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>root
+ |-- Year: integer (nullable = true)
+ |-- Month: integer (nullable = true)
+ |-- DayofMonth: integer (nullable = true)
+ |-- DayOfWeek: integer (nullable = true)
+ |-- DepTime: string (nullable = true)
+ |-- CRSDepTime: integer (nullable = true)
+ |-- ArrTime: string (nullable = true)
+ |-- CRSArrTime: integer (nullable = true)
+ |-- UniqueCarrier: string (nullable = true)
+ |-- FlightNum: integer (nullable = true)
+ |-- TailNum: string (nullable = true)
+ |-- ActualElapsedTime: string (nullable = true)
+ |-- CRSElapsedTime: integer (nullable = true)
+ |-- AirTime: string (nullable = true)
+ |-- ArrDelay: string (nullable = true)
+ |-- DepDelay: string (nullable = true)
+ |-- Origin: string (nullable = true)
+ |-- Dest: string (nullable = true)
+ |-- Distance: string (nullable = true)
+ |-- TaxiIn: string (nullable = true)
+ |-- TaxiOut: string (nullable = true)
+ |-- Cancelled: integer (nullable = true)
+ |-- CancellationCode: string (nullable = true)
+ |-- Diverted: integer (nullable = true)
+ |-- CarrierDelay: string (nullable = true)
+ |-- WeatherDelay: string (nullable = true)
+ |-- NASDelay: string (nullable = true)
+ |-- SecurityDelay: string (nullable = true)
+ |-- LateAircraftDelay: string (nullable = true)
+ |-- IsArrDelayed: string (nullable = true)
+ |-- IsDepDelayed: string (nullable = true)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IsDepDelayed = &#39;YES&#39; and Cancelled = 0&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                 <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;Origin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;FlightNum&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;IsDepDelayed&quot;</span><span class="p">,</span>
+           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelayMin&quot;</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelayMax&quot;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelaySum&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelayAvg&quot;</span><span class="p">,</span> <span class="n">avg</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+---------+----------+------------+--------+-----------+-----------+-----------+------------------+
+|FlightDate|Origin|UniqueCarrier|FlightNum|CRSDepTime|IsDepDelayed|DepDelay|DepDelayMin|DepDelayMax|DepDelaySum|       DepDelayAvg|
++----------+------+-------------+---------+----------+------------+--------+-----------+-----------+-----------+------------------+
+|  20080101|   ABE|           OO|     5873|       720|         YES|       1|          1|        175|        487|            60.875|
+|  20080101|   ABE|           OH|     5457|      1720|         YES|      14|          1|        175|        487|            60.875|
+|  20080101|   ABE|           XE|     2578|      1410|         YES|      22|          1|        175|        487|            60.875|
+|  20080101|   ABE|           9E|     2936|      1615|         YES|      34|          1|        175|        487|            60.875|
+|  20080101|   ABE|           XE|     2594|      1740|         YES|      34|          1|        175|        487|            60.875|
+|  20080101|   ABE|           9E|     2940|      1215|         YES|      70|          1|        175|        487|            60.875|
+|  20080101|   ABE|           YV|     7263|      1230|         YES|     137|          1|        175|        487|            60.875|
+|  20080101|   ABE|           YV|     7138|      1741|         YES|     175|          1|        175|        487|            60.875|
+|  20080101|   ABI|           MQ|     3214|      1735|         YES|       3|          3|          3|          3|               3.0|
+|  20080101|   ABQ|           WN|     2976|      1040|         YES|       1|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|      972|      1810|         YES|       1|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|       61|      1320|         YES|       1|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|     3425|      1440|         YES|       2|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|       88|       755|         YES|       2|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|     2284|      1520|         YES|       3|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           XE|     2771|      1430|         YES|       3|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|     1493|      2020|         YES|       4|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|      360|      1800|         YES|       5|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|      644|      1725|         YES|       5|          1|        218|       1580|32.916666666666664|
+|  20080101|   ABQ|           WN|      729|      1530|         YES|       7|          1|        218|       1580|32.916666666666664|
++----------+------+-------------+---------+----------+------------+--------+-----------+-----------+-----------+------------------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-rowsbetween-and-rangebetween">
+<h2><span class="section-number">7.4. </span>Using rowsBetween and rangeBetween<a class="headerlink" href="#using-rowsbetween-and-rangebetween" title="Permalink to this headline">¶</a></h2>
+<p>We can get cumulative aggregations using <code class="docutils literal notranslate"><span class="pre">rowsBetween</span></code> or <code class="docutils literal notranslate"><span class="pre">rangeBetween</span></code>.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">rowsBetween</span></code> to include particular set of rows to perform aggregations.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">rangeBetween</span></code> to include particular range of values on a given column.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">rowsBetween</span><span class="p">(</span><span class="n">Window</span><span class="o">.</span><span class="n">unboundedPreceding</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IsDepDelayed = &#39;YES&#39; and Cancelled = 0&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                 <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;Origin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;FlightNum&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;IsDepDelayed&quot;</span><span class="p">,</span>
+           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelaySum&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+---------+----------+------------+--------+-----------+
+|FlightDate|Origin|UniqueCarrier|FlightNum|CRSDepTime|IsDepDelayed|DepDelay|DepDelaySum|
++----------+------+-------------+---------+----------+------------+--------+-----------+
+|  20080101|   ABE|           OO|     5873|       720|         YES|       1|          1|
+|  20080101|   ABE|           9E|     2940|      1215|         YES|      70|         71|
+|  20080101|   ABE|           YV|     7263|      1230|         YES|     137|        208|
+|  20080101|   ABE|           XE|     2578|      1410|         YES|      22|        230|
+|  20080101|   ABE|           9E|     2936|      1615|         YES|      34|        264|
+|  20080101|   ABE|           OH|     5457|      1720|         YES|      14|        278|
+|  20080101|   ABE|           XE|     2594|      1740|         YES|      34|        312|
+|  20080101|   ABE|           YV|     7138|      1741|         YES|     175|        487|
+|  20080101|   ABI|           MQ|     3214|      1735|         YES|       3|          3|
+|  20080101|   ABQ|           DL|     1601|       740|         YES|      65|         65|
+|  20080101|   ABQ|           WN|       88|       755|         YES|       2|         67|
+|  20080101|   ABQ|           UA|      782|       805|         YES|      48|        115|
+|  20080101|   ABQ|           AA|     1814|       925|         YES|     100|        215|
+|  20080101|   ABQ|           WN|     2976|      1040|         YES|       1|        216|
+|  20080101|   ABQ|           WN|     1185|      1140|         YES|       9|        225|
+|  20080101|   ABQ|           WN|     1297|      1155|         YES|      12|        237|
+|  20080101|   ABQ|           WN|     2480|      1200|         YES|      16|        253|
+|  20080101|   ABQ|           WN|      137|      1220|         YES|      10|        263|
+|  20080101|   ABQ|           WN|     1328|      1245|         YES|      78|        341|
+|  20080101|   ABQ|           WN|     3245|      1250|         YES|      24|        365|
++----------+------+-------------+---------+----------+------------+--------+-----------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">rowsBetween</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IsDepDelayed = &#39;YES&#39; and Cancelled = 0&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                 <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;Origin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;FlightNum&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;IsDepDelayed&quot;</span><span class="p">,</span>
+           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;DepDelaySum&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+---------+----------+------------+--------+-----------+
+|FlightDate|Origin|UniqueCarrier|FlightNum|CRSDepTime|IsDepDelayed|DepDelay|DepDelaySum|
++----------+------+-------------+---------+----------+------------+--------+-----------+
+|  20080101|   ABE|           OO|     5873|       720|         YES|       1|          1|
+|  20080101|   ABE|           9E|     2940|      1215|         YES|      70|         71|
+|  20080101|   ABE|           YV|     7263|      1230|         YES|     137|        208|
+|  20080101|   ABE|           XE|     2578|      1410|         YES|      22|        230|
+|  20080101|   ABE|           9E|     2936|      1615|         YES|      34|        263|
+|  20080101|   ABE|           OH|     5457|      1720|         YES|      14|        207|
+|  20080101|   ABE|           XE|     2594|      1740|         YES|      34|        104|
+|  20080101|   ABE|           YV|     7138|      1741|         YES|     175|        257|
+|  20080101|   ABI|           MQ|     3214|      1735|         YES|       3|          3|
+|  20080101|   ABQ|           DL|     1601|       740|         YES|      65|         65|
+|  20080101|   ABQ|           WN|       88|       755|         YES|       2|         67|
+|  20080101|   ABQ|           UA|      782|       805|         YES|      48|        115|
+|  20080101|   ABQ|           AA|     1814|       925|         YES|     100|        215|
+|  20080101|   ABQ|           WN|     2976|      1040|         YES|       1|        151|
+|  20080101|   ABQ|           WN|     1185|      1140|         YES|       9|        158|
+|  20080101|   ABQ|           WN|     1297|      1155|         YES|      12|        122|
+|  20080101|   ABQ|           WN|     2480|      1200|         YES|      16|         38|
+|  20080101|   ABQ|           WN|      137|      1220|         YES|      10|         47|
+|  20080101|   ABQ|           WN|     1328|      1245|         YES|      78|        116|
+|  20080101|   ABQ|           WN|     3245|      1250|         YES|      24|        128|
++----------+------+-------------+---------+----------+------------+--------+-----------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ranking-functions">
+<h2><span class="section-number">7.5. </span>Ranking Functions<a class="headerlink" href="#ranking-functions" title="Permalink to this headline">¶</a></h2>
+<p>We can use ranking functions to assign ranks to a particular record within a partition.</p>
+<ul class="simple">
+<li><p>Sparse Rank - rank</p></li>
+<li><p>Dense Rank - dense_rank</p></li>
+<li><p>Assigning Row Numbers - row_number</p></li>
+<li><p>Percentage Rank - percent_rank</p></li>
+</ul>
+<div class="section" id="tasks">
+<h3><span class="section-number">7.5.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform few tasks related to ranking.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">lpad</span><span class="p">,</span> <span class="n">concat</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">rank</span><span class="p">,</span> <span class="n">dense_rank</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">percent_rank</span><span class="p">,</span> <span class="n">row_number</span><span class="p">,</span> <span class="nb">round</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IsDepDelayed = &#39;YES&#39; and Cancelled = 0&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                 <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;Origin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;FlightNum&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;IsDepDelayed&quot;</span><span class="p">,</span>
+           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;srank&quot;</span><span class="p">,</span> <span class="n">rank</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;drank&quot;</span><span class="p">,</span> <span class="n">dense_rank</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;prank&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">percent_rank</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;rn&quot;</span><span class="p">,</span> <span class="n">row_number</span><span class="p">()</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+---------+----------+------------+--------+-----+-----+-----+---+
+|FlightDate|Origin|UniqueCarrier|FlightNum|CRSDepTime|IsDepDelayed|DepDelay|srank|drank|prank| rn|
++----------+------+-------------+---------+----------+------------+--------+-----+-----+-----+---+
+|  20080101|   ABE|           YV|     7138|      1741|         YES|     175|    1|    1|  0.0|  1|
+|  20080101|   ABE|           YV|     7263|      1230|         YES|     137|    2|    2| 0.14|  2|
+|  20080101|   ABE|           9E|     2940|      1215|         YES|      70|    3|    3| 0.29|  3|
+|  20080101|   ABE|           9E|     2936|      1615|         YES|      34|    4|    4| 0.43|  4|
+|  20080101|   ABE|           XE|     2594|      1740|         YES|      34|    4|    4| 0.43|  5|
+|  20080101|   ABE|           XE|     2578|      1410|         YES|      22|    6|    5| 0.71|  6|
+|  20080101|   ABE|           OH|     5457|      1720|         YES|      14|    7|    6| 0.86|  7|
+|  20080101|   ABE|           OO|     5873|       720|         YES|       1|    8|    7|  1.0|  8|
+|  20080101|   ABI|           MQ|     3214|      1735|         YES|       3|    1|    1|  0.0|  1|
+|  20080101|   ABQ|           WN|      823|      2045|         YES|     218|    1|    1|  0.0|  1|
+|  20080101|   ABQ|           WN|      357|      1525|         YES|     171|    2|    2| 0.02|  2|
+|  20080101|   ABQ|           AA|     1814|       925|         YES|     100|    3|    3| 0.04|  3|
+|  20080101|   ABQ|           WN|     1178|      1845|         YES|      94|    4|    4| 0.06|  4|
+|  20080101|   ABQ|           WN|     2497|      1825|         YES|      93|    5|    5| 0.09|  5|
+|  20080101|   ABQ|           WN|     3481|      1500|         YES|      78|    6|    6| 0.11|  6|
+|  20080101|   ABQ|           WN|     1328|      1245|         YES|      78|    6|    6| 0.11|  7|
+|  20080101|   ABQ|           XE|      221|      1850|         YES|      68|    8|    7| 0.15|  8|
+|  20080101|   ABQ|           DL|     1601|       740|         YES|      65|    9|    8| 0.17|  9|
+|  20080101|   ABQ|           WN|       45|      1435|         YES|      64|   10|    9| 0.19| 10|
+|  20080101|   ABQ|           WN|     2788|      1755|         YES|      53|   11|   10| 0.21| 11|
++----------+------+-------------+---------+----------+------------+--------+-----+-----+-----+---+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="analytic-functions">
+<h2><span class="section-number">7.6. </span>Analytic Functions<a class="headerlink" href="#analytic-functions" title="Permalink to this headline">¶</a></h2>
+<p>We can use Analytic Functions to compare current record with previous record or next record.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lead</span></code> and <code class="docutils literal notranslate"><span class="pre">lag</span></code> are the main functions.</p></li>
+<li><p>We can also compare each of the day of one week with corresponding day of another week.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lead</span></code> and <code class="docutils literal notranslate"><span class="pre">lag</span></code> serve the same purpose. Depending up on the requirement and sorting of the data we can use either of them.</p></li>
+<li><p>Here the examples are demonstrated using <code class="docutils literal notranslate"><span class="pre">lead</span></code>. Same can be achieved using <code class="docutils literal notranslate"><span class="pre">lag</span></code> however while defining the spec we have sort the data with in window in descending order to get similar results.</p></li>
+<li><p>Also we can use <code class="docutils literal notranslate"><span class="pre">first</span></code> and <code class="docutils literal notranslate"><span class="pre">last</span></code> functions to get first or last value with in each group or partition based up on sorting criteria. They are typically used to get the details about other fields (for example, we can get employee name or id who is making highest or lowest salary with in a department).</p></li>
+</ul>
+<div class="section" id="using-lead">
+<h3><span class="section-number">7.6.1. </span>Using LEAD<a class="headerlink" href="#using-lead" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+  <span class="n">read</span><span class="o">.</span> \
+  <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">lpad</span><span class="p">,</span> <span class="n">concat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">lead</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;CRSDepTime&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;IsDepDelayed = &#39;YES&#39; and Cancelled = 0&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">select</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                  <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                 <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span>
+           <span class="s2">&quot;Origin&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;FlightNum&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;IsDepDelayed&quot;</span><span class="p">,</span>
+           <span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadUniqueCarrier&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;UniqueCarrier&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadFlightNum&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;FlightNum&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadCRSDepTime&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadDepDelay&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="s2">&quot;CRSDepTime&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+---------+----------+------------+--------+-----------------+-------------+--------------+------------+
+|FlightDate|Origin|UniqueCarrier|FlightNum|CRSDepTime|IsDepDelayed|DepDelay|LeadUniqueCarrier|LeadFlightNum|LeadCRSDepTime|LeadDepDelay|
++----------+------+-------------+---------+----------+------------+--------+-----------------+-------------+--------------+------------+
+|  20080101|   ABE|           OO|     5873|       720|         YES|       1|               9E|         2940|          1215|          70|
+|  20080101|   ABE|           9E|     2940|      1215|         YES|      70|               YV|         7263|          1230|         137|
+|  20080101|   ABE|           YV|     7263|      1230|         YES|     137|               XE|         2578|          1410|          22|
+|  20080101|   ABE|           XE|     2578|      1410|         YES|      22|               9E|         2936|          1615|          34|
+|  20080101|   ABE|           9E|     2936|      1615|         YES|      34|               OH|         5457|          1720|          14|
+|  20080101|   ABE|           OH|     5457|      1720|         YES|      14|               XE|         2594|          1740|          34|
+|  20080101|   ABE|           XE|     2594|      1740|         YES|      34|               YV|         7138|          1741|         175|
+|  20080101|   ABE|           YV|     7138|      1741|         YES|     175|             null|         null|          null|        null|
+|  20080101|   ABI|           MQ|     3214|      1735|         YES|       3|             null|         null|          null|        null|
+|  20080101|   ABQ|           DL|     1601|       740|         YES|      65|               WN|           88|           755|           2|
+|  20080101|   ABQ|           WN|       88|       755|         YES|       2|               UA|          782|           805|          48|
+|  20080101|   ABQ|           UA|      782|       805|         YES|      48|               AA|         1814|           925|         100|
+|  20080101|   ABQ|           AA|     1814|       925|         YES|     100|               WN|         2976|          1040|           1|
+|  20080101|   ABQ|           WN|     2976|      1040|         YES|       1|               WN|         1185|          1140|           9|
+|  20080101|   ABQ|           WN|     1185|      1140|         YES|       9|               WN|         1297|          1155|          12|
+|  20080101|   ABQ|           WN|     1297|      1155|         YES|      12|               WN|         2480|          1200|          16|
+|  20080101|   ABQ|           WN|     2480|      1200|         YES|      16|               WN|          137|          1220|          10|
+|  20080101|   ABQ|           WN|      137|      1220|         YES|      10|               WN|         1328|          1245|          78|
+|  20080101|   ABQ|           WN|     1328|      1245|         YES|      78|               WN|         3245|          1250|          24|
+|  20080101|   ABQ|           WN|     3245|      1250|         YES|      24|               WN|           61|          1320|           1|
++----------+------+-------------+---------+----------+------------+--------+-----------------+-------------+--------------+------------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-lead-with-7">
+<h3><span class="section-number">7.6.2. </span>Using LEAD with 7<a class="headerlink" href="#using-lead-with-7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines_path</span> <span class="o">=</span> <span class="s2">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span> \
+    <span class="n">read</span><span class="o">.</span> \
+    <span class="n">parquet</span><span class="p">(</span><span class="n">airlines_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">col</span><span class="p">,</span> <span class="n">lit</span><span class="p">,</span> <span class="n">lpad</span><span class="p">,</span> <span class="n">concat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">lead</span><span class="p">,</span> <span class="n">substring</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.window</span> <span class="kn">import</span> <span class="n">Window</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span> <span class="o">=</span> <span class="n">Window</span><span class="o">.</span> \
+    <span class="n">partitionBy</span><span class="p">(</span><span class="n">substring</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="s2">&quot;Origin&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;IsDepDelayed = &#39;YES&#39; </span>
+<span class="s2">              AND Cancelled = 0</span>
+<span class="s2">              AND concat(Year, </span>
+<span class="s2">                         lpad(Month, 2, &#39;0&#39;),</span>
+<span class="s2">                         lpad(DayOfMonth, 2, &#39;0&#39;)</span>
+<span class="s2">                        ) BETWEEN 20080101 AND 20080114</span>
+<span class="s2">              AND Origin IN (&#39;ATL&#39;, &#39;DFW&#39;, &#39;JFK&#39;, &#39;LAX&#39;, &#39;SFO&#39;, &#39;ORD&#39;)</span>
+<span class="s2">           &quot;&quot;&quot;</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                  <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span> 
+            <span class="s2">&quot;Origin&quot;</span>
+           <span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadFlightDate&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadOrigin&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadTotalDepDelay&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s1">&#39;Origin = &quot;ORD&quot;&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+--------------+----------+-----------------+
+|FlightDate|Origin|TotalDepDelay|LeadFlightDate|LeadOrigin|LeadTotalDepDelay|
++----------+------+-------------+--------------+----------+-----------------+
+|  20080101|   ORD|        49353|      20080108|       ORD|            35658|
+|  20080102|   ORD|        41545|      20080109|       ORD|            10075|
+|  20080103|   ORD|        15784|      20080110|       ORD|            18431|
+|  20080104|   ORD|        13442|      20080111|       ORD|            15372|
+|  20080105|   ORD|        23800|      20080112|       ORD|             5785|
+|  20080106|   ORD|        31148|      20080113|       ORD|             9630|
+|  20080107|   ORD|        47817|      20080114|       ORD|            24969|
++----------+------+-------------+--------------+----------+-----------------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;IsDepDelayed = &#39;YES&#39; </span>
+<span class="s2">              AND Cancelled = 0</span>
+<span class="s2">              AND concat(Year, </span>
+<span class="s2">                         lpad(Month, 2, &#39;0&#39;),</span>
+<span class="s2">                         lpad(DayOfMonth, 2, &#39;0&#39;)</span>
+<span class="s2">                        ) BETWEEN 20080101 AND 20080114</span>
+<span class="s2">              AND Origin IN (&#39;ATL&#39;, &#39;DFW&#39;, &#39;JFK&#39;, &#39;LAX&#39;, &#39;SFO&#39;, &#39;ORD&#39;)</span>
+<span class="s2">           &quot;&quot;&quot;</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                  <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span> 
+            <span class="s2">&quot;Origin&quot;</span>
+           <span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadFlightDate&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadOrigin&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadTotalDepDelay&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s1">&#39;Origin = &quot;ORD&quot; AND FlightDate BETWEEN 20080101 AND 20080107&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+--------------+----------+-----------------+
+|FlightDate|Origin|TotalDepDelay|LeadFlightDate|LeadOrigin|LeadTotalDepDelay|
++----------+------+-------------+--------------+----------+-----------------+
+|  20080101|   ORD|        49353|      20080108|       ORD|            35658|
+|  20080102|   ORD|        41545|      20080109|       ORD|            10075|
+|  20080103|   ORD|        15784|      20080110|       ORD|            18431|
+|  20080104|   ORD|        13442|      20080111|       ORD|            15372|
+|  20080105|   ORD|        23800|      20080112|       ORD|             5785|
+|  20080106|   ORD|        31148|      20080113|       ORD|             9630|
+|  20080107|   ORD|        47817|      20080114|       ORD|            24969|
++----------+------+-------------+--------------+----------+-----------------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;IsDepDelayed = &#39;YES&#39; </span>
+<span class="s2">              AND Cancelled = 0</span>
+<span class="s2">              AND concat(Year, </span>
+<span class="s2">                         lpad(Month, 2, &#39;0&#39;),</span>
+<span class="s2">                         lpad(DayOfMonth, 2, &#39;0&#39;)</span>
+<span class="s2">                        ) BETWEEN 20080101 AND 20080114</span>
+<span class="s2">              AND Origin IN (&#39;ATL&#39;, &#39;DFW&#39;, &#39;JFK&#39;, &#39;LAX&#39;, &#39;SFO&#39;, &#39;ORD&#39;)</span>
+<span class="s2">           &quot;&quot;&quot;</span>
+          <span class="p">)</span><span class="o">.</span> \
+    <span class="n">groupBy</span><span class="p">(</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">),</span> 
+                   <span class="n">lpad</span><span class="p">(</span><span class="s2">&quot;DayOfMonth&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+                  <span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">),</span> 
+            <span class="s2">&quot;Origin&quot;</span>
+           <span class="p">)</span><span class="o">.</span> \
+    <span class="n">agg</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;DepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadFlightDate&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadOrigin&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;Origin&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;LeadTotalDepDelay&quot;</span><span class="p">,</span> <span class="n">lead</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span><span class="o">.</span> \
+    <span class="nb">filter</span><span class="p">(</span><span class="s1">&#39;FlightDate BETWEEN 20080101 AND 20080107&#39;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">orderBy</span><span class="p">(</span><span class="s2">&quot;FlightDate&quot;</span><span class="p">,</span> <span class="n">col</span><span class="p">(</span><span class="s2">&quot;TotalDepDelay&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span> \
+    <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+------+-------------+--------------+----------+-----------------+
+|FlightDate|Origin|TotalDepDelay|LeadFlightDate|LeadOrigin|LeadTotalDepDelay|
++----------+------+-------------+--------------+----------+-----------------+
+|  20080101|   ORD|        49353|      20080108|       ORD|            35658|
+|  20080101|   DFW|        13741|      20080108|       DFW|             8277|
+|  20080101|   ATL|        11592|      20080108|       ATL|             9988|
+|  20080101|   LAX|        10360|      20080108|       LAX|             8767|
+|  20080101|   JFK|         6948|      20080108|       JFK|             2261|
+|  20080101|   SFO|         5359|      20080108|       SFO|            18095|
+|  20080102|   ORD|        41545|      20080109|       ORD|            10075|
+|  20080102|   ATL|        25127|      20080109|       ATL|             6404|
+|  20080102|   DFW|        12827|      20080109|       DFW|             4532|
+|  20080102|   JFK|         9734|      20080109|       JFK|             1980|
+|  20080102|   LAX|         9253|      20080109|       LAX|             4121|
+|  20080102|   SFO|         6150|      20080109|       SFO|             8033|
+|  20080103|   ATL|        22603|      20080110|       ATL|             9760|
+|  20080103|   SFO|        21957|      20080110|       SFO|            17650|
+|  20080103|   ORD|        15784|      20080110|       ORD|            18431|
+|  20080103|   LAX|        11837|      20080110|       LAX|             6327|
+|  20080103|   DFW|         9585|      20080110|       DFW|             6786|
+|  20080103|   JFK|         8031|      20080110|       JFK|             1722|
+|  20080104|   SFO|        40137|      20080111|       SFO|             8734|
+|  20080104|   LAX|        26441|      20080111|       LAX|             5852|
++----------+------+-------------+--------------+----------+-----------------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "pyspark2"
+        },
+        kernelOptions: {
+            kernelName: "pyspark2",
+            path: "./spark-python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'pyspark2'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="06_joining_data_sets.html" title="previous page"><span class="section-number">6. </span>Joining Data Sets</a>
+    <a class='right-next' id="next-link" href="08_spark_metastore.html" title="next page"><span class="section-number">8. </span>Spark Metastore</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
