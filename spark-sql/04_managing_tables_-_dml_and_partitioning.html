@@ -1,0 +1,1482 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managing Tables - DML and Partitioning &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview of Spark SQL Functions" href="05_overview_of_spark_sql_functions.html" />
+    <link rel="prev" title="Managing Tables - Basic DDL and DML" href="03_managing_tables_-_basic_ddl_and_dml.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark_sql.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_managing_tables_-_basic_ddl_and_dml.html">
+   Managing Tables - Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Managing Tables - DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_overview_of_spark_sql_functions.html">
+   Overview of Spark SQL Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html">
+   Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#prepare-hr-database">
+   Prepare HR Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-windowing-functions">
+   Overview of Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#aggregations-using-windowing-functions">
+   Aggregations using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-lead-and-lag-values">
+   Getting LEAD and LAG values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-first-and-last-values">
+   Getting first and last values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#ranking-using-windowing-functions">
+   Ranking using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#understanding-order-of-execution-of-sql">
+   Understanding order of execution of SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-nested-sub-queries">
+   Overview of Nested Sub Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#filtering-window-function-results">
+   Filtering - Window Function Results
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-sql/04_managing_tables_-_dml_and_partitioning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-sql/04_managing_tables_-_dml_and_partitioning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-partitioning">
+   Introduction to Partitioning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-tables-using-parquet">
+   Creating Tables using Parquet
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-vs-insert">
+   LOAD vs. INSERT
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inserting-data-using-stage-table">
+   Inserting Data using Stage Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-partitioned-tables">
+   Creating Partitioned Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-partitions-to-tables">
+   Adding Partitions to Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-into-partitions">
+   Loading into Partitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inserting-data-into-partitions">
+   Inserting Data into Partitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-dynamic-partition-mode">
+   Using Dynamic Partition Mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-partitioned-tables">
+   Exercise - Partitioned Tables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation">
+     Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="managing-tables-dml-and-partitioning">
+<h1>Managing Tables - DML and Partitioning<a class="headerlink" href="#managing-tables-dml-and-partitioning" title="Permalink to this headline">¶</a></h1>
+<p>As part of this section we will continue understanding further concepts related to DML and also get into the details related to partitioning tables. With respect to DML, earlier we have seen how to use LOAD command, now we will see how to use INSERT command primarily to get query results copied into a table.</p>
+<ul class="simple">
+<li><p>Introduction to Partitioning</p></li>
+<li><p>Creating Tables using Parquet</p></li>
+<li><p>LOAD vs. INSERT</p></li>
+<li><p>Inserting Data using Stage Table</p></li>
+<li><p>Creating Partitioned Tables</p></li>
+<li><p>Adding Partitions to Tables</p></li>
+<li><p>Loading data into Partitions</p></li>
+<li><p>Inserting Data into Partitions</p></li>
+<li><p>Using Dynamic Partition Mode</p></li>
+<li><p>Exercise - Partitioned Tables</p></li>
+</ul>
+<p><strong>Unlike Hive, Spark SQL does not support Bucketing which is similar to Hash Partitioning. However, Delta Lake does. Delta Lake is 3rd party library which facilitate us additional capabilities such as ACID transactions on top of Spark Metastore tables</strong></p>
+<p>Let us make sure that we have orders table with data as we will be using it to populate partitioned tables very soon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.sql.warehouse.dir&quot;</span><span class="o">,</span> <span class="s">&quot;/user/itversity/warehouse&quot;</span><span class="o">).</span>
+    <span class="n">enableHiveSupport</span><span class="o">.</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Spark SQL - Managing Tables - DML and Partitioning&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_database</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_retail</span><span class="o">.</span><span class="n">orders</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
+    OVERWRITE INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="introduction-to-partitioning">
+<h2>Introduction to Partitioning<a class="headerlink" href="#introduction-to-partitioning" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of partitioning of Spark Metastore tables.</p>
+<ul class="simple">
+<li><p>It is similar to list partitioning where each partition is equal to a particular value for a given column.</p></li>
+<li><p>Spark Metastore does not support range partitioning and bucketing. Bucketing is supported in Hive which is similar to Hash Partitioning.</p></li>
+<li><p>Once the table is created, we can add static partitions and then load or insert data into it.</p></li>
+<li><p>Spark Metastore also support creation of partitions dynamically, where partitions will be created based up on the partition column value.</p></li>
+<li><p>A Partitioned table can be managed or external.</p></li>
+</ul>
+</div>
+<div class="section" id="creating-tables-using-parquet">
+<h2>Creating Tables using Parquet<a class="headerlink" href="#creating-tables-using-parquet" title="Permalink to this headline">¶</a></h2>
+<p>Let us create order_items table using Parquet file format. By default, the files of table using Parquet file format are compressed using Snappy algorithm.</p>
+<ul class="simple">
+<li><p>A table with parquet file format can be external.</p></li>
+<li><p>In our case we will create managed table with file format as parquet in STORED AS clause.</p></li>
+<li><p>We will explore INSERT to insert query results into this table of type parquet.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Drop order_items, if it already exists</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">order_items</span> <span class="o">(</span>
+  <span class="n">order_item_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_product_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_quantity</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_subtotal</span> <span class="nc">FLOAT</span><span class="o">,</span>
+  <span class="n">order_item_product_price</span> <span class="nc">FLOAT</span>
+<span class="o">)</span> <span class="nc">STORED</span> <span class="nc">AS</span> <span class="n">parquet</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>To get complete output run the below command using <code class="docutils literal notranslate"><span class="pre">spark-sql</span></code>. Here is the output look like.</p></li>
+</ul>
+<p><img alt="image.png" src="spark-sql/attachment:image.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FORMATTED</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED order_items&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/order_items&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-vs-insert">
+<h2>LOAD vs. INSERT<a class="headerlink" href="#load-vs-insert" title="Permalink to this headline">¶</a></h2>
+<p>Let us compare and contrast LOAD and INSERT commands. These are the main approaches using which we get data into Spark Metastore tables.</p>
+<ul class="simple">
+<li><p>LOAD will copy the files by dividing them into blocks.</p></li>
+<li><p>LOAD is the fastest way of getting data into Spark Metastore tables. However, there will be minimal validations at File level.</p></li>
+<li><p>There will be no transformations or validations at data level.</p></li>
+<li><p>If it require any transformation while getting data into Spark Metastore table, then we need to use INSERT command.</p></li>
+<li><p>Here are some of the usage scenarios of insert:</p>
+<ul>
+<li><p>Changing delimiters in case of text file format</p></li>
+<li><p>Changing file format</p></li>
+<li><p>Loading data into partitioned or bucketed tables (if bucketing is supported).</p></li>
+<li><p>Apply any other transformations at data level (widely used)</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">order_items</span> <span class="o">(</span>
+  <span class="n">order_item_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_product_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_quantity</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_subtotal</span> <span class="nc">FLOAT</span><span class="o">,</span>
+  <span class="n">order_item_product_price</span> <span class="nc">FLOAT</span>
+<span class="o">)</span> <span class="nc">STORED</span> <span class="nc">AS</span> <span class="n">parquet</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39;
+    INTO TABLE order_items
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/order_items&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inserting-data-using-stage-table">
+<h2>Inserting Data using Stage Table<a class="headerlink" href="#inserting-data-using-stage-table" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to insert data into order_items with Parquet file format.</p>
+<p>As data is in text file format and our table is created with Parquet file format, we will not be able to use LOAD command to load the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39;
+    OVERWRITE INTO TABLE order_items
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Above load command will be successful, however when we try to query it will fail as the query expects data to be in Parquet file format.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Following are the steps to get data into table which is created using different file format or delimiter than our source data.</p>
+<ul class="simple">
+<li><p>We need to create stage table with text file format and comma as delimiter (order_items_stage).</p></li>
+<li><p>Load data from our files in local file system to stage table.</p></li>
+<li><p>Using stage table run insert command to insert data into our target table (order_items).</p></li>
+</ul>
+<p>Let us see an example of inserting data into the target table from staging table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">order_items_stage</span> <span class="o">(</span>
+  <span class="n">order_item_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_product_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_quantity</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_item_subtotal</span> <span class="nc">FLOAT</span><span class="o">,</span>
+  <span class="n">order_item_product_price</span> <span class="nc">FLOAT</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED order_items_stage&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/order_items&#39; INTO TABLE order_items_stage
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items_stage</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">INSERT</span> <span class="nc">INTO</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items_stage</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">INTO</span></code> will append data into the target table by adding new files.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">INSERT</span> <span class="nc">INTO</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items_stage</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INSERT</span> <span class="pre">OVERWRITE</span></code> will overwrite the data in target table by deleting the files related to old data from the directory pointed by the Spark Metastore table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">INSERT</span> <span class="nc">OVERWRITE</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items_stage</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/order_items&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-partitioned-tables">
+<h2>Creating Partitioned Tables<a class="headerlink" href="#creating-partitioned-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to create partitioned table and get data into that table.</p>
+<ul class="simple">
+<li><p>Earlier we have already created orders table. We will use that as reference and create partitioned table.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">PARTITIONED</span> <span class="pre">BY</span></code> clause to define the <strong>column along with data type</strong>. In our case we will use <strong>order_month as partition column</strong>.</p></li>
+<li><p>We will not be able to directly load the data into the partitioned table using our original orders data (as data is not in sync with structure).</p></li>
+</ul>
+<p>Here is the example of creating partitioned tables in Spark Metastore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Drop orders_part if it already exists</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">PARTITIONED</span> <span class="nc">BY</span> <span class="o">(</span><span class="n">order_month</span> <span class="nc">INT</span><span class="o">)</span>
+<span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED orders_part&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-partitions-to-tables">
+<h2>Adding Partitions to Tables<a class="headerlink" href="#adding-partitions-to-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can add static partitions to Partitioned tables in Spark Metastore.</p>
+<ul class="simple">
+<li><p>We can add partitions using <code class="docutils literal notranslate"><span class="pre">ALTER</span> <span class="pre">TABLE</span></code> command with <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">PARTITION</span></code>.</p></li>
+<li><p>For each and every partition created, a subdirectory will be created using partition column name and corresponding value under the table directory.</p></li>
+<li><p>Let us understand how to add partitions to <strong>orders_part</strong> table under <strong>itversity_retail</strong> database.</p></li>
+</ul>
+<blockquote>
+<div><p>Here is the script to add static partitions to a Partitioned table where partition column type is string.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">PARTITIONED</span> <span class="nc">BY</span> <span class="o">(</span><span class="n">order_month</span> <span class="nc">STRING</span><span class="o">)</span>
+<span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+ALTER TABLE orders_part ADD PARTITION (order_month=&#39;2013-07&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Here is the script to add static partitions to a Partitioned table where partition column type is integer. We can add one or more partitions at a time. For further demos we will be using this table</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">PARTITIONED</span> <span class="nc">BY</span> <span class="o">(</span><span class="n">order_month</span> <span class="nc">INT</span><span class="o">)</span>
+<span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">ALTER</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="nc">ADD</span> <span class="nc">PARTITION</span> <span class="o">(</span><span class="n">order_month</span><span class="k">=</span><span class="mi">201307</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">ALTER</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="nc">ADD</span>
+    <span class="nc">PARTITION</span> <span class="o">(</span><span class="n">order_month</span><span class="k">=</span><span class="mi">201308</span><span class="o">)</span>
+    <span class="nc">PARTITION</span> <span class="o">(</span><span class="n">order_month</span><span class="k">=</span><span class="mi">201309</span><span class="o">)</span>
+    <span class="nc">PARTITION</span> <span class="o">(</span><span class="n">order_month</span><span class="k">=</span><span class="mi">201310</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loading-into-partitions">
+<h2>Loading into Partitions<a class="headerlink" href="#loading-into-partitions" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to use load command to load data into partitioned tables.</p>
+<ul class="simple">
+<li><p>We need to make sure that file format of the file which is being loaded into table is same as the file format used while creating the table.</p></li>
+<li><p>We also need to make sure that delimiters are consistent between files and table for text file format.</p></li>
+<li><p>Also data should match the criteria for the partition into which data is loaded.</p></li>
+<li><p>Our <code class="docutils literal notranslate"><span class="pre">/data/retail_db/orders</span></code> have data for the whole year and hence we should not load the data directly into partition.</p></li>
+<li><p>We need to split into files matching partition criteria and then load into the table.</p></li>
+</ul>
+<p>To use load command to load the files into partitions we need to pre-partition the data based on partition logic.</p>
+<p>Here is the example of using simple shell commands to partition the data. Use command prompt to run these commands</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>rm -rf ~/orders
+mkdir -p ~/orders
+
+grep <span class="m">2013</span>-07 /data/retail_db/orders/part-00000 &gt; ~/orders/orders_201307
+grep <span class="m">2013</span>-08 /data/retail_db/orders/part-00000 &gt; ~/orders/orders_201308
+grep <span class="m">2013</span>-09 /data/retail_db/orders/part-00000 &gt; ~/orders/orders_201309
+grep <span class="m">2013</span>-10 /data/retail_db/orders/part-00000 &gt; ~/orders/orders_201310
+</pre></div>
+</div>
+<p>Let us see how we can load data into corresponding partitions. Data has to be pre-partitioned based on the partitioned column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/home/itversity/orders/orders_201307&#39;
+  INTO TABLE orders_part PARTITION (order_month=201307)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/home/itversity/orders/orders_201308&#39;
+  INTO TABLE orders_part PARTITION (order_month=201308)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/home/itversity/orders/orders_201309&#39;
+  INTO TABLE orders_part PARTITION (order_month=201309)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/home/itversity/orders/orders_201310&#39;
+  INTO TABLE orders_part PARTITION (order_month=201310)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -tail /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part/order_month=201310/orders_201310&quot;</span><span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders_part</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inserting-data-into-partitions">
+<h2>Inserting Data into Partitions<a class="headerlink" href="#inserting-data-into-partitions" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to use insert to get data into static partitions in Spark Metastore from existing table called as orders.</p>
+<ul class="simple">
+<li><p>Let us recap what is covered so far related to partitioned tables.</p>
+<ul>
+<li><p>We have created a table called as orders_part with order_month of type INT as partitioned column.</p></li>
+<li><p>We have added 4 static partitions for 201307, 201308, 201309 and 201310 using ALTER TABLE command.</p></li>
+<li><p>Once the table is created and partitions are added we have pre-processed the data to get data into the partitions using LOAD command.</p></li>
+</ul>
+</li>
+<li><p>It is not practical to use LOAD command always. We typically use <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> via stage table to copy data into partitioned table.</p></li>
+<li><p>We can pre-create partitions in partitioned tables and insert data into partitions using appropriate <code class="docutils literal notranslate"><span class="pre">INSERT</span> </code>command. One need to ensure that required filter condition is applied to get the data relevant to the partition that is being populated.</p></li>
+<li><p>We can also create partitions dynamically which we will see as part of the next topic.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">ALTER</span> <span class="nc">TABLE</span> <span class="n">orders_part</span> <span class="nc">ADD</span> <span class="nc">PARTITION</span> <span class="o">(</span><span class="n">order_month</span><span class="k">=</span><span class="mi">201311</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO TABLE orders_part PARTITION (order_month=201311)
+  SELECT * FROM orders WHERE order_date LIKE &#39;2013-11%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-dynamic-partition-mode">
+<h2>Using Dynamic Partition Mode<a class="headerlink" href="#using-dynamic-partition-mode" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can insert data into partitioned table using dynamic partition mode.</p>
+<ul class="simple">
+<li><p>Using dynamic partition mode we need not pre create the partitions. Partitions will be automatically created when we issue INSERT command in dynamic partition mode.</p></li>
+<li><p>To insert data using dynamic partition mode, we need to set the property <code class="docutils literal notranslate"><span class="pre">hive.exec.dynamic.partition</span></code> to <strong>true</strong></p></li>
+<li><p>Also we need to set <code class="docutils literal notranslate"><span class="pre">hive.exec.dynamic.partition.mode</span></code> to <strong>nonstrict</strong></p></li>
+</ul>
+<p>Here is the example of inserting data into partitions using dynamic partition mode.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SET</span> <span class="n">hive</span><span class="o">.</span><span class="n">exec</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">partition</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SET</span> <span class="n">hive</span><span class="o">.</span><span class="n">exec</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">mode</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SET</span> <span class="n">hive</span><span class="o">.</span><span class="n">exec</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">partition</span><span class="k">=</span><span class="kc">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SET</span> <span class="n">hive</span><span class="o">.</span><span class="n">exec</span><span class="o">.</span><span class="n">dynamic</span><span class="o">.</span><span class="n">partition</span><span class="o">.</span><span class="n">mode</span><span class="k">=</span><span class="n">nonstrict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO TABLE orders_part PARTITION (order_month)
+SELECT o.*, date_format(order_date, &#39;yyyyMM&#39;) order_month
+FROM orders o
+WHERE order_date &gt;= &#39;2013-12-01 00:00:00.0&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders_part&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders_part</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>You will see new partitions created starting from 201312 to 201407.</p></li>
+</ul>
+</div>
+<div class="section" id="exercise-partitioned-tables">
+<h2>Exercise - Partitioned Tables<a class="headerlink" href="#exercise-partitioned-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us take care of this exercise related to partitioning to self evaluate our comfort level in working with partitioned tables.</p>
+<ul class="simple">
+<li><p>Duration: <strong>30 Minutes</strong></p></li>
+<li><p>Use data from <strong>/data/nyse_all/nyse_data</strong></p></li>
+<li><p>Use database <strong>YOUR_OS_USER_NAME_nyse</strong></p></li>
+<li><p>Create partitioned table <strong>nyse_eod_part</strong></p></li>
+<li><p>Field Names: stockticker, tradedate, openprice, highprice, lowprice, closeprice, volume</p></li>
+<li><p>Determine correct data types based on the values</p></li>
+<li><p>Create Managed table with “,” as delimiter.</p></li>
+<li><p>Partition Field should be <strong>tradeyear</strong> and of type <strong>INT</strong> (one partition for corresponding year)</p></li>
+<li><p>Insert data into partitioned table using dynamic partition mode.</p></li>
+<li><p>Here are the steps to come up with the solution.</p>
+<ul>
+<li><p>Review the files under <strong>/data/nyse_all/nyse_data</strong> - determine data types (For example: tradedate should be INT and volume should be BIGINT)</p></li>
+<li><p>Create database <strong>YOUR_OS_USER_NAME_nyse</strong> (if it does not exists)</p></li>
+<li><p>Create non partitioned stage table</p></li>
+<li><p>Load data into non partitioned stage table</p></li>
+<li><p>Validate the count and also see that data is as expected by running simple select query.</p></li>
+<li><p>Create partitioned table</p></li>
+<li><p>Set required properties to use dynamic partition</p></li>
+<li><p>Insert data into partitioned table - here is how you can compute year from tradedate of type int <code class="docutils literal notranslate"><span class="pre">year(to_date(cast(tradedate</span> <span class="pre">AS</span> <span class="pre">STRING),</span> <span class="pre">'yyyyMMdd'))</span> <span class="pre">AS</span> <span class="pre">tradeyear</span></code></p></li>
+<li><p>Run below validate commands to validate</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<p>Here are the instructions to validate the results.</p>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">hdfs</span> <span class="pre">dfs</span> <span class="pre">-ls</span> <span class="pre">/user/YOUR_OS_USER_NAME/warehouse/YOUR_OS_USER_NAME_nyse.db/nyse_eod_part</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">PARTITIONS</span> <span class="pre">YOUR_OS_USER_NAME_nyse.nyse_eod_part</span></code>. You should see partitions for all the years using which you have loaded the data.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">count(1)</span> <span class="pre">FROM</span> <span class="pre">YOUR_OS_USER_NAME_nyse.nyse_eod_part</span></code>. The count should match the number of records in our dataset.</p></li>
+<li><p>You can compare with the output generated by this simple Python code which is validated in our labs.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/data/nyse_all/nyse_data&#39;</span> <span class="c1"># use your path</span>
+<span class="n">all_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/*.txt.gz&quot;</span><span class="p">)</span>
+
+<span class="n">li</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">li</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "apache_toree_scala"
+        },
+        kernelOptions: {
+            kernelName: "apache_toree_scala",
+            path: "./spark-sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'apache_toree_scala'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03_managing_tables_-_basic_ddl_and_dml.html" title="previous page">Managing Tables - Basic DDL and DML</a>
+    <a class='right-next' id="next-link" href="05_overview_of_spark_sql_functions.html" title="next page">Overview of Spark SQL Functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

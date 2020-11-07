@@ -1,0 +1,2481 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview of Spark SQL Functions &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Windowing Functions" href="06_windowing_functions.html" />
+    <link rel="prev" title="Managing Tables - DML and Partitioning" href="04_managing_tables_-_dml_and_partitioning.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark_sql.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_managing_tables_-_basic_ddl_and_dml.html">
+   Managing Tables - Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_managing_tables_-_dml_and_partitioning.html">
+   Managing Tables - DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Overview of Spark SQL Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html">
+   Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#prepare-hr-database">
+   Prepare HR Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-windowing-functions">
+   Overview of Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#aggregations-using-windowing-functions">
+   Aggregations using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-lead-and-lag-values">
+   Getting LEAD and LAG values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-first-and-last-values">
+   Getting first and last values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#ranking-using-windowing-functions">
+   Ranking using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#understanding-order-of-execution-of-sql">
+   Understanding order of execution of SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-nested-sub-queries">
+   Overview of Nested Sub Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#filtering-window-function-results">
+   Filtering - Window Function Results
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-sql/05_overview_of_spark_sql_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-sql/05_overview_of_spark_sql_functions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-functions">
+   Overview of Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#validating-functions">
+   Validating Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-manipulation-functions">
+   String Manipulation Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-conversion-and-length">
+     Case Conversion and Length
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-data-substr-and-split">
+     Extracting Data - substr and split
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trimming-and-padding-functions">
+     Trimming and Padding Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-and-concatenating-multiple-strings">
+     Reverse and Concatenating multiple strings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#date-manipulation-functions">
+   Date Manipulation Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-current-date-and-timestamp">
+     Getting Current Date and Timestamp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#date-arithmetic">
+     Date Arithmetic
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beginning-date-or-time-trunc-and-date-trunc">
+     Beginning Date or Time - trunc and date_trunc
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-information-using-date-format">
+     Extracting information using date_format
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-information-calendar-functions">
+     Extracting information - Calendar functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dealing-with-unix-timestamp">
+     Dealing with Unix Timestamp
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overview-of-numeric-functions">
+     Overview of Numeric Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-type-conversion">
+   Data Type Conversion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-null-values">
+   Handling NULL Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-case-and-when">
+   Using CASE and WHEN
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#query-example-word-count">
+   Query Example - Word Count
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="overview-of-spark-sql-functions">
+<h1>Overview of Spark SQL Functions<a class="headerlink" href="#overview-of-spark-sql-functions" title="Permalink to this headline">¶</a></h1>
+<p>Let us go through the functions that can be used while processing the data. These are typically applied on columns to get derived values from existing column values.</p>
+<ul class="simple">
+<li><p>Overview of Functions</p></li>
+<li><p>Validating Functions</p></li>
+<li><p>String Manipulation Functions</p></li>
+<li><p>Date Manipulation Functions</p></li>
+<li><p>Overview of Numeric Functions</p></li>
+<li><p>Data Type Conversion</p></li>
+<li><p>Handling NULL Values</p></li>
+<li><p>Using CASE and WHEN</p></li>
+<li><p>Query Example - Word Count</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.sql.warehouse.dir&quot;</span><span class="o">,</span> <span class="s">&quot;/user/itversity/warehouse&quot;</span><span class="o">).</span>
+    <span class="n">enableHiveSupport</span><span class="o">.</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Spark SQL - Overview of Functions&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-functions">
+<h2>Overview of Functions<a class="headerlink" href="#overview-of-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us get overview of pre-defined functions in Spark SQL.</p>
+<ul class="simple">
+<li><p>We can get list of functions by running <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">functions</span></code></p></li>
+<li><p>We can use DESCRIBE command to get the syntax and symantecs of a function - <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FUNCTION</span> <span class="pre">substr</span></code></p></li>
+<li><p>Following are the categories of functions that are more commonly used.</p>
+<ul>
+<li><p>String Manipulation</p></li>
+<li><p>Date Manipulation</p></li>
+<li><p>Numeric Functions</p></li>
+<li><p>Type Conversion Functions</p></li>
+<li><p>CASE and WHEN</p></li>
+<li><p>and more</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">functions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SHOW functions&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">catalog</span><span class="o">.</span><span class="n">listFunctions</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FUNCTION</span> <span class="n">substr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION substr&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="validating-functions">
+<h2>Validating Functions<a class="headerlink" href="#validating-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us see how we can validate Spark SQL functions.</p>
+<ul class="simple">
+<li><p>Spark SQL follows MySQL style. To validate functions we can just use SELECT clause - e. g.: <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">current_date;</span></code></p></li>
+<li><p>Another example - <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">substr('Hello</span> <span class="pre">World',</span> <span class="pre">1,</span> <span class="pre">5);</span></code></p></li>
+<li><p>If you want to use Oracle style, you can create table by name dual and insert one record.</p></li>
+<li><p>You can also create temporary view on top of dataframe and start writing SQL Queries. We will see an example with Scala based approach. Here are the code snippets using both Scala as well as Pyspark.</p></li>
+</ul>
+<p><strong>Using Scala</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">orders</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span>
+    <span class="n">schema</span><span class="p">(</span><span class="s2">&quot;order_id INT, order_date STRING, order_customer_id INT, order_status STRING&quot;</span><span class="p">)</span><span class="o">.</span>
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/retail_db/orders&quot;</span><span class="p">)</span>
+<span class="n">orders</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;orders_temp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Using Python</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span> \
+    <span class="n">schema</span><span class="p">(</span><span class="s2">&quot;order_id INT, order_date STRING, order_customer_id INT, order_status STRING&quot;</span><span class="p">)</span><span class="o">.</span> \
+    <span class="n">csv</span><span class="p">(</span><span class="s2">&quot;/public/retail_db/orders&quot;</span><span class="p">)</span>
+<span class="n">orders</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;orders_temp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_date</span> <span class="nc">AS</span> <span class="n">current_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;Hello World&#39;, 1, 5) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_database</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">dual</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">dual</span> <span class="o">(</span><span class="n">dummy</span> <span class="nc">STRING</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">INSERT</span> <span class="nc">INTO</span> <span class="n">dual</span> <span class="nc">VALUES</span> <span class="o">(</span><span class="sc">&#39;X&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_date</span> <span class="nc">AS</span> <span class="n">current_date</span> <span class="nc">FROM</span> <span class="n">dual</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;Hello World&#39;, 1, 5) AS result FROM dual
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is how you can validate functions using Data Frame.</p>
+<ul>
+<li><p>Create Data Frame</p></li>
+<li><p>Create temporary view using Data Frame</p></li>
+<li><p>Run queries using view with relevant functions</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">orders</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span>
+    <span class="n">schema</span><span class="o">(</span><span class="s">&quot;order_id INT, order_date STRING, order_customer_id INT, order_status STRING&quot;</span><span class="o">).</span>
+    <span class="n">csv</span><span class="o">(</span><span class="s">&quot;/public/retail_db/orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="o">(</span><span class="s">&quot;orders_temp&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">o</span><span class="o">.*,</span> <span class="n">lower</span><span class="o">(</span><span class="n">order_status</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_status_lower</span> <span class="nc">FROM</span> <span class="n">orders_temp</span> <span class="nc">AS</span> <span class="n">o</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="string-manipulation-functions">
+<h2>String Manipulation Functions<a class="headerlink" href="#string-manipulation-functions" title="Permalink to this headline">¶</a></h2>
+<p>We use string manipulation functions quite extensively. Here are some of the important functions which we typically use.</p>
+<ul class="simple">
+<li><p>Case Conversion - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
+<li><p>Getting size of the column value - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+<li><p>Extracting Data - <code class="docutils literal notranslate"><span class="pre">substr</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code></p></li>
+<li><p>Trimming and Padding functions - <code class="docutils literal notranslate"><span class="pre">trim</span></code>, <code class="docutils literal notranslate"><span class="pre">rtrim</span></code>, <code class="docutils literal notranslate"><span class="pre">ltrim</span></code>, <code class="docutils literal notranslate"><span class="pre">rpad</span></code> and <code class="docutils literal notranslate"><span class="pre">lpad</span></code></p></li>
+<li><p>Reversing strings - <code class="docutils literal notranslate"><span class="pre">reverse</span></code></p></li>
+<li><p>Concatenating multiple strings <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code></p></li>
+</ul>
+<div class="section" id="case-conversion-and-length">
+<h3>Case Conversion and Length<a class="headerlink" href="#case-conversion-and-length" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to perform case conversion functions of a string and also length of a string.</p>
+<ul class="simple">
+<li><p>Case Conversion Functions - <code class="docutils literal notranslate"><span class="pre">lower</span></code>, <code class="docutils literal notranslate"><span class="pre">upper</span></code>, <code class="docutils literal notranslate"><span class="pre">initcap</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT lower(&#39;hEllo wOrlD&#39;) AS lower_result,
+    upper(&#39;hEllo wOrlD&#39;) AS upper_result,
+    initcap(&#39;hEllo wOrlD&#39;) AS initcap_result
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Getting length - <code class="docutils literal notranslate"><span class="pre">length</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT length(&#39;hEllo wOrlD&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us see how to use these functions on top of the table. We will use orders table which was loaded as part of last section.</p>
+<ul class="simple">
+<li><p>order_status for some of the orders is in lower case and we will convert every thing to upper case.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span> 
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_id</span><span class="o">,</span> <span class="n">order_date</span><span class="o">,</span> <span class="n">order_customer_id</span><span class="o">,</span>
+    <span class="n">lower</span><span class="o">(</span><span class="n">order_status</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_status</span><span class="o">,</span>
+    <span class="n">length</span><span class="o">(</span><span class="n">order_status</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_status_length</span>
+<span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extracting-data-substr-and-split">
+<h3>Extracting Data - substr and split<a class="headerlink" href="#extracting-data-substr-and-split" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to extract data from strings using <code class="docutils literal notranslate"><span class="pre">substr</span></code>/<code class="docutils literal notranslate"><span class="pre">substring</span></code> and <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p>
+<ul class="simple">
+<li><p>We can get syntax and symantecs of the functions using <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FUNCTION</span></code></p></li>
+<li><p>We can extract first four characters from string using substr or substring.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FUNCTION</span> <span class="n">substr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FUNCTION</span> <span class="n">substring</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION substring&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 1, 4) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 6, 2) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 9, 2) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT substr(&#39;2013-07-25 00:00:00.0&#39;, 12) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us see how we can extract date part from order_date of orders.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_id</span><span class="o">,</span>
+  <span class="n">substr</span><span class="o">(</span><span class="n">order_date</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_date</span><span class="o">,</span>
+  <span class="n">order_customer_id</span><span class="o">,</span>
+  <span class="n">order_status</span>
+<span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us understand how to extract the information from the string where there is a delimiter.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">split</span></code> converts delimited string into array.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT split(&#39;2013-07-25&#39;, &#39;-&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT split(&#39;2013-07-25&#39;, &#39;-&#39;)[1] AS result
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>We can use explode to convert an array into records.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT explode(split(&#39;2013-07-25&#39;, &#39;-&#39;)) AS result
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="trimming-and-padding-functions">
+<h3>Trimming and Padding Functions<a class="headerlink" href="#trimming-and-padding-functions" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to trim or remove leading and/or trailing spaces in a string.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ltrim</span></code> is used to remove the spaces on the left side of the string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtrim</span></code> is used to remove the spaces on the right side of the string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trim</span></code> is used to remove the spaces on both sides of the string.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT ltrim(&#39;     Hello World&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT rtrim(&#39;     Hello World       &#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT length(trim(&#39;     Hello World       &#39;)) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us understand how to use padding to pad characters to a string.</p>
+<ul class="simple">
+<li><p>Let us assume that there are 3 fields - year, month and date which are of type integer.</p></li>
+<li><p>If we have to concatenate all the 3 fields and create a date, we might have to pad month and date with 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lpad</span></code> is used more often than <code class="docutils literal notranslate"><span class="pre">rpad</span></code> especially when we try to build the date from separate columns.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="mi">2013</span> <span class="nc">AS</span> <span class="n">year</span><span class="o">,</span> <span class="mi">7</span> <span class="nc">AS</span> <span class="n">month</span><span class="o">,</span> <span class="mi">25</span> <span class="nc">AS</span> <span class="n">myDate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">lpad</span><span class="o">(</span><span class="mi">7</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">lpad</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">lpad</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reverse-and-concatenating-multiple-strings">
+<h3>Reverse and Concatenating multiple strings<a class="headerlink" href="#reverse-and-concatenating-multiple-strings" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to reverse a string as well as concatenate multiple strings.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">reverse</span></code> to reverse a string.</p></li>
+<li><p>We can concatenate multiple strings using <code class="docutils literal notranslate"><span class="pre">concat</span></code> and <code class="docutils literal notranslate"><span class="pre">concat_ws</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat_ws</span></code> is typically used if we want to have the same string between all the strings that are being concatenated.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT reverse(&#39;Hello World&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT concat(&#39;Hello &#39;, &#39;World&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT concat(&#39;Order Status is &#39;, order_status) AS result
+FROM orders LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    SELECT concat(&#39;Order Status is &#39;, order_status) AS result</span>
+<span class="s">    FROM orders_part LIMIT 10</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="o">(</span><span class="nc">SELECT</span> <span class="mi">2013</span> <span class="nc">AS</span> <span class="n">year</span><span class="o">,</span> <span class="mi">7</span> <span class="nc">AS</span> <span class="n">month</span><span class="o">,</span> <span class="mi">25</span> <span class="nc">AS</span> <span class="n">myDate</span><span class="o">)</span> <span class="n">q</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">concat</span><span class="o">(</span><span class="n">year</span><span class="o">,</span> <span class="sc">&#39;-&#39;</span><span class="o">,</span> <span class="n">lpad</span><span class="o">(</span><span class="n">month</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span> <span class="sc">&#39;-&#39;</span><span class="o">,</span>
+              <span class="n">lpad</span><span class="o">(</span><span class="n">myDate</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">order_date</span>
+<span class="nc">FROM</span>
+    <span class="o">(</span><span class="nc">SELECT</span> <span class="mi">2013</span> <span class="nc">AS</span> <span class="n">year</span><span class="o">,</span> <span class="mi">7</span> <span class="nc">AS</span> <span class="n">month</span><span class="o">,</span> <span class="mi">25</span> <span class="nc">AS</span> <span class="n">myDate</span><span class="o">)</span> <span class="n">q</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">concat_ws</span><span class="o">(</span><span class="sc">&#39;-&#39;</span><span class="o">,</span> <span class="n">year</span><span class="o">,</span> <span class="n">lpad</span><span class="o">(</span><span class="n">month</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">),</span>
+              <span class="n">lpad</span><span class="o">(</span><span class="n">myDate</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">order_date</span>
+<span class="nc">FROM</span>
+    <span class="o">(</span><span class="nc">SELECT</span> <span class="mi">2013</span> <span class="nc">AS</span> <span class="n">year</span><span class="o">,</span> <span class="mi">7</span> <span class="nc">AS</span> <span class="n">month</span><span class="o">,</span> <span class="mi">25</span> <span class="nc">AS</span> <span class="n">myDate</span><span class="o">)</span> <span class="n">q</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-manipulation-functions">
+<h2>Date Manipulation Functions<a class="headerlink" href="#date-manipulation-functions" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through some of the important date manipulation functions.</p>
+<ul class="simple">
+<li><p>Getting Current Date and Timestamp</p></li>
+<li><p>Date Arithmetic such as <code class="docutils literal notranslate"><span class="pre">date_add</span></code></p></li>
+<li><p>Getting beginning date or time using <code class="docutils literal notranslate"><span class="pre">trunc</span></code> or <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code></p></li>
+<li><p>Extracting information using <code class="docutils literal notranslate"><span class="pre">date_format</span></code> as well as calendar functions.</p></li>
+<li><p>Dealing with unix timestamp using <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code>, <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code></p></li>
+</ul>
+<div class="section" id="getting-current-date-and-timestamp">
+<h3>Getting Current Date and Timestamp<a class="headerlink" href="#getting-current-date-and-timestamp" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to get the details about current or today’s date as well as current timestamp.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">current_date</span></code> is the function or operator which will return today’s date.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">current_timestamp</span></code> is the function or operator which will return current time up to milliseconds.</p></li>
+<li><p>These are not like other functions and do not use <strong>()</strong> at the end.</p></li>
+<li><p>These are not listed as part of <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">functions</span></code> and we can get help using <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span></code>.</p></li>
+<li><p>There is a format associated with date and timestamp.</p>
+<ul>
+<li><p>Date - <code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span></code></p></li>
+<li><p>Timestamp - <code class="docutils literal notranslate"><span class="pre">yyyy-MM-dd</span> <span class="pre">HH:mm:ss.SSS</span></code></p></li>
+</ul>
+</li>
+<li><p>Keep in mind that a date or timestamp in Spark SQL are nothing but special strings containing values using above specified formats. We can apply all string manipulation functions on date or timestamp.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_date</span> <span class="nc">AS</span> <span class="n">current_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_date</span><span class="o">()</span> <span class="nc">AS</span> <span class="n">current_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_timestamp</span> <span class="nc">AS</span> <span class="n">current_timestamp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT current_timestamp AS current_timestamp&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="date-arithmetic">
+<h3>Date Arithmetic<a class="headerlink" href="#date-arithmetic" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to perform arithmetic on dates or timestamps.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date_add</span></code> can be used to add or subtract days.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date_sub</span></code> can be used to subtract or add days.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">datediff</span></code> can be used to get difference between 2 dates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_months</span></code> can be used add months to a date</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">date_add</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="mi">32</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_add(&#39;2018-04-15&#39;, 730) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_add(&#39;2018-04-15&#39;, -730) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">date_sub</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="mi">30</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT datediff(&#39;2019-03-30&#39;, &#39;2017-12-31&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT datediff(&#39;2017-12-31&#39;, &#39;2019-03-30&#39;) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">add_months</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT add_months(&#39;2019-01-31&#39;, 1) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT add_months(&#39;2019-05-31&#39;, 1) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">add_months</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">date_add</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">,</span> <span class="o">-</span><span class="mi">730</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="beginning-date-or-time-trunc-and-date-trunc">
+<h3>Beginning Date or Time - trunc and date_trunc<a class="headerlink" href="#beginning-date-or-time-trunc-and-date-trunc" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">trunc</span></code> and <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code> on dates or timestamps and get beginning date of the period.</p>
+<ul class="simple">
+<li><p>We can use <strong>MM</strong> to get beginning date of the month.</p></li>
+<li><p><strong>YY</strong> can be used to get begining date of the year.</p></li>
+<li><p>We can apply trunc either on date or timestamp, however we cannot apply it other than month or year (such an hour or day).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FUNCTION</span> <span class="n">trunc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION trunc&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT trunc(current_date, &#39;MM&#39;) AS beginning_date_month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT trunc(&#39;2019-01-23&#39;, &#39;MM&#39;) AS beginning_date_month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT trunc(current_date, &#39;YY&#39;) AS beginning_date_year 
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>This will not work</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT trunc(current_timestamp, &#39;HH&#39;) AS doesnt_work
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>While <code class="docutils literal notranslate"><span class="pre">trunc</span></code> can be used to get beginning time of a given month or year, we can get the beginning time up to Second using <code class="docutils literal notranslate"><span class="pre">date_trunc</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION date_trunc&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_trunc(&#39;HOUR&#39;, current_timestamp) AS hour_beginning
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extracting-information-using-date-format">
+<h3>Extracting information using date_format<a class="headerlink" href="#extracting-information-using-date-format" title="Permalink to this headline">¶</a></h3>
+<p>Let us understand how to use <code class="docutils literal notranslate"><span class="pre">date_format</span></code> to extract information from date or timestamp.</p>
+<p>Here is how we can get date related information such as year, month, day etc from date or timestamp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION date_format&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_timestamp</span> <span class="nc">AS</span> <span class="n">current_timestamp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;yyyy&#39;) AS year
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;yy&#39;) AS year
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;MM&#39;) AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;dd&#39;) AS day_of_month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;DD&#39;) AS day_of_year
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;MMM&#39;) AS month_name
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;MMMM&#39;) AS month_name
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;EE&#39;) AS dayname
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;EEEE&#39;) AS dayname
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is how we can get time related information such as hour, minute, seconds, milliseconds etc from timestamp.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;HH&#39;) AS hour24
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;hh&#39;) AS hour12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;mm&#39;) AS minutes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;ss&#39;) AS seconds
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT current_timestamp AS current_timestamp, 
+    date_format(current_timestamp, &#39;SS&#39;) AS millis
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is how we can get the information from date or timestamp in the format we require.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_format(current_timestamp, &#39;yyyyMM&#39;) AS current_month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_format(current_timestamp, &#39;yyyyMMdd&#39;) AS current_date
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT date_format(current_timestamp, &#39;yyyy/MM/dd&#39;) AS current_date
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extracting-information-calendar-functions">
+<h3>Extracting information - Calendar functions<a class="headerlink" href="#extracting-information-calendar-functions" title="Permalink to this headline">¶</a></h3>
+<p>We can get year, month, day etc from date or timestamp using functions. There are functions such as <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">dayofmonth</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">weekofyear</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code> etc available for us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION day&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION dayofmonth&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION month&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION weekofyear&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FUNCTION year&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Let us see the usage of the functions such as day, dayofmonth, month, weekofyear, year etc.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">year</span><span class="o">(</span><span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">month</span><span class="o">(</span><span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">month</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">weekofyear</span><span class="o">(</span><span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">weekofyear</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">day</span><span class="o">(</span><span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">day</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">dayofmonth</span><span class="o">(</span><span class="n">current_date</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">dayofmonth</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dealing-with-unix-timestamp">
+<h3>Dealing with Unix Timestamp<a class="headerlink" href="#dealing-with-unix-timestamp" title="Permalink to this headline">¶</a></h3>
+<p>Let us go through the functions that can be used to deal with Unix Timestamp.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code> can be used to convert Unix epoch to regular timestamp.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> or <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code> can be used to convert timestamp to Unix epoch.</p></li>
+<li><p>We can get Unix epoch or Unix timestamp by running <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">'+%s'</span></code> in Unix/Linux terminal</p></li>
+<li><p>We can DESCRIBE on the above functions to get details about them.</p></li>
+</ul>
+<p>Let us sww how we can use functions such as <code class="docutils literal notranslate"><span class="pre">from_unixtime</span></code>, <code class="docutils literal notranslate"><span class="pre">unix_timestamp</span></code> or <code class="docutils literal notranslate"><span class="pre">to_unix_timestamp</span></code> to convert between timestamp and Unix timestamp or epoch.</p>
+<ul class="simple">
+<li><p>We can unix epoch in Unix/Linux terminal using <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">'+%s'</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">from_unixtime</span><span class="o">(</span><span class="mi">1556662731</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">timestamp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT to_unix_timestamp(&#39;2019-04-30 18:18:51&#39;) AS unixtime
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT from_unixtime(1556662731, &#39;yyyyMM&#39;) AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT from_unixtime(1556662731, &#39;yyyy-MM-dd&#39;) AS date
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT from_unixtime(1556662731, &#39;yyyy-MM-dd HH:mm&#39;) AS timestamp
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT from_unixtime(1556662731, &#39;yyyy-MM-dd hh:mm&#39;) AS timestamp
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd&#39;) AS date
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd HH:mm:ss&#39;) AS timestamp
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-numeric-functions">
+<h3>Overview of Numeric Functions<a class="headerlink" href="#overview-of-numeric-functions" title="Permalink to this headline">¶</a></h3>
+<p>Here are some of the numeric functions we might use quite often.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">abs</span></code> - always return positive number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">round</span></code> - rounds off to specified precision</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ceil</span></code>, <code class="docutils literal notranslate"><span class="pre">floor</span></code> - always return integer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">greatest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rand</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pow</span></code>, <code class="docutils literal notranslate"><span class="pre">sqrt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cumedist</span></code>, <code class="docutils literal notranslate"><span class="pre">stddev</span></code>, <code class="docutils literal notranslate"><span class="pre">variance</span></code></p></li>
+</ul>
+<p>Some of the functions highlighted are aggregate functions, eg: <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">avg</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code> etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">abs</span><span class="o">(-</span><span class="mf">10.5</span><span class="o">),</span> <span class="n">abs</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> <span class="n">order_item_subtotal</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">avg</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_avg</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> 
+    <span class="n">avg</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_avg</span> 
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_item_order_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> 
+    <span class="n">sum</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_sum</span>
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_item_order_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span>
+    <span class="n">round</span><span class="o">(</span><span class="mf">10.58</span><span class="o">)</span> <span class="n">rnd</span><span class="o">,</span>
+    <span class="n">floor</span><span class="o">(</span><span class="mf">10.58</span><span class="o">)</span> <span class="n">flr</span><span class="o">,</span>
+    <span class="n">ceil</span><span class="o">(</span><span class="mf">10.58</span><span class="o">)</span> <span class="n">cl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span>
+    <span class="n">round</span><span class="o">(</span><span class="mf">10.44</span><span class="o">)</span> <span class="n">rnd1</span><span class="o">,</span>
+    <span class="n">round</span><span class="o">(</span><span class="mf">10.44</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="n">rnd1</span><span class="o">,</span>
+    <span class="n">round</span><span class="o">(</span><span class="mf">10.46</span><span class="o">,</span> <span class="mi">1</span><span class="o">)</span> <span class="n">rnd2</span><span class="o">,</span>
+    <span class="n">floor</span><span class="o">(</span><span class="mf">10.44</span><span class="o">)</span> <span class="n">flr</span><span class="o">,</span>
+    <span class="n">ceil</span><span class="o">(</span><span class="mf">10.44</span><span class="o">)</span> <span class="n">cl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">avg</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_avg</span> <span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">round</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_avg</span> 
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">avg</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_avg</span> 
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_item_order_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_sum</span>
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_item_order_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">greatest</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">11</span><span class="o">,</span> <span class="mi">13</span><span class="o">,</span> <span class="o">-</span><span class="mi">13</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">rand</span><span class="o">()</span> <span class="nc">AS</span> <span class="n">rand</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">cast</span><span class="o">(</span><span class="n">round</span><span class="o">(</span><span class="n">rand</span><span class="o">()</span> <span class="o">*</span> <span class="mi">1</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">int</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">random_int</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_sum</span><span class="o">,</span>
+    <span class="n">min</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_item_subtotal_min</span><span class="o">,</span>
+    <span class="n">max</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_item_subtotal_max</span> 
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">order_item_order_id</span>
+<span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">order_item_order_id</span><span class="o">,</span> <span class="n">order_item_subtotal</span>
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">round</span><span class="o">(</span><span class="n">sum</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_revenue_sum</span><span class="o">,</span>
+    <span class="n">min</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_item_subtotal_min</span><span class="o">,</span>
+    <span class="n">max</span><span class="o">(</span><span class="n">order_item_subtotal</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">order_item_subtotal_max</span> 
+<span class="nc">FROM</span> <span class="n">order_items</span>
+<span class="nc">WHERE</span> <span class="n">order_item_order_id</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-type-conversion">
+<h2>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can type cast to change the data type of extracted value to its original type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">current_date</span> <span class="nc">AS</span> <span class="n">current_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT split(current_date, &#39;-&#39;)[1] AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT cast(split(current_date, &#39;-&#39;)[1] AS INT) AS month
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT cast(&#39;0.04&#39; AS FLOAT) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT cast(&#39;0.04&#39; AS INT) AS zero
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT cast(&#39;xyz&#39; AS INT) AS returns_null
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE EXTERNAL TABLE IF NOT EXISTS orders_single_column (
+    s STRING
+) LOCATION &#39;/user/itversity/warehouse/itversity_retail.db/orders&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders_single_column</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT split(s, &#39;,&#39;)[0] AS order_id,
+    split(s, &#39;,&#39;)[1] AS order_date,
+    split(s, &#39;,&#39;)[2] AS order_customer_id,
+    split(s, &#39;,&#39;)[3] AS order_status
+FROM orders_single_column LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT cast(split(s, &#39;,&#39;)[0] AS INT) AS order_id,
+    cast(split(s, &#39;,&#39;)[1] AS TIMESTAMP) AS order_date,
+    cast(split(s, &#39;,&#39;)[2] AS INT) AS order_customer_id,
+    cast(split(s, &#39;,&#39;)[3] AS STRING) AS order_status
+FROM orders_single_column LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="handling-null-values">
+<h2>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to handle nulls using specific functions in Spark SQL.</p>
+<ul class="simple">
+<li><p>By default if we try to add or concatenate null to another column or expression or literal, it will return null.</p></li>
+<li><p>If we want to replace null with some default value, we can use <code class="docutils literal notranslate"><span class="pre">nvl</span></code>. For not null values, nvl returns the original expression value.</p>
+<ul>
+<li><p>Replace commission_pct with 0 if it is null.</p></li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">coalesce</span></code> in the place of <code class="docutils literal notranslate"><span class="pre">nvl</span></code>.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coalesce</span></code> returns first not null value if we pass multiple arguments to it.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nvl2</span></code> can be used to perform one action when the value is not null and some other action when the value is null.</p>
+<ul>
+<li><p>We want to increase commission_pct by 1 if it is not null and set commission_pct to 2 if it is null.</p></li>
+</ul>
+</li>
+<li><p>We can also use <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span> <span class="pre">ELSE</span> <span class="pre">END</span></code> for any conditional logic.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="mi">1</span> <span class="o">+</span> <span class="nc">NULL</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT concat(&#39;Hello&#39;, NULL) AS result
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">nvl</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="n">nvl</span><span class="o">,</span> <span class="n">coalesce</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">coalesce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">nvl</span><span class="o">(</span><span class="nc">NULL</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="n">nvl</span> <span class="o">,</span> <span class="n">coalesce</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">coalesce</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">coalesce</span><span class="o">(</span><span class="nc">NULL</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">nvl</span><span class="o">(</span><span class="nc">NULL</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">,</span> <span class="mi">3</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">sales</span><span class="o">(</span>
+    <span class="n">sales_person_id</span> <span class="nc">INT</span><span class="o">,</span>
+    <span class="n">sales_amount</span> <span class="nc">FLOAT</span><span class="o">,</span>
+    <span class="n">commission_pct</span> <span class="nc">INT</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">INSERT</span> <span class="nc">INTO</span> <span class="n">sales</span> <span class="nc">VALUES</span>
+    <span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1000</span><span class="o">,</span> <span class="mi">10</span><span class="o">),</span>
+    <span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1500</span><span class="o">,</span> <span class="mi">8</span><span class="o">),</span>
+    <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">500</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">),</span>
+    <span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">800</span><span class="o">,</span> <span class="mi">5</span><span class="o">),</span>
+    <span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">250</span><span class="o">,</span> <span class="nc">NULL</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">nvl</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_pct</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">coalesce</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_pct</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="n">commission_pct</span> <span class="o">/</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">incorrect_commission_amount</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="n">nvl</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">/</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_amount</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="n">coalesce</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span> <span class="o">/</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_amount</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">nvl2</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="n">commission_pct</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_pct</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="n">round</span><span class="o">(</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="n">nvl2</span><span class="o">(</span><span class="n">commission_pct</span><span class="o">,</span> <span class="n">commission_pct</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="o">/</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">2</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">commission_amount</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="nc">CASE</span> <span class="nc">WHEN</span> <span class="n">commission_pct</span> <span class="nc">IS</span> <span class="nc">NULL</span> 
+        <span class="nc">THEN</span> <span class="mi">2</span>
+        <span class="nc">ELSE</span> <span class="n">commission_pct</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="nc">END</span> <span class="nc">AS</span> <span class="n">commission_pct</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="nc">CASE</span> <span class="nc">WHEN</span> <span class="n">commission_pct</span> <span class="nc">IS</span> <span class="nc">NOT</span> <span class="nc">NULL</span> 
+        <span class="nc">THEN</span> <span class="n">commission_pct</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nc">ELSE</span> <span class="mi">2</span>
+    <span class="nc">END</span> <span class="nc">AS</span> <span class="n">commission_pct</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">s</span><span class="o">.*,</span> 
+    <span class="nc">CASE</span> <span class="nc">WHEN</span> <span class="n">commission_pct</span> <span class="nc">IS</span> <span class="nc">NULL</span> 
+        <span class="nc">THEN</span> <span class="n">round</span><span class="o">((</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">100</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="nc">ELSE</span> <span class="n">round</span><span class="o">((</span><span class="n">sales_amount</span> <span class="o">*</span> <span class="o">(</span><span class="n">commission_pct</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)/</span> <span class="mi">100</span><span class="o">),</span> <span class="mi">2</span><span class="o">)</span>
+    <span class="nc">END</span> <span class="nc">AS</span> <span class="n">commission_amount</span>
+<span class="nc">FROM</span> <span class="n">sales</span> <span class="nc">AS</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-case-and-when">
+<h2>Using CASE and WHEN<a class="headerlink" href="#using-case-and-when" title="Permalink to this headline">¶</a></h2>
+<p>At times we might have to select values from multiple columns conditionally.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">CASE</span></code> and <code class="docutils literal notranslate"><span class="pre">WHEN</span></code> for that.</p></li>
+<li><p>Let us implement this conditional logic to come up with derived order_status.</p>
+<ul>
+<li><p>If order_status is COMPLETE or CLOSED, set COMPLETED</p></li>
+<li><p>If order_status have PENDING in it, then we will say PENDING</p></li>
+<li><p>If order_status have PROCESSING or PAYMENT_REVIEW in it, then we will say PENDING</p></li>
+<li><p>We will set all others as OTHER</p></li>
+</ul>
+</li>
+<li><p>We can also have <code class="docutils literal notranslate"><span class="pre">ELSE</span></code> as part of <code class="docutils literal notranslate"><span class="pre">CASE</span></code> and <code class="docutils literal notranslate"><span class="pre">WHEN</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="nc">DISTINCT</span> <span class="n">order_status</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.*,
+    CASE WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
+    END AS updated_order_status
+FROM orders o
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.*,
+    CASE WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
+    ELSE order_status
+    END AS updated_order_status
+FROM orders o
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.*,
+    CASE 
+        WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
+        WHEN order_status LIKE &#39;%PENDING%&#39; THEN &#39;PENDING&#39;
+        ELSE &#39;OTHER&#39;
+    END AS updated_order_status
+FROM orders o
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT o.*,
+    CASE 
+        WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
+        WHEN order_status LIKE &#39;%PENDING%&#39; OR order_status IN (&#39;PROCESSING&#39;, &#39;PAYMENT_REVIEW&#39;)
+            THEN &#39;PENDING&#39;
+        ELSE &#39;OTHER&#39;
+    END AS updated_order_status
+FROM orders o
+LIMIT 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+SELECT DISTINCT order_status,
+    CASE 
+        WHEN order_status IN (&#39;COMPLETE&#39;, &#39;CLOSED&#39;) THEN &#39;COMPLETED&#39;
+        WHEN order_status LIKE &#39;%PENDING%&#39; OR order_status IN (&#39;PROCESSING&#39;, &#39;PAYMENT_REVIEW&#39;)
+            THEN &#39;PENDING&#39;
+        ELSE &#39;OTHER&#39;
+    END AS updated_order_status
+FROM orders
+ORDER BY updated_order_status
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="query-example-word-count">
+<h2>Query Example - Word Count<a class="headerlink" href="#query-example-word-count" title="Permalink to this headline">¶</a></h2>
+<p>Let us see how we can perform word count using Spark SQL. Using word count as an example we will understand how we can come up with the solution using pre-defined functions available.</p>
+<ul class="simple">
+<li><p>Create table by name lines.</p></li>
+<li><p>Insert data into the table.</p></li>
+<li><p>Split lines into array of words.</p></li>
+<li><p>Explode array of words from each line into individual records.</p></li>
+<li><p>Use group by and get the count. We cannot use <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">BY</span></code> directly on exploded records and hence we need to use nested sub query.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">itversity_demo</span> <span class="nc">CASCADE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_demo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_demo</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">lines</span> <span class="o">(</span><span class="n">s</span> <span class="nc">STRING</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO lines VALUES
+  (&#39;Hello World&#39;),
+  (&#39;How are you&#39;),
+  (&#39;Let us perform the word count&#39;),
+  (&#39;The definition of word count is&#39;),
+  (&#39;to get the count of each word from this data&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">lines</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">)</span> <span class="nc">AS</span> <span class="n">word_array</span> <span class="nc">FROM</span> <span class="n">lines</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SHOW functions&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">words</span> <span class="nc">FROM</span> <span class="n">lines</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="o">(</span><span class="nc">SELECT</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">words</span> <span class="nc">FROM</span> <span class="n">lines</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">words</span><span class="o">,</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">lines</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="o">(</span>
+  <span class="nc">SELECT</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">word</span> <span class="nc">FROM</span> <span class="n">lines</span>
+<span class="o">)</span> <span class="n">q</span>
+<span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">word</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span>
+<span class="o">(</span>
+    <span class="nc">SELECT</span> <span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="o">(</span>
+        <span class="nc">SELECT</span> <span class="n">explode</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="sc">&#39; &#39;</span><span class="o">))</span> <span class="nc">AS</span> <span class="n">word</span> <span class="nc">FROM</span> <span class="n">lines</span>
+    <span class="o">)</span> <span class="n">q</span>
+    <span class="nc">GROUP</span> <span class="nc">BY</span> <span class="n">word</span>
+<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "apache_toree_scala"
+        },
+        kernelOptions: {
+            kernelName: "apache_toree_scala",
+            path: "./spark-sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'apache_toree_scala'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_managing_tables_-_dml_and_partitioning.html" title="previous page">Managing Tables - DML and Partitioning</a>
+    <a class='right-next' id="next-link" href="06_windowing_functions.html" title="next page">Windowing Functions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,2157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Managing Tables - Basic DDL and DML &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Managing Tables - DML and Partitioning" href="04_managing_tables_-_dml_and_partitioning.html" />
+    <link rel="prev" title="Getting Started" href="01_getting_started.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark_sql.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Managing Tables - Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_managing_tables_-_dml_and_partitioning.html">
+   Managing Tables - DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05_overview_of_spark_sql_functions.html">
+   Overview of Spark SQL Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html">
+   Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#prepare-hr-database">
+   Prepare HR Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-windowing-functions">
+   Overview of Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#aggregations-using-windowing-functions">
+   Aggregations using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-lead-and-lag-values">
+   Getting LEAD and LAG values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#getting-first-and-last-values">
+   Getting first and last values
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#ranking-using-windowing-functions">
+   Ranking using Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#understanding-order-of-execution-of-sql">
+   Understanding order of execution of SQL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#overview-of-nested-sub-queries">
+   Overview of Nested Sub Queries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_windowing_functions.html#filtering-window-function-results">
+   Filtering - Window Function Results
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-sql/03_managing_tables_-_basic_ddl_and_dml.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-sql/03_managing_tables_-_basic_ddl_and_dml.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-spark-metastore-tables">
+   Create Spark Metastore Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-data-types">
+   Overview of Data Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-comments">
+   Adding Comments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data-into-tables-local">
+   Loading Data into Tables - Local
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data-into-tables-hdfs">
+   Loading Data into Tables - HDFS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-data-append-and-overwrite">
+   Loading Data - Append and Overwrite
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-external-tables">
+   Creating External Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managed-tables-vs-external-tables">
+   Managed Tables vs. External Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-file-formats">
+   Overview of File Formats
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dropping-tables-and-databases">
+   Dropping Tables and Databases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#truncating-tables">
+   Truncating Tables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#managed-tables-exercise">
+   Managed Tables - Exercise
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation">
+     Validation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="managing-tables-basic-ddl-and-dml">
+<h1>Managing Tables - Basic DDL and DML<a class="headerlink" href="#managing-tables-basic-ddl-and-dml" title="Permalink to this headline">¶</a></h1>
+<p>As part of this section we will primarily focus on basic DDL and DML using Spark Metastore.</p>
+<ul class="simple">
+<li><p>Create Spark Metastore Tables</p></li>
+<li><p>Overview of Data Types</p></li>
+<li><p>Adding Comments</p></li>
+<li><p>Loading Data into Tables - Local</p></li>
+<li><p>Loading Data into Tables - HDFS</p></li>
+<li><p>Loading Data - Append and Overwrite</p></li>
+<li><p>Creating External Tables</p></li>
+<li><p>Managed Tables vs. External Tables</p></li>
+<li><p>Overview of File Formats</p></li>
+<li><p>Dropping Tables and Databases</p></li>
+<li><p>Truncating Tables</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.sql.warehouse.dir&quot;</span><span class="o">,</span> <span class="s">&quot;/user/itversity/warehouse&quot;</span><span class="o">).</span>
+    <span class="n">enableHiveSupport</span><span class="o">.</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Spark SQL - Managing Tables - Basic DDL and DML&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are going to use CLIs, you can use Spark SQL using one of the 3 approaches.</p>
+<p><strong>Using Spark SQL</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>spark2-sql \
+    --master yarn \
+    --conf spark.ui.port=0 \
+    --conf spark.sql.warehouse.dir=/user/${USER}/warehouse
+</pre></div>
+</div>
+<p><strong>Using Scala</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>spark2-shell \
+    --master yarn \
+    --conf spark.ui.port=0 \
+    --conf spark.sql.warehouse.dir=/user/${USER}/warehouse
+</pre></div>
+</div>
+<p><strong>Using Pyspark</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pyspark2 \
+    --master yarn \
+    --conf spark.ui.port=0 \
+    --conf spark.sql.warehouse.dir=/user/${USER}/warehouse
+</pre></div>
+</div>
+<div class="section" id="create-spark-metastore-tables">
+<h2>Create Spark Metastore Tables<a class="headerlink" href="#create-spark-metastore-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to create tables in Spark Metastore. We will be focusing on syntax and semantics.</p>
+<ul class="simple">
+<li><p>Let us drop and recreate the table. We need to determine table type, file format based up on the files that will be copied to the table. If the file format is delimited text file then we need to understand field delimiter as well.</p>
+<ul>
+<li><p>Managed Table</p></li>
+<li><p>Text File Format</p></li>
+<li><p>Field Delimiter ‘,’</p></li>
+</ul>
+</li>
+<li><p>We will create the table based on the structure of data in <strong>/data/retail_db/orders</strong></p></li>
+<li><p>If you are using <code class="docutils literal notranslate"><span class="pre">spark-sql</span></code> make sure to end the statements with <strong>semi-colon</strong>. With <code class="docutils literal notranslate"><span class="pre">spark-shell</span></code> or <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> make sure to use <code class="docutils literal notranslate"><span class="pre">spark.sql</span></code> to pass these commands.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+<span class="nc">STORED</span> <span class="nc">AS</span> <span class="nc">TEXTFILE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+<span class="nc">STORED</span> <span class="nc">AS</span> <span class="nc">TEXTFILE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE orders (</span>
+<span class="s">  order_id INT,</span>
+<span class="s">  order_date STRING,</span>
+<span class="s">  order_customer_id INT,</span>
+<span class="s">  order_status STRING</span>
+<span class="s">) ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</span>
+<span class="s">STORED AS TEXTFILE</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SHOW tables&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE orders (</span>
+<span class="s">  order_id INT,</span>
+<span class="s">  order_date STRING,</span>
+<span class="s">  order_customer_id INT,</span>
+<span class="s">  order_status STRING</span>
+<span class="s">) ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</span>
+<span class="s">STORED AS TEXTFILE</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SHOW tables&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Once the table is created either we can copy files using LOAD or insert query results using INSERT. We will see how to use insert to insert query results as part of the next section.</p></li>
+<li><p>We can also use INSERT to insert individual records. But this approach is used less often. Let us create additional table and see how we can use INSERT to insert individual records.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span> <span class="nc">CASCADE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">students</span> <span class="o">(</span>
+    <span class="n">student_id</span> <span class="nc">INT</span><span class="o">,</span>
+    <span class="n">student_first_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_last_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_phone_number</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_address</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">STORED</span> <span class="nc">AS</span> <span class="nc">TEXTFILE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (1, &#39;Scott&#39;, &#39;Tiger&#39;, NULL, NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (2, &#39;Donald&#39;, &#39;Duck&#39;, &#39;1234567890&#39;, NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES 
+    (3, &#39;Mickey&#39;, &#39;Mouse&#39;, &#39;2345678901&#39;, &#39;A Street, One City, Some State, 12345&#39;),
+    (4, &#39;Bubble&#39;, &#39;Guppy&#39;, &#39;6789012345&#39;, &#39;Bubbly Street, Guppy, La la land, 45678&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (&#39;Scott&#39;, &#39;Tiger&#39;, 1, NULL, NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP DATABASE IF EXISTS itversity_sms CASCADE&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS itversity_sms&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_sms&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE students (</span>
+<span class="s">    student_id INT,</span>
+<span class="s">    student_first_name STRING,</span>
+<span class="s">    student_last_name STRING,</span>
+<span class="s">    student_phone_number STRING,</span>
+<span class="s">    student_address STRING</span>
+<span class="s">) STORED AS TEXTFILE</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;INSERT INTO students VALUES (1, &#39;Scott&#39;, &#39;Tiger&#39;, NULL, NULL)&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;INSERT INTO students VALUES (2, &#39;Donald&#39;, &#39;Duck&#39;, &#39;1234567890&#39;, NULL)&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">INSERT INTO students VALUES </span>
+<span class="s">    (3, &#39;Mickey&#39;, &#39;Mouse&#39;, &#39;2345678901&#39;, &#39;A Street, One City, Some State, 12345&#39;),</span>
+<span class="s">    (4, &#39;Bubble&#39;, &#39;Guppy&#39;, &#39;6789012345&#39;, &#39;Bubbly Street, Guppy, La la land, 45678&#39;)</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT * FROM students&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-data-types">
+<h2>Overview of Data Types<a class="headerlink" href="#overview-of-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Let us get an overview of Data Types.</p>
+<ul class="simple">
+<li><p>Syntactically Hive and Spark SQL are almost same.</p></li>
+<li><p>Go to this <a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">hive page</a> and review supported data types.</p></li>
+<li><p>Spark Metastore supports all standard data types.</p>
+<ul>
+<li><p>Numeric - INT, BIGINT, FLOAT etc</p></li>
+<li><p>Alpha Numeric or String - CHAR, VARCHAR, STRING</p></li>
+<li><p>Date and Timestamp - DATE, TIMESTAMP</p></li>
+<li><p>Special Data Types - ARRAY, STRUCT etc</p></li>
+<li><p>Boolean - BOOLEAN</p></li>
+</ul>
+</li>
+<li><p>If the file format is text file with special types, then we need to consider other clauses under DELIMITED ROW FORMAT (if we don’t want to use default delimiters).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span> <span class="nc">CASCADE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">students</span> <span class="o">(</span>
+    <span class="n">student_id</span> <span class="nc">INT</span><span class="o">,</span>
+    <span class="n">student_first_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_last_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_phone_numbers</span> <span class="nc">ARRAY</span><span class="o">&lt;</span><span class="nc">STRING</span><span class="o">&gt;,</span>
+    <span class="n">student_address</span> <span class="nc">STRUCT</span><span class="o">&lt;</span><span class="n">street</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">city</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">state</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">zip</span><span class="k">:</span><span class="kt">STRING&gt;</span>
+<span class="o">)</span> <span class="nc">STORED</span> <span class="nc">AS</span> <span class="nc">TEXTFILE</span>
+<span class="nc">ROW</span> <span class="nc">FORMAT</span>
+    <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;\t&#39;</span>
+    <span class="nc">COLLECTION</span> <span class="nc">ITEMS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (1, &#39;Scott&#39;, &#39;Tiger&#39;, NULL, NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (2, &#39;Donald&#39;, &#39;Duck&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES 
+    (3, &#39;Mickey&#39;, &#39;Mouse&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), STRUCT(&#39;A Street&#39;, &#39;One City&#39;, &#39;Some State&#39;, &#39;12345&#39;)),
+    (4, &#39;Bubble&#39;, &#39;Guppy&#39;, ARRAY(&#39;5678901234&#39;, &#39;6789012345&#39;), STRUCT(&#39;Bubbly Street&#39;, &#39;Guppy&#39;, &#39;La la land&#39;, &#39;45678&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_sms.db/students&quot;</span><span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -cat /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_sms.db/students/*&quot;</span><span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP DATABASE IF EXISTS itversity_sms CASCADE&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS itversity_sms&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_sms&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP TABLE IF EXISTS students&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE students (</span>
+<span class="s">    student_id INT,</span>
+<span class="s">    student_first_name STRING,</span>
+<span class="s">    student_last_name STRING,</span>
+<span class="s">    student_phone_numbers ARRAY&lt;STRING&gt;,</span>
+<span class="s">    student_address STRUCT&lt;street:STRING, city:STRING, state:STRING, zip:STRING&gt;</span>
+<span class="s">) STORED AS TEXTFILE</span>
+<span class="s">ROW FORMAT</span>
+<span class="s">    DELIMITED FIELDS TERMINATED BY &#39;\t&#39;</span>
+<span class="s">    COLLECTION ITEMS TERMINATED BY &#39;,&#39;</span>
+<span class="s">    MAP KEYS TERMINATED BY &#39;:&#39;</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;INSERT INTO students VALUES (1, &#39;Scott&#39;, &#39;Tiger&#39;, NULL, NULL)&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;INSERT INTO students VALUES (2, &#39;Donald&#39;, &#39;Duck&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), NULL)&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">INSERT INTO students VALUES </span>
+<span class="s">    (3, &#39;Mickey&#39;, &#39;Mouse&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), STRUCT(&#39;A Street&#39;, &#39;One City&#39;, &#39;Some State&#39;, &#39;12345&#39;)),</span>
+<span class="s">    (4, &#39;Bubble&#39;, &#39;Guppy&#39;, ARRAY(&#39;5678901234&#39;, &#39;6789012345&#39;), STRUCT(&#39;Bubbly Street&#39;, &#39;Guppy&#39;, &#39;La la land&#39;, &#39;45678&#39;))</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT * FROM students&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-comments">
+<h2>Adding Comments<a class="headerlink" href="#adding-comments" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to create table with comments in Hive using orders as example.</p>
+<ul class="simple">
+<li><p>We can specify comments for both columns as well as tables using COMMENT keyword.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE TABLE orders (
+  order_id INT COMMENT &#39;Unique order id&#39;,
+  order_date STRING COMMENT &#39;Date on which order is placed&#39;,
+  order_customer_id INT COMMENT &#39;Customer id who placed the order&#39;,
+  order_status STRING COMMENT &#39;Current status of the order&#39;
+) COMMENT &#39;Table to save order level details&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE orders (</span>
+<span class="s">  order_id STRING COMMENT &#39;Unique order id&#39;,</span>
+<span class="s">  order_date STRING COMMENT &#39;Date on which order is placed&#39;,</span>
+<span class="s">  order_customer_id INT COMMENT &#39;Customer id who placed the order&#39;,</span>
+<span class="s">  order_status STRING COMMENT &#39;Current status of the order&#39;</span>
+<span class="s">) COMMENT &#39;Table to save order level details&#39;</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Default field delimiter is \001 character.</p></li>
+<li><p>We can see the comments using <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">orders</span></code> or <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FORMATTED</span> <span class="pre">orders</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DESCRIBE</span> <span class="nc">FORMATTED</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span> <span class="c1">// Scala</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loading-data-into-tables-local">
+<h2>Loading Data into Tables - Local<a class="headerlink" href="#loading-data-into-tables-local" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to load data into Spark Metastore tables. We can load either from local file system or from HDFS.</p>
+<ul class="simple">
+<li><p>Data should be in sync with Spark Metastore table structure.</p></li>
+<li><p>We need to create table with the same file format and delimiters so that we can load the data in files into Spark Metastore tables.</p></li>
+<li><p>Our data is in text files, line delimiter is new line character and field delimiter is comma.</p></li>
+<li><p>As our table uses default file format (text file), default line/record delimiter and field delimiter is specified as comma, we should be able to load the data with out any issues.</p></li>
+<li><p>Here is the script which will create table and then load data into the table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE TABLE orders (
+  order_id INT COMMENT &#39;Unique order id&#39;,
+  order_date STRING COMMENT &#39;Date on which order is placed&#39;,
+  order_customer_id INT COMMENT &#39;Customer id who placed the order&#39;,
+  order_status STRING COMMENT &#39;Current status of the order&#39;
+) COMMENT &#39;Table to save order level details&#39;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DROP TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">CREATE TABLE orders (</span>
+<span class="s">  order_id INT COMMENT &#39;Unique order id&#39;,</span>
+<span class="s">  order_date STRING COMMENT &#39;Date on which order is placed&#39;,</span>
+<span class="s">  order_customer_id INT COMMENT &#39;Customer id who placed the order&#39;,</span>
+<span class="s">  order_status STRING COMMENT &#39;Current status of the order&#39;</span>
+<span class="s">) COMMENT &#39;Table to save order level details&#39;</span>
+<span class="s">ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; INTO TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Once the data is loaded we can run these queries to preview the data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loading-data-into-tables-hdfs">
+<h2>Loading Data into Tables - HDFS<a class="headerlink" href="#loading-data-into-tables-hdfs" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how we can load data from HDFS location into Spark Metastore table.</p>
+<ul class="simple">
+<li><p>We can use load command with out <strong>LOCAL</strong> to get data from HDFS location into Spark Metastore Table.</p></li>
+<li><p>User running load command from HDFS location need to have write permissions on the source location as data will be moved (deleted on source and copied to Spark Metastore table)</p></li>
+<li><p>Make sure user have write permissions on the source location.</p></li>
+<li><p>First we need to copy the data into HDFS location where user have write permissions.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+<span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -rm -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -mkdir /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -put -f /data/retail_db/orders /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Here is the script which will truncate the table and then load the data from HDFS location to Hive table.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA INPATH &#39;/user/itversity/retail_db/orders&#39; 
+  INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;TRUNCATE TABLE orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">LOAD DATA INPATH &#39;/user/itversity/retail_db/orders&#39; </span>
+<span class="s">  INTO TABLE orders&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hadoop fs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT * FROM orders LIMIT 10&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT count(1) FROM orders&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>If you look at <strong>/user/training/retail_db</strong> orders directory would have been deleted.</p></li>
+<li><p>Move is much faster compared to copying the files by moving blocks around, hence Hive load command from HDFS location will always try to move files.</p></li>
+</ul>
+</div>
+<div class="section" id="loading-data-append-and-overwrite">
+<h2>Loading Data - Append and Overwrite<a class="headerlink" href="#loading-data-append-and-overwrite" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand different approaches to load the data into Spark Metastore table.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INTO</span> <span class="pre">TABLE</span></code> will append in the existing table</p></li>
+<li><p>If we want to overwrite we have to specify <code class="docutils literal notranslate"><span class="pre">OVERWRITE</span> <span class="pre">INTO</span> <span class="pre">TABLE</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; 
+  INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; 
+  OVERWRITE INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Using Spark SQL with Python or Scala</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;USE itversity_retail&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT count(1) FROM orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; </span>
+<span class="s">  INTO TABLE orders</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT count(1) FROM orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; </span>
+<span class="s">  OVERWRITE INTO TABLE orders</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_retail.db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;SELECT count(1) FROM orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-external-tables">
+<h2>Creating External Tables<a class="headerlink" href="#creating-external-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to create external table in Spark Metastore using orders as example. Also we will see how to load data into external table.</p>
+<ul class="simple">
+<li><p>We just need to add <strong>EXTERNAL</strong> keyword in the <strong>CREATE</strong> clause and <strong>LOCATION</strong> after <strong>STORED AS</strong> clause or just <strong>LOCATION</strong> as part of <strong>CREATE TABLE</strong> statement.</p></li>
+<li><p>We can use same LOAD commands to get data from either local file system or HDFS which we have used for Managed table.</p></li>
+<li><p>Once table is created we can run <code class="docutils literal notranslate"><span class="pre">DESCRIBE</span> <span class="pre">FORMATTED</span> <span class="pre">orders</span></code> to check the metadata of the table and confirm whether it is managed table or external table.</p></li>
+<li><p>We need to specify the location while creating external tables.</p></li>
+</ul>
+<p>Here is the script to create external table in Spark Metastore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -rm -R /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/external/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -mkdir -p /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/external/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE EXTERNAL TABLE orders (
+  order_id INT COMMENT &#39;Unique order id&#39;,
+  order_date STRING COMMENT &#39;Date on which order is placed&#39;,
+  order_customer_id INT COMMENT &#39;Customer id who placed the order&#39;,
+  order_status STRING COMMENT &#39;Current status of the order&#39;
+) COMMENT &#39;Table to save order level details&#39;
+ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;
+LOCATION &#39;/user/itversity/external/retail_db/orders&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/external/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39; 
+  INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/external/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="managed-tables-vs-external-tables">
+<h2>Managed Tables vs. External Tables<a class="headerlink" href="#managed-tables-vs-external-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us compare and contrast between Managed Tables and External Tables.</p>
+<ul class="simple">
+<li><p>When we say EXTERNAL and specify LOCATION or LOCATION alone as part of CREATE TABLE, it makes the table EXTERNAL.</p></li>
+<li><p>Rest of the syntax is same as Managed Table.</p></li>
+<li><p>However, when we drop <strong>Managed Table</strong>, it will delete metadata from metastore as well as data from HDFS.</p></li>
+<li><p>When we drop <strong>External Table</strong>, only metadata will be dropped, not the data.</p></li>
+<li><p>Typically we use <strong>External Table</strong> when same dataset is processed by multiple frameworks such as Hive, Pig, Spark etc.</p></li>
+<li><p>We cannot run <strong>TRUNCATE TABLE</strong> command against External Tables.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED orders&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED order_items&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">order_items</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+
+<span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/retail_db/orders&quot;</span> <span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-file-formats">
+<h2>Overview of File Formats<a class="headerlink" href="#overview-of-file-formats" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details about different file formats supported by STORED AS Clause.</p>
+<ul class="simple">
+<li><p>Go to this <a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">page</a> and review supported file formats.</p></li>
+<li><p>Supported File Formats</p>
+<ul>
+<li><p>TEXTFILE</p></li>
+<li><p>ORC</p></li>
+<li><p>PARQUET</p></li>
+<li><p>AVRO</p></li>
+<li><p>SEQUENCEFILE - is not important</p></li>
+<li><p>JSONFILE - only available in recent vesions of Hive.</p></li>
+<li><p>and more</p></li>
+</ul>
+</li>
+<li><p>We can even specify custom file formats (out of scope)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span> <span class="nc">CASCADE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_sms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">students</span> <span class="o">(</span>
+    <span class="n">student_id</span> <span class="nc">INT</span><span class="o">,</span>
+    <span class="n">student_first_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_last_name</span> <span class="nc">STRING</span><span class="o">,</span>
+    <span class="n">student_phone_numbers</span> <span class="nc">ARRAY</span><span class="o">&lt;</span><span class="nc">STRING</span><span class="o">&gt;,</span>
+    <span class="n">student_address</span> <span class="nc">STRUCT</span><span class="o">&lt;</span><span class="n">street</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">city</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">state</span><span class="k">:</span><span class="kt">STRING</span><span class="o">,</span> <span class="n">zip</span><span class="k">:</span><span class="kt">STRING&gt;</span>
+<span class="o">)</span> <span class="nc">STORED</span> <span class="nc">AS</span> <span class="n">parquet</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (1, &#39;Scott&#39;, &#39;Tiger&#39;, NULL, NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES (2, &#39;Donald&#39;, &#39;Duck&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), NULL)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+INSERT INTO students VALUES 
+    (3, &#39;Mickey&#39;, &#39;Mouse&#39;, ARRAY(&#39;1234567890&#39;, &#39;2345678901&#39;), STRUCT(&#39;A Street&#39;, &#39;One City&#39;, &#39;Some State&#39;, &#39;12345&#39;)),
+    (4, &#39;Bubble&#39;, &#39;Guppy&#39;, ARRAY(&#39;5678901234&#39;, &#39;6789012345&#39;), STRUCT(&#39;Bubbly Street&#39;, &#39;Guppy&#39;, &#39;La la land&#39;, &#39;45678&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">students</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">sys.process._</span>
+<span class="k">val</span> <span class="n">username</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="n">getProperty</span><span class="o">(</span><span class="s">&quot;user.name&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="s">s&quot;hdfs dfs -ls /user/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">/warehouse/</span><span class="si">${</span><span class="n">username</span><span class="si">}</span><span class="s">_sms.db/students&quot;</span><span class="o">!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dropping-tables-and-databases">
+<h2>Dropping Tables and Databases<a class="headerlink" href="#dropping-tables-and-databases" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to DROP Spark Metastore Tables as well as Databases.</p>
+<ul class="simple">
+<li><p>We can use <strong>DROP TABLE</strong> command to drop the table.. Let us drop orders table</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">USE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">orders</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>DROP TABLE</strong> on managed table will delete both metadata in metastore as well as data in HDFS, while <strong>DROP TABLE</strong> on external table will only delete metadata in metastore.</p></li>
+<li><p>We can drop database by using <strong>DROP DATABASE</strong> Command. However we need to drop all the tables in the database first.</p></li>
+<li><p>Here is the example to drop the database itversity_retail - <code class="docutils literal notranslate"><span class="pre">DROP</span> <span class="pre">DATABASE</span> <span class="pre">itversity_retail</span></code></p></li>
+<li><p>We can also drop all the tables and databases by adding <strong>CASCADE</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">itversity_retail</span> <span class="nc">CASCADE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="truncating-tables">
+<h2>Truncating Tables<a class="headerlink" href="#truncating-tables" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to truncate tables.</p>
+<ul class="simple">
+<li><p><strong>TRUNCATE</strong> works only for managed tables. Only data will be deleted, structure will be retained.</p></li>
+<li><p>Launch Spark SQL</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">DATABASE</span> <span class="nc">IF</span> <span class="nc">NOT</span> <span class="nc">EXISTS</span> <span class="n">itversity_retail</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SHOW</span> <span class="n">tables</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">CREATE</span> <span class="nc">TABLE</span> <span class="n">orders</span> <span class="o">(</span>
+  <span class="n">order_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_date</span> <span class="nc">STRING</span><span class="o">,</span>
+  <span class="n">order_customer_id</span> <span class="nc">INT</span><span class="o">,</span>
+  <span class="n">order_status</span> <span class="nc">STRING</span>
+<span class="o">)</span> <span class="nc">ROW</span> <span class="nc">FORMAT</span> <span class="nc">DELIMITED</span> <span class="nc">FIELDS</span> <span class="nc">TERMINATED</span> <span class="nc">BY</span> <span class="sc">&#39;,&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
+  INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">DROP</span> <span class="nc">TABLE</span> <span class="nc">IF</span> <span class="nc">EXISTS</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+CREATE EXTERNAL TABLE orders (
+  order_id INT,
+  order_date STRING,
+  order_customer_id INT,
+  order_status STRING
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY &#39;,&#39;
+LOCATION &#39;/user/itversity/external/retail_db/orders&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>%%sql
+
+LOAD DATA LOCAL INPATH &#39;/data/retail_db/orders&#39;
+  OVERWRITE INTO TABLE orders
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">orders</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">TRUNCATE</span> <span class="nc">TABLE</span> <span class="n">orders</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="managed-tables-exercise">
+<h2>Managed Tables - Exercise<a class="headerlink" href="#managed-tables-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Let us use NYSE data and see how we can create tables in Spark Metastore.</p>
+<ul class="simple">
+<li><p>Duration: <strong>30 Minutes</strong></p></li>
+<li><p>Data Location (Local): /data/nyse_all/nyse_data</p></li>
+<li><p>Create a database with the name - YOUR_OS_USER_NAME_nyse</p></li>
+<li><p>Table Name: nyse_eod</p></li>
+<li><p>File Format: TEXTFILE (default)</p></li>
+<li><p>Review the files by running Linux commands before using data sets. Data is compressed and we can load the files as is.</p></li>
+<li><p>Copy one of the zip file to your home directory and preview the data. There should be 7 fields. You need to determine the delimiter.</p></li>
+<li><p>Field Names: stockticker, tradedate, openprice, highprice, lowprice, closeprice, volume. For example, you need to use <code class="docutils literal notranslate"><span class="pre">BIGINT</span></code> for volume not <code class="docutils literal notranslate"><span class="pre">INT</span></code>.</p></li>
+<li><p>Determine correct data types based on the values</p></li>
+<li><p>Create Managed table with default Delimiter.</p></li>
+</ul>
+<blockquote>
+<div><p>As delimiters in data and table are not same, you need to figure out how to get data into the target table.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Make sure the data is copied into the table as per the structure defined and validate.</p></li>
+</ul>
+<div class="section" id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<p>Run the following queries to ensure that you will be able to read the data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DESCRIBE</span> <span class="n">FORMATTED</span> <span class="n">YOUR_OS_USER_NAME_nyse</span><span class="o">.</span><span class="n">nyse_eod</span><span class="p">;</span>
+<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">YOUR_OS_USER_NAME_nyse</span><span class="o">.</span><span class="n">nyse_eod</span> <span class="n">LIMIT</span> <span class="mi">10</span>
+<span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">YOUR_OS_USER_NAME_nyse</span><span class="o">.</span><span class="n">nyse_eod</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// There should not be field delimiter as the requirement is to use default delimiter</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="o">(</span><span class="s">&quot;DESCRIBE FORMATTED itversity_nyse.nyse_eod&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="kc">false</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="o">*</span> <span class="nc">FROM</span> <span class="n">itversity_nyse</span><span class="o">.</span><span class="n">nyse_eod</span> <span class="nc">LIMIT</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">sql</span>
+
+<span class="nc">SELECT</span> <span class="n">count</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="nc">FROM</span> <span class="n">itversity_nyse</span><span class="o">.</span><span class="n">nyse_eod</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "apache_toree_scala"
+        },
+        kernelOptions: {
+            kernelName: "apache_toree_scala",
+            path: "./spark-sql"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'apache_toree_scala'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="01_getting_started.html" title="previous page">Getting Started</a>
+    <a class='right-next' id="next-link" href="04_managing_tables_-_dml_and_partitioning.html" title="next page">Managing Tables - DML and Partitioning</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
