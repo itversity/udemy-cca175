@@ -385,31 +385,31 @@
      5.4.6. Dealing with Unix Timestamp
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#overview-of-numeric-functions">
-     5.4.7. Overview of Numeric Functions
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-numeric-functions">
+   5.5. Overview of Numeric Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-type-conversion">
-   5.5. Data Type Conversion
+   5.6. Data Type Conversion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#handling-null-values">
-   5.6. Handling NULL Values
+   5.7. Handling NULL Values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#using-case-and-when">
-   5.7. Using CASE and WHEN
+   5.8. Using CASE and WHEN
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#query-example-word-count">
-   5.8. Query Example - Word Count
+   5.9. Query Example - Word Count
   </a>
  </li>
 </ul>
@@ -1640,8 +1640,9 @@ SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd HH:mm:ss&#39
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="overview-of-numeric-functions">
-<h3><span class="section-number">5.4.7. </span>Overview of Numeric Functions<a class="headerlink" href="#overview-of-numeric-functions" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">5.5. </span>Overview of Numeric Functions<a class="headerlink" href="#overview-of-numeric-functions" title="Permalink to this headline">¶</a></h2>
 <p>Here are some of the numeric functions we might use quite often.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">abs</span></code> - always return positive number</p></li>
@@ -1868,9 +1869,8 @@ SELECT to_unix_timestamp(&#39;20190430 18:18:51&#39;, &#39;yyyyMMdd HH:mm:ss&#39
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="data-type-conversion">
-<h2><span class="section-number">5.5. </span>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.6. </span>Data Type Conversion<a class="headerlink" href="#data-type-conversion" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how we can type cast to change the data type of extracted value to its original type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1974,7 +1974,7 @@ FROM orders_single_column LIMIT 10
 </div>
 </div>
 <div class="section" id="handling-null-values">
-<h2><span class="section-number">5.6. </span>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7. </span>Handling NULL Values<a class="headerlink" href="#handling-null-values" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to handle nulls using specific functions in Spark SQL.</p>
 <ul class="simple">
 <li><p>By default if we try to add or concatenate null to another column or expression or literal, it will return null.</p></li>
@@ -2221,7 +2221,7 @@ SELECT concat(&#39;Hello&#39;, NULL) AS result
 </div>
 </div>
 <div class="section" id="using-case-and-when">
-<h2><span class="section-number">5.7. </span>Using CASE and WHEN<a class="headerlink" href="#using-case-and-when" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.8. </span>Using CASE and WHEN<a class="headerlink" href="#using-case-and-when" title="Permalink to this headline">¶</a></h2>
 <p>At times we might have to select values from multiple columns conditionally.</p>
 <ul class="simple">
 <li><p>We can use <code class="docutils literal notranslate"><span class="pre">CASE</span></code> and <code class="docutils literal notranslate"><span class="pre">WHEN</span></code> for that.</p></li>
@@ -2341,7 +2341,7 @@ ORDER BY updated_order_status
 </div>
 </div>
 <div class="section" id="query-example-word-count">
-<h2><span class="section-number">5.8. </span>Query Example - Word Count<a class="headerlink" href="#query-example-word-count" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.9. </span>Query Example - Word Count<a class="headerlink" href="#query-example-word-count" title="Permalink to this headline">¶</a></h2>
 <p>Let us see how we can perform word count using Spark SQL. Using word count as an example we will understand how we can come up with the solution using pre-defined functions available.</p>
 <ul class="simple">
 <li><p>Create table by name lines.</p></li>
