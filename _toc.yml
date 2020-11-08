@@ -11,6 +11,17 @@
   - file: spark-python/06_joining_data_sets
   - file: spark-python/07_windowing_functions
   - file: spark-python/08_spark_metastore
+  
+- part: Apache Spark using Scala
+  chapters:
+  - file: spark-scala/01_getting_started
+  - file: spark-scala/02_quick_recap_of_scala
+  - file: spark-scala/03_data_processing_overview
+  - file: spark-scala/04_processing_column_data
+  - file: spark-scala/05_basic_transformations
+  - file: spark-scala/06_joining_data_sets
+  - file: spark-scala/07_windowing_functions
+  - file: spark-scala/08_spark_metastore
 
 - part: Apache Spark using SQL
   chapters:
