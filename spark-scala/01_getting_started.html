@@ -55,8 +55,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Quick Recap of Python" href="02_quick_recap_of_python.html" />
-    <link rel="prev" title="CCA 175 - Spark and Hadoop Developer - Python" href="../cca175_intro.html" />
+    <link rel="next" title="2. Quick Recap of Python" href="02_quick_recap_of_scala.html" />
+    <link rel="prev" title="8. Spark Metastore" href="../spark-python/08_spark_metastore.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -99,6 +99,53 @@
   Apache Spark using Python
  </span>
 </p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Scala
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -106,7 +153,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_quick_recap_of_python.html">
+  <a class="reference internal" href="02_quick_recap_of_scala.html">
    2. Quick Recap of Python
   </a>
  </li>
@@ -137,53 +184,6 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08_spark_metastore.html">
-   8. Spark Metastore
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Apache Spark using Scala
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/01_getting_started.html">
-   1. Getting Started
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/02_quick_recap_of_scala.html">
-   2. Quick Recap of Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/03_data_processing_overview.html">
-   3. Data Processing - Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/04_processing_column_data.html">
-   4. Processing Column Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/05_basic_transformations.html">
-   5. Basic Transformations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/06_joining_data_sets.html">
-   6. Joining Data Sets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/07_windowing_functions.html">
-   7. Windowing Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/08_spark_metastore.html">
    8. Spark Metastore
   </a>
  </li>
@@ -266,7 +266,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/spark-python/01_getting_started.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/spark-scala/01_getting_started.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -291,7 +291,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/01_getting_started.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-scala/01_getting_started.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -386,7 +386,7 @@
 <li><p>Make sure Jupyter Notebook is setup and validated.</p></li>
 <li><p>Setup Spark and Validate.</p></li>
 <li><p>Setup Environment Variables to integrate Pyspark with Jupyter Notebook.</p></li>
-<li><p>Launch Jupyter Notebook using <mark> pyspark </mark> command.</p></li>
+<li><p>Launch Jupyter Notebook using <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> command.</p></li>
 <li><p>Setup PyCharm (IDE) for application development.</p></li>
 </ul>
 </div>
@@ -399,7 +399,7 @@
 <li><p>Make sure Jupyter Notebook is setup and validated.</p></li>
 <li><p>Setup Spark and Validate.</p></li>
 <li><p>Setup Environment Variables to integrate Pyspark with Jupyter Notebook.</p></li>
-<li><p>Launch Jupyter Notebook using <mark> pyspark </mark> command.</p></li>
+<li><p>Launch Jupyter Notebook using <code class="docutils literal notranslate"><span class="pre">pyspark</span></code> command.</p></li>
 <li><p>Setup PyCharm (IDE) for application development.</p></li>
 </ul>
 </div>
@@ -414,7 +414,7 @@
 <h2><span class="section-number">1.5. </span>Using ITVersity Labs<a class="headerlink" href="#using-itversity-labs" title="Permalink to this headline">¶</a></h2>
 <p>Let us understand how to submit the Spark Jobs in ITVersity Labs.</p>
 <ul class="simple">
-<li><p>As we are using Python we can also use the help command to get the documentation - for example <mark> help(spark.read.csv)</mark></p></li>
+<li><p>As we are using Python we can also use the help command to get the documentation - for example <code class="docutils literal notranslate"> <span class="pre">help(spark.read.csv)</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="interacting-with-file-systems">
@@ -423,15 +423,15 @@
 <ul class="simple">
 <li><p>We can access datasets using %fs magic command in Databricks notebook</p></li>
 <li><p>By default, we will see files under dbfs</p></li>
-<li><p>We can list the files using ls command - e. g.: <mark> (%fs ls)</mark></p></li>
+<li><p>We can list the files using ls command - e. g.: <code class="docutils literal notranslate"> <span class="pre">(%fs</span> <span class="pre">ls)</span></code></p></li>
 <li><p>Databricks provides lot of datasets for free under databricks-datasets</p></li>
 <li><p>If the cluster is integrated with AWS or Azure Blob we can access files by specifying the appropriate protocol (e.g.: s3:// for s3)</p></li>
 <li><p>List of commands available under %fs</p></li>
-<li><p>Copying files or directories <mark>-cp</mark></p></li>
-<li><p>Moving files or directories <mark>- mv </mark></p></li>
-<li><p>Creating directories <mark> - mkdirs </mark></p></li>
-<li><p>Deleting files and directories <mark> - rm </mark></p></li>
-<li><p>We can copy or delete directories recursively using <mark> -r</mark> or <mark>–recursive</mark></p></li>
+<li><p>Copying files or directories <code class="docutils literal notranslate"><span class="pre">-cp</span></code></p></li>
+<li><p>Moving files or directories <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">mv</span> </code></p></li>
+<li><p>Creating directories <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">mkdirs</span></code></p></li>
+<li><p>Deleting files and directories <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">rm</span></code></p></li>
+<li><p>We can copy or delete directories recursively using <code class="docutils literal notranslate"> <span class="pre">-r</span></code> or <code class="docutils literal notranslate"><span class="pre">--recursive</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="getting-file-metadata">
@@ -445,20 +445,22 @@
 <li><p>When Spark Cluster is started, it will create 2 objects - spark and sc</p></li>
 <li><p>sc is of type SparkContext and spark is of type SparkSession</p></li>
 <li><p>Spark uses HDFS APIs to interact with the file system and we can access HDFS APIs using sc._jsc and sc._jvm to get file metadata.</p></li>
-<li><p>Here are the steps to get the file metadata.</p></li>
-<li><p>Get Hadoop Configuration using <mark> sc._jsc.hadoopConfiguration()</mark> - let’s say <mark>conf</mark></p></li>
-<li><p>We can pass conf to <mark> sc._jvm.org.apache.hadoop.fs.FileSystem.</mark> get to get FileSystem object - let’s say <mark>fs</mark></p></li>
-<li><p>We can build <mark> path</mark>  object by passing the path as string to <mark>sc._jvm.org.apache.hadoop.fs.Path</mark></p></li>
-<li><p>We can invoke <mark>listStatus</mark> on top of fs by passing path which will return an array of FileStatus objects - let’s say files.</p></li>
-<li><p>Each <mark>FileStatus</mark> object have all the metadata of each file.</p></li>
-<li><p>We can use <mark>len</mark> on files to get number of files.</p></li>
-<li><p>We can use <mark>getLen</mark> on each <mark>FileStatus</mark> object to get the size of each file.
-Cumulative size of all files can be achieved using <mark>sum(map(lambda file: file.getLen(), files))</mark></p></li>
 </ul>
-<p>Let us first get list of files</p>
+<p>Here are the steps to get the file metadata.</p>
+<ul class="simple">
+<li><p>Get Hadoop Configuration using <code class="docutils literal notranslate"> <span class="pre">sc._jsc.hadoopConfiguration()</span></code> - let”s say <code class="docutils literal notranslate"><span class="pre">conf</span></code></p></li>
+<li><p>We can pass conf to <code class="docutils literal notranslate"> <span class="pre">sc._jvm.org.apache.hadoop.fs.FileSystem.</span></code> get to get FileSystem object - let”s say <code class="docutils literal notranslate"><span class="pre">fs</span></code></p></li>
+<li><p>We can build <code class="docutils literal notranslate"> <span class="pre">path</span></code>  object by passing the path as string to <code class="docutils literal notranslate"><span class="pre">sc._jvm.org.apache.hadoop.fs.Path</span></code></p></li>
+<li><p>We can invoke <code class="docutils literal notranslate"><span class="pre">listStatus</span></code> on top of fs by passing path which will return an array of FileStatus objects - let”s say files.</p></li>
+<li><p>Each <code class="docutils literal notranslate"><span class="pre">FileStatus</span></code> object have all the metadata of each file.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">len</span></code> on files to get number of files.</p></li>
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">getLen</span></code> on each <code class="docutils literal notranslate"><span class="pre">FileStatus</span></code> object to get the size of each file.</p></li>
+<li><p>Cumulative size of all files can be achieved using <code class="docutils literal notranslate"><span class="pre">sum(map(lambda</span> <span class="pre">file:</span> <span class="pre">file.getLen(),</span> <span class="pre">files))</span></code></p></li>
+<li><p>Let us first get list of files</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">fs</span> ls dbfs:/databricks-datasets/airlines
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">fs</span> <span class="n">ls</span> <span class="n">dbfs</span><span class="o">:/</span><span class="n">databricks</span><span class="o">-</span><span class="n">datasets</span><span class="o">/</span><span class="n">airlines</span>
 </pre></div>
 </div>
 </div>
@@ -466,12 +468,95 @@ Cumulative size of all files can be achieved using <mark>sum(map(lambda file: fi
 <p>Here is the consolidated script to get number of files and cumulative size of all files in a given folder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jsc</span><span class="o">.</span><span class="n">hadoopConfiguration</span><span class="p">()</span>
-<span class="n">fs</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">hadoop</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">FileSystem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">hadoop</span><span class="o">.</span><span class="n">fs</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;dbfs:/databricks-datasets/airlines&quot;</span><span class="p">)</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
 
-<span class="n">files</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">listStatus</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">file</span><span class="p">:</span> <span class="n">file</span><span class="o">.</span><span class="n">getLen</span><span class="p">(),</span> <span class="n">files</span><span class="p">))</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span>
+<span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Getting Started&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>spark = org.apache.spark.sql.SparkSession@6a105b5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>org.apache.spark.sql.SparkSession@6a105b5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">conf</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">hadoopConfiguration</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conf = Configuration: core-default.xml, core-site.xml, mapred-default.xml, mapred-site.xml, yarn-default.xml, yarn-site.xml, hdfs-default.xml, hdfs-site.xml, __spark_hadoop_conf__.xml
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Configuration: core-default.xml, core-site.xml, mapred-default.xml, mapred-site.xml, yarn-default.xml, yarn-site.xml, hdfs-default.xml, hdfs-site.xml, __spark_hadoop_conf__.xml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.hadoop.fs.FileSystem</span>
+<span class="k">val</span> <span class="n">fs</span> <span class="o">=</span> <span class="nc">FileSystem</span><span class="o">.</span><span class="n">get</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fs = DFS[DFSClient[clientName=DFSClient_NONMAPREDUCE_-1742269756_44, ugi=training (auth:SIMPLE)]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DFS[DFSClient[clientName=DFSClient_NONMAPREDUCE_-1742269756_44, ugi=training (auth:SIMPLE)]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.hadoop.fs.Path</span>
+<span class="k">val</span> <span class="n">path</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Path</span><span class="o">(</span><span class="s">&quot;/public/airlines_all/airlines&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>path = /public/airlines_all/airlines
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/public/airlines_all/airlines
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">files</span> <span class="o">=</span> <span class="n">fs</span><span class="o">.</span><span class="n">listStatus</span><span class="o">(</span><span class="n">path</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>files = Array(FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/README.md; isDirectory=false; length=1089; replication=2; blocksize=134217728; modification_time=1572112932387; access_time=1584372852270; owner=hdfs; group=hdfs; permission=rw-r--r--; isSymlink=false}, FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/_SUCCESS; isDirectory=false; length=0; replication=2; blocksize=134217728; modification_time=1572112932485; access_time=1580753965620; owner=hdfs; group=hdfs; permission=rw-r--r--; isSymlink=false}, FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/part-00000; isDirectory=false; length=67108879; replication=2; blocksize=134217728; modification_time=15721129332...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Array(FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/README.md; isDirectory=false; length=1089; replication=2; blocksize=134217728; modification_time=1572112932387; access_time=1584372852270; owner=hdfs; group=hdfs; permission=rw-r--r--; isSymlink=false}, FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/_SUCCESS; isDirectory=false; length=0; replication=2; blocksize=134217728; modification_time=1572112932485; access_time=1580753965620; owner=hdfs; group=hdfs; permission=rw-r--r--; isSymlink=false}, FileStatus{path=hdfs://nn01.itversity.com:8020/public/airlines_all/airlines/part-00000; isDirectory=false; length=67108879; replication=2; blocksize=134217728; modification_time=15721129332...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">files</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="n">file</span> <span class="o">=&gt;</span> <span class="n">file</span><span class="o">.</span><span class="n">getLen</span><span class="o">).</span><span class="n">sum</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
 </pre></div>
 </div>
 </div>
@@ -488,16 +573,16 @@ Cumulative size of all files can be achieved using <mark>sum(map(lambda file: fi
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "pyspark2"
+            mode: "apache_toree_scala"
         },
         kernelOptions: {
-            kernelName: "pyspark2",
-            path: "./spark-python"
+            kernelName: "apache_toree_scala",
+            path: "./spark-scala"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'pyspark2'</script>
+    <script>kernelName = 'apache_toree_scala'</script>
 
               </div>
               
@@ -507,8 +592,8 @@ Cumulative size of all files can be achieved using <mark>sum(map(lambda file: fi
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../cca175_intro.html" title="previous page">CCA 175 - Spark and Hadoop Developer - Python</a>
-    <a class='right-next' id="next-link" href="02_quick_recap_of_python.html" title="next page"><span class="section-number">2. </span>Quick Recap of Python</a>
+    <a class='left-prev' id="prev-link" href="../spark-python/08_spark_metastore.html" title="previous page"><span class="section-number">8. </span>Spark Metastore</a>
+    <a class='right-next' id="next-link" href="02_quick_recap_of_scala.html" title="next page"><span class="section-number">2. </span>Quick Recap of Python</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -1,0 +1,1440 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Basic Transformations &#8212; My Jupyter Book</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Joining Data Sets" href="06_joining_data_sets.html" />
+    <link rel="prev" title="4. Processing Column Data" href="04_processing_column_data.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">My Jupyter Book</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cca175_intro.html">
+   CCA 175 - Spark and Hadoop Developer - Python
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Scala
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_quick_recap_of_scala.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using SQL
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/02_basic_transformations.html">
+   2. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/03_basic_ddl_and_dml.html">
+   3. Basic DDL and DML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/04_dml_and_partitioning.html">
+   4. DML and Partitioning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/05_predefined_functions.html">
+   5. Pre-defined Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-sql/06_windowing_functions.html">
+   6. Windowing Functions
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/spark-scala/05_basic_transformations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-scala/05_basic_transformations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-basic-transformations">
+   5.1. Overview of Basic Transformations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#starting-spark-context">
+   5.2. Starting Spark Context
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-filtering">
+   5.3. Overview of Filtering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tasks">
+     5.3.1. Tasks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-aggregations">
+   5.4. Overview of Aggregations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-sorting">
+   5.5. Overview of Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-1">
+   5.6. Solutions - Problem 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-airlines-data">
+     5.6.1. Reading airlines data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-flights-with-delayed-arrival">
+     5.6.2. Get flights with delayed arrival
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-delayed-counts">
+     5.6.3. Get delayed counts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-2">
+   5.7. Solutions - Problem 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-data-by-flight-date">
+     5.7.1. Grouping Data by Flight Date
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-counts-by-flightdate">
+     5.7.2. Getting Counts by FlightDate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-total-as-well-as-delayed-counts-for-each-day">
+     5.7.3. Getting total as well as delayed counts for each day
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-data-by-flightdate">
+     5.7.4. Sorting Data By FlightDate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-data-in-descending-order-by-count">
+     5.7.5. Sorting Data in descending order by count
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solutions-problem-3">
+   5.8. Solutions - Problem 3
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-count">
+     5.8.1. Getting Count
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="basic-transformations">
+<h1><span class="section-number">5. </span>Basic Transformations<a class="headerlink" href="#basic-transformations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview-of-basic-transformations">
+<h2><span class="section-number">5.1. </span>Overview of Basic Transformations<a class="headerlink" href="#overview-of-basic-transformations" title="Permalink to this headline">¶</a></h2>
+<p>Let us define problem statements to learn more about Data Frame APIs. We will try to cover filtering, aggregations and sorting as part of solutions for these problem statements.</p>
+<ul class="simple">
+<li><p>Get total number of flights as well as number of flights which are delayed in departure and number of flights delayed in arrival.</p></li>
+<li><p>Output should contain 3 columns - <strong>FlightCount</strong>, <strong>DepDelayedCount</strong>, <strong>ArrDelayedCount</strong></p></li>
+<li><p>Get number of flights which are delayed in departure and number of flights delayed in arrival for each day along with number of flights departed for each day.</p></li>
+<li><p>Output should contain 4 columns - <strong>FlightDate</strong>, <strong>FlightCount</strong>, <strong>DepDelayedCount</strong>, <strong>ArrDelayedCount</strong></p></li>
+<li><p><strong>FlightDate</strong> should be of <strong>YYYY-MM-dd</strong> format.</p></li>
+<li><p>Data should be <strong>sorted</strong> in ascending order by <strong>flightDate</strong></p></li>
+<li><p>Get all the flights which are departed late but arrived early (<strong>IsArrDelayed is NO</strong>).</p></li>
+<li><p>Output should contain - <strong>FlightCRSDepTime</strong>, <strong>UniqueCarrier</strong>, <strong>FlightNum</strong>, <strong>Origin</strong>, <strong>Dest</strong>, <strong>DepDelay</strong>, <strong>ArrDelay</strong></p></li>
+<li><p><strong>FlightCRSDepTime</strong> need to be computed using <strong>Year</strong>, <strong>Month</strong>, <strong>DayOfMonth</strong>, <strong>CRSDepTime</strong></p></li>
+<li><p><strong>FlightCRSDepTime</strong> should be displayed using <strong>YYYY-MM-dd HH:mm</strong> format.</p></li>
+<li><p>Output should be sorted by <strong>FlightCRSDepTime</strong> and then by the difference between <strong>DepDelay</strong> and <strong>ArrDelay</strong></p></li>
+<li><p>Also get the count of such flights</p></li>
+</ul>
+</div>
+<div class="section" id="starting-spark-context">
+<h2><span class="section-number">5.2. </span>Starting Spark Context<a class="headerlink" href="#starting-spark-context" title="Permalink to this headline">¶</a></h2>
+<p>Let us start spark context for this Notebook so that we can execute the code provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.SparkSession</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">spark</span> <span class="o">=</span> <span class="nc">SparkSession</span><span class="o">.</span>
+    <span class="n">builder</span><span class="o">.</span>
+    <span class="n">config</span><span class="o">(</span><span class="s">&quot;spark.ui.port&quot;</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">).</span>
+    <span class="n">appName</span><span class="o">(</span><span class="s">&quot;Basic Transformations&quot;</span><span class="o">).</span>
+    <span class="n">master</span><span class="o">(</span><span class="s">&quot;yarn&quot;</span><span class="o">).</span>
+    <span class="n">getOrCreate</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-filtering">
+<h2><span class="section-number">5.3. </span>Overview of Filtering<a class="headerlink" href="#overview-of-filtering" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand few important details related to filtering before we get into the solution</p>
+<ul class="simple">
+<li><p>Filtering can be done either by using <code class="docutils literal notranslate"><span class="pre">filter</span></code> or <code class="docutils literal notranslate"><span class="pre">where</span></code>. These are like synonyms to each other.</p></li>
+<li><p>When it comes to the condition, we can either pass it in <strong>SQL Style</strong> or <strong>Data Frame Style</strong>.</p></li>
+<li><p>Example for SQL Style - <code class="docutils literal notranslate"><span class="pre">airlines.filter(&quot;IsArrDelayed</span> <span class="pre">=</span> <span class="pre">&quot;YES&quot;&quot;).show()</span> <span class="pre">or</span> <span class="pre">airlines.where(&quot;IsArrDelayed</span> <span class="pre">=</span> <span class="pre">&quot;YES&quot;&quot;).show()</span></code></p></li>
+<li><p>Example for Data Frame Style - <code class="docutils literal notranslate"><span class="pre">airlines.filter(airlines[&quot;IsArrDelayed&quot;]</span> <span class="pre">==</span> <span class="pre">&quot;YES&quot;).show()</span></code> or <code class="docutils literal notranslate"><span class="pre">airlines.filter(airlines.IsArrDelayed</span> <span class="pre">==</span> <span class="pre">&quot;YES&quot;).show()</span></code>. We can also use where instead of filter.</p></li>
+<li><p>Here are the other operations we can perform to filter the data - <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">LIKE</span></code>, <code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code> with <code class="docutils literal notranslate"><span class="pre">AND</span></code></p></li>
+<li><p>If we have to validate against multiple columns then we need to use boolean operations such as <code class="docutils literal notranslate"><span class="pre">AND</span></code> and <code class="docutils literal notranslate"><span class="pre">OR</span></code>.</p></li>
+<li><p>If we have to compare each column value with multiple values then we can use the <code class="docutils literal notranslate"><span class="pre">IN</span></code> operator.</p></li>
+</ul>
+<div class="section" id="tasks">
+<h3><span class="section-number">5.3.1. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>Let us perform some tasks to understand filtering in detail. Solve all the problems by passing  conditions using both SQL Style as well as API Style.</p>
+<ul class="simple">
+<li><p>Read the data for the month of 2008 January.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines_path</span> <span class="o">=</span> <span class="s">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span>
+    <span class="n">read</span><span class="o">.</span>
+    <span class="n">parquet</span><span class="o">(</span><span class="n">airlines_path</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of flights which are departed late at origin and reach destination early or on time.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &#39;YES&#39; AND IsArrDelayed = &#39;NO&#39;&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span> <span class="n">and</span>
+           <span class="n">col</span><span class="o">(</span><span class="s">&quot;IsArrDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;NO&quot;</span>
+          <span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">airlines</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span> <span class="n">and</span>
+           <span class="n">airlines</span><span class="o">(</span><span class="s">&quot;IsArrDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;NO&quot;</span>
+          <span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of flights which are departed late from origin by more than 60 minutes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;DepDelay &gt; 60&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DepDelay&quot;</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of flights which are departed early or on time but arrive late by at least 15 minutes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &#39;NO&#39; AND ArrDelay &gt;= 15&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span> <span class="n">col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;NO&quot;</span> <span class="n">and</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;ArrDelay&quot;</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="mi">15</span><span class="o">).</span>
+    <span class="n">count</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of flights departed from following major airports - ORD, DFW, ATL, LAX, SFO.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;Origin IN (&#39;ORD&#39;, &#39;DFW&#39;, &#39;ATL&#39;, &#39;LAX&#39;, &#39;SFO&#39;)&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.col</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Origin&quot;</span><span class="o">).</span><span class="n">isin</span><span class="o">(</span><span class="s">&quot;ORD&quot;</span><span class="o">,</span> <span class="s">&quot;DFW&quot;</span><span class="o">,</span> <span class="s">&quot;ATL&quot;</span><span class="o">,</span> <span class="s">&quot;LAX&quot;</span><span class="o">,</span> <span class="s">&quot;SFO&quot;</span><span class="o">)).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Add a column FlightDate by using Year, Month and DayOfMonth. Format should be <strong>yyyyMMdd</strong>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+                <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                       <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                       <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                      <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get count of flights departed late between 2008 January 1st to January 9th using FlightDate.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &#39;YES&#39; AND FlightDate LIKE &#39;2008010%&#39;&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">           IsDepDelayed = &quot;YES&quot; AND </span>
+<span class="s">           FlightDate BETWEEN 20080101 AND 20080109</span>
+<span class="s">          &quot;&quot;&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span> <span class="n">and</span> 
+           <span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)</span> <span class="n">like</span> <span class="o">(</span><span class="s">&quot;2008010%&quot;</span><span class="o">))</span>
+          <span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span> <span class="n">and</span> 
+           <span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)</span> <span class="n">between</span> <span class="o">(</span><span class="s">&quot;20080101&quot;</span><span class="o">,</span> <span class="s">&quot;20080109&quot;</span><span class="o">))</span>
+          <span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Get number of flights departed late on Sundays.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
+<span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.current_date</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="s">&quot;EE&quot;</span><span class="o">)).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">           IsDepDelayed = &quot;YES&quot; AND </span>
+<span class="s">           date_format(to_date(FlightDate, &quot;yyyyMMdd&quot;), &quot;EEEE&quot;) = &quot;Sunday&quot;</span>
+<span class="s">           &quot;&quot;&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>API Style</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">date_format</span><span class="o">,</span> <span class="n">to_date</span><span class="o">}</span>
+
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span>
+               <span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                      <span class="n">lpad</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                     <span class="o">)</span>
+              <span class="o">).</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span> <span class="n">and</span>
+           <span class="n">date_format</span><span class="o">(</span>
+               <span class="n">to_date</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;FlightDate&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMMdd&quot;</span><span class="o">),</span> <span class="s">&quot;EEEE&quot;</span>
+           <span class="o">)</span> <span class="o">===</span> <span class="s">&quot;Sunday&quot;</span>
+          <span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-aggregations">
+<h2><span class="section-number">5.4. </span>Overview of Aggregations<a class="headerlink" href="#overview-of-aggregations" title="Permalink to this headline">¶</a></h2>
+<p>Let us go through the details related to aggregation using Spark.</p>
+<ul class="simple">
+<li><p>We can perform total aggregations directly on Dataframe or we can perform aggregations after grouping by a key(s).</p></li>
+<li><p>Here are the APIs which we typically use to group the data using a key.</p></li>
+<li><p>groupBy</p></li>
+<li><p>rollup</p></li>
+<li><p>cube</p></li>
+<li><p>Here are the functions which we typically use to perform aggregations.</p></li>
+<li><p>count</p></li>
+<li><p>sum, avg</p></li>
+<li><p>min, max</p></li>
+<li><p>If we want to provide aliases to the aggregated fields then we have to use <code class="docutils literal notranslate"><span class="pre">agg</span></code> after <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>.</p></li>
+<li><p>Let us get the count of flights for each day for the month of 200801.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines_path</span> <span class="o">=</span> <span class="s">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>airlines_path = /public/airlines_all/airlines-part/flightmonth=200801
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/public/airlines_all/airlines-part/flightmonth=200801
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span>
+    <span class="n">read</span><span class="o">.</span>
+    <span class="n">parquet</span><span class="o">(</span><span class="n">airlines_path</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Waiting for a Spark session to start...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>airlines = [Year: int, Month: int ... 29 more fields]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Year: int, Month: int ... 29 more fields]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">lit</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Compile Error
+Message: &lt;console&gt;:29: error: stable identifier required, but this.$line7$read.spark.implicits found.
+       import spark.implicits._
+                    ^
+
+StackTrace: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;year&quot;</span><span class="o">,</span>
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span>
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                  <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)</span>
+           <span class="o">).</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">)).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+-----------+
+|FlightDate|FlightCount|
++----------+-----------+
+|  20080120|      18653|
+|  20080130|      19766|
+|  20080115|      19503|
+|  20080118|      20347|
+|  20080122|      19504|
+|  20080104|      20929|
+|  20080125|      20313|
+|  20080102|      20953|
+|  20080105|      18066|
+|  20080111|      20349|
+|  20080109|      19820|
+|  20080127|      18903|
+|  20080101|      19175|
+|  20080128|      20147|
+|  20080119|      16249|
+|  20080106|      19893|
+|  20080123|      19769|
+|  20080117|      20273|
+|  20080116|      19764|
+|  20080112|      16572|
++----------+-----------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overview-of-sorting">
+<h2><span class="section-number">5.5. </span>Overview of Sorting<a class="headerlink" href="#overview-of-sorting" title="Permalink to this headline">¶</a></h2>
+<p>Let us understand how to sort the data in a Data Frame.</p>
+<ul class="simple">
+<li><p>We can use <code class="docutils literal notranslate"><span class="pre">orderBy</span></code> or <code class="docutils literal notranslate"><span class="pre">sort</span></code> to sort the data.</p></li>
+<li><p>We can perform composite sorting by passing multiple columns or expressions.</p></li>
+<li><p>By default data is sorted in ascending order, we can change it to descending by applying <code class="docutils literal notranslate"><span class="pre">desc()</span></code> function on the column or expression.</p></li>
+</ul>
+</div>
+<div class="section" id="solutions-problem-1">
+<h2><span class="section-number">5.6. </span>Solutions - Problem 1<a class="headerlink" href="#solutions-problem-1" title="Permalink to this headline">¶</a></h2>
+<p>Get total number of flights as well as number of flights which are delayed in departure and number of flights delayed in arrival.</p>
+<ul class="simple">
+<li><p>Output should contain 3 columns - <strong>FlightCount</strong>, <strong>DepDelayedCount</strong>, <strong>ArrDelayedCount</strong></p></li>
+</ul>
+<div class="section" id="reading-airlines-data">
+<h3><span class="section-number">5.6.1. </span>Reading airlines data<a class="headerlink" href="#reading-airlines-data" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines_path</span> <span class="o">=</span> <span class="s">&quot;/public/airlines_all/airlines-part/flightmonth=200801&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">airlines</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span>
+    <span class="n">read</span><span class="o">.</span>
+    <span class="n">parquet</span><span class="o">(</span><span class="n">airlines_path</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">printSchema</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-flights-with-delayed-arrival">
+<h3><span class="section-number">5.6.2. </span>Get flights with delayed arrival<a class="headerlink" href="#get-flights-with-delayed-arrival" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// SQL Style</span>
+<span class="n">airlines</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsArrDelayed = &#39;YES&#39;&quot;</span><span class="o">).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Data Frame Style</span>
+<span class="n">airlines</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">airlines</span><span class="o">(</span><span class="s">&quot;IsArrDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span><span class="o">).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">filter</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;IsArrDelayed&quot;</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span><span class="o">).</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-delayed-counts">
+<h3><span class="section-number">5.6.3. </span>Get delayed counts<a class="headerlink" href="#get-delayed-counts" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Departure Delayed Count</span>
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">airlines</span><span class="o">(</span><span class="s">&quot;IsDepDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span><span class="o">).</span>
+    <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Arrival Delayed Count</span>
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="n">airlines</span><span class="o">(</span><span class="s">&quot;IsArrDelayed&quot;</span><span class="o">)</span> <span class="o">===</span> <span class="s">&quot;YES&quot;</span><span class="o">).</span>
+    <span class="n">count</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &#39;YES&#39; OR IsArrDelayed = &#39;YES&#39;&quot;</span><span class="o">).</span>
+    <span class="n">select</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> 
+           <span class="s">&quot;FlightNum&quot;</span><span class="o">,</span> <span class="s">&quot;IsDepDelayed&quot;</span><span class="o">,</span> <span class="s">&quot;IsArrDelayed&quot;</span>
+          <span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Both Departure Delayed and Arrival Delayed</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">lit</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsDepDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;DepDelayedCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsArrDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;ArrDelayedCount&quot;</span><span class="o">)</span>
+       <span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-2">
+<h2><span class="section-number">5.7. </span>Solutions - Problem 2<a class="headerlink" href="#solutions-problem-2" title="Permalink to this headline">¶</a></h2>
+<p>Get number of flights which are delayed in departure and number of flights delayed in arrival for each day along with number of flights departed for each day.</p>
+<ul class="simple">
+<li><p>Output should contain 4 columns - <strong>FlightDate</strong>, <strong>FlightCount</strong>, <strong>DepDelayedCount</strong>, <strong>ArrDelayedCount</strong></p></li>
+<li><p><strong>FlightDate</strong> should be of <strong>YYYY-MM-dd</strong> format.</p></li>
+<li><p>Data should be <strong>sorted</strong> in ascending order by <strong>flightDate</strong></p></li>
+</ul>
+<div class="section" id="grouping-data-by-flight-date">
+<h3><span class="section-number">5.7.1. </span>Grouping Data by Flight Date<a class="headerlink" href="#grouping-data-by-flight-date" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Example of <code class="docutils literal notranslate"><span class="pre">groupBy</span></code>. It should follow with <code class="docutils literal notranslate"><span class="pre">agg</span></code>. <strong>If you run the below code, it will throw exception.</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+  <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                 <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                 <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+          <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-counts-by-flightdate">
+<h3><span class="section-number">5.7.2. </span>Getting Counts by FlightDate<a class="headerlink" href="#getting-counts-by-flightdate" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">count</span><span class="o">}</span>
+
+<span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+            <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)).</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">(</span><span class="mi">31</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative to get the count with out using agg</span>
+<span class="c1">// We will not be able to provide alias for aggregated fields</span>
+<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+            <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)).</span>
+    <span class="n">count</span><span class="o">.</span>
+    <span class="n">show</span><span class="o">(</span><span class="mi">31</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-total-as-well-as-delayed-counts-for-each-day">
+<h3><span class="section-number">5.7.3. </span>Getting total as well as delayed counts for each day<a class="headerlink" href="#getting-total-as-well-as-delayed-counts-for-each-day" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">count</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+            <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)).</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsDepDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;DepDelayedCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsArrDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;ArrDelayedCount&quot;</span><span class="o">)</span>
+       <span class="o">).</span>
+    <span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sorting-data-by-flightdate">
+<h3><span class="section-number">5.7.4. </span>Sorting Data By FlightDate<a class="headerlink" href="#sorting-data-by-flightdate" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+            <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)).</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsDepDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;DepDelayedCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsArrDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;ArrDelayedCount&quot;</span><span class="o">)</span>
+       <span class="o">).</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">).</span>
+    <span class="n">show</span><span class="o">(</span><span class="mi">31</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sorting-data-in-descending-order-by-count">
+<h3><span class="section-number">5.7.5. </span>Sorting Data in descending order by count<a class="headerlink" href="#sorting-data-in-descending-order-by-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span><span class="o">,</span> <span class="n">col</span><span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span>
+    <span class="n">groupBy</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                   <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)).</span>
+            <span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightDate&quot;</span><span class="o">)).</span>
+    <span class="n">agg</span><span class="o">(</span><span class="n">count</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="mi">1</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsDepDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;DepDelayedCount&quot;</span><span class="o">),</span>
+        <span class="n">sum</span><span class="o">(</span><span class="n">expr</span><span class="o">(</span><span class="s">&quot;CASE WHEN IsArrDelayed = &#39;YES&#39; THEN 1 ELSE 0 END&quot;</span><span class="o">)).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;ArrDelayedCount&quot;</span><span class="o">)</span>
+       <span class="o">).</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;FlightCount&quot;</span><span class="o">).</span><span class="n">desc</span><span class="o">).</span>
+    <span class="n">show</span><span class="o">(</span><span class="mi">31</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="solutions-problem-3">
+<h2><span class="section-number">5.8. </span>Solutions - Problem 3<a class="headerlink" href="#solutions-problem-3" title="Permalink to this headline">¶</a></h2>
+<p>Get all the flights which are departed late but arrived early (<strong>IsArrDelayed is NO</strong>).</p>
+<ul class="simple">
+<li><p>Output should contain - <strong>FlightCRSDepTime</strong>, <strong>UniqueCarrier</strong>, <strong>FlightNum</strong>, <strong>Origin</strong>, <strong>Dest</strong>, <strong>DepDelay</strong>, <strong>ArrDelay</strong></p></li>
+<li><p><strong>FlightCRSDepTime</strong> need to be computed using <strong>Year</strong>, <strong>Month</strong>, <strong>DayOfMonth</strong>, <strong>CRSDepTime</strong></p></li>
+<li><p><strong>FlightCRSDepTime</strong> should be displayed using <strong>YYYY-MM-dd HH:mm</strong> format.</p></li>
+<li><p>Output should be sorted by <strong>FlightCRSDepTime</strong> and then by the difference between <strong>DepDelay</strong> and <strong>ArrDelay</strong></p></li>
+<li><p>Also get the count of such flights</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="s">&quot;CRSDepTime&quot;</span><span class="o">).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>l = [(2008, 1, 23, 700),
+     (2008, 1, 10, 1855),
+    ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="s">&quot;Year INT, Month INT, DayOfMonth INT, DepTime INT&quot;</span><span class="o">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span> <span class="n">substring</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DepTime&quot;</span><span class="o">),</span> <span class="o">-</span><span class="mi">2</span><span class="o">,</span> <span class="mi">2</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="s">&quot;DepTime&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">lpad</span><span class="o">(</span><span class="s">&quot;DepTime&quot;</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="s">&quot;HH:mm&quot;</span><span class="o">)).</span><span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="o">(</span><span class="n">substring</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DepTime&quot;</span><span class="o">),</span> <span class="mi">1</span><span class="o">,</span> <span class="n">length</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;DepTime&quot;</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;string&quot;</span><span class="o">)))).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span> <span class="n">lit</span><span class="o">,</span> <span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span>
+
+<span class="n">flightsFiltered</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &quot;</span><span class="nc">YES</span><span class="s">&quot; AND IsArrDelayed = &quot;</span><span class="nc">NO</span><span class="s">&quot;&quot;</span><span class="o">).</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">),</span>
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;CRSDepTime&quot;</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                 <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCRSDepTime&quot;</span><span class="o">),</span>
+           <span class="s">&quot;UniqueCarrier&quot;</span><span class="o">,</span> <span class="s">&quot;FlightNum&quot;</span><span class="o">,</span> <span class="s">&quot;Origin&quot;</span><span class="o">,</span> 
+           <span class="s">&quot;Dest&quot;</span><span class="o">,</span> <span class="s">&quot;DepDelay&quot;</span><span class="o">,</span> <span class="s">&quot;ArrDelay&quot;</span>
+          <span class="o">).</span>
+    <span class="n">orderBy</span><span class="o">(</span><span class="s">&quot;FlightCRSDepTime&quot;</span><span class="o">,</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;DepDelay&quot;</span><span class="o">)</span> <span class="o">-</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;ArrDelay&quot;</span><span class="o">)).</span>
+    <span class="n">show</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-count">
+<h3><span class="section-number">5.8.1. </span>Getting Count<a class="headerlink" href="#getting-count" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span> <span class="n">lit</span><span class="o">,</span> <span class="n">col</span><span class="o">,</span> <span class="n">concat</span><span class="o">,</span> <span class="n">lpad</span><span class="o">,</span> <span class="n">sum</span><span class="o">,</span> <span class="n">expr</span>
+
+<span class="n">flightsFiltered</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span>
+    <span class="n">filter</span><span class="o">(</span><span class="s">&quot;IsDepDelayed = &quot;</span><span class="nc">YES</span><span class="s">&quot; AND IsArrDelayed = &quot;</span><span class="nc">NO</span><span class="s">&quot;&quot;</span><span class="o">).</span>
+    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;Month&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">),</span> 
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;DayOfMonth&quot;</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot; &quot;</span><span class="o">),</span>
+                  <span class="n">lpad</span><span class="o">(</span><span class="s">&quot;CRSDepTime&quot;</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">)</span>
+                 <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;FlightCRSDepTime&quot;</span><span class="o">),</span>
+           <span class="s">&quot;UniqueCarrier&quot;</span><span class="o">,</span> <span class="s">&quot;FlightNum&quot;</span><span class="o">,</span> <span class="s">&quot;Origin&quot;</span><span class="o">,</span> 
+           <span class="s">&quot;Dest&quot;</span><span class="o">,</span> <span class="s">&quot;DepDelay&quot;</span><span class="o">,</span> <span class="s">&quot;ArrDelay&quot;</span>
+          <span class="o">).</span>
+    <span class="n">count</span><span class="o">()</span>
+
+<span class="n">flightsFiltered</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "apache_toree_scala"
+        },
+        kernelOptions: {
+            kernelName: "apache_toree_scala",
+            path: "./spark-scala"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'apache_toree_scala'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04_processing_column_data.html" title="previous page"><span class="section-number">4. </span>Processing Column Data</a>
+    <a class='right-next' id="next-link" href="06_joining_data_sets.html" title="next page"><span class="section-number">6. </span>Joining Data Sets</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

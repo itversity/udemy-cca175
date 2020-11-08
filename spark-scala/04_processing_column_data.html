@@ -99,6 +99,53 @@
   Apache Spark using Python
  </span>
 </p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/01_getting_started.html">
+   1. Getting Started
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/02_quick_recap_of_python.html">
+   2. Quick Recap of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/03_data_processing_overview.html">
+   3. Data Processing - Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/04_processing_column_data.html">
+   4. Processing Column Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/05_basic_transformations.html">
+   5. Basic Transformations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/06_joining_data_sets.html">
+   6. Joining Data Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/07_windowing_functions.html">
+   7. Windowing Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../spark-python/08_spark_metastore.html">
+   8. Spark Metastore
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Apache Spark using Scala
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="01_getting_started.html">
@@ -106,7 +153,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_quick_recap_of_python.html">
+  <a class="reference internal" href="02_quick_recap_of_scala.html">
    2. Quick Recap of Python
   </a>
  </li>
@@ -137,53 +184,6 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08_spark_metastore.html">
-   8. Spark Metastore
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Apache Spark using Scala
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/01_getting_started.html">
-   1. Getting Started
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/02_quick_recap_of_scala.html">
-   2. Quick Recap of Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/03_data_processing_overview.html">
-   3. Data Processing - Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/04_processing_column_data.html">
-   4. Processing Column Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/05_basic_transformations.html">
-   5. Basic Transformations
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/06_joining_data_sets.html">
-   6. Joining Data Sets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/07_windowing_functions.html">
-   7. Windowing Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../spark-scala/08_spark_metastore.html">
    8. Spark Metastore
   </a>
  </li>
@@ -266,7 +266,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/spark-python/04_processing_column_data.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/spark-scala/04_processing_column_data.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -291,7 +291,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-python/04_processing_column_data.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/spark-scala/04_processing_column_data.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -553,45 +553,12 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">printSchema</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Once Data Frame is created, we can use to understand how to use functions. For example, to get current date, we can run <code class="docutils literal notranslate"><span class="pre">df.select(current_date()).show()</span></code>.</p>
 <p>It is similar to Oracle Query <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">sysdate</span> <span class="pre">FROM</span> <span class="pre">dual</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">l</span> <span class="o">=</span> <span class="nc">List</span><span class="o">(</span><span class="s">&quot;X&quot;</span><span class="o">)</span>
 <span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-
-<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.current_date</span>
-<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">.</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;current_date&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -623,36 +590,10 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">employeesDF</span> <span class="o">=</span> <span class="n">employees</span><span class="o">.</span>
-    <span class="n">toDF</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;first_name&quot;</span><span class="o">,</span>
-         <span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="s">&quot;salary&quot;</span><span class="o">,</span>
-         <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
-         <span class="s">&quot;ssn&quot;</span>
-        <span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">printSchema</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="categories-of-functions">
 <h2><span class="section-number">4.4. </span>Categories of Functions<a class="headerlink" href="#categories-of-functions" title="Permalink to this headline">¶</a></h2>
-<p>There are approximately 300 functions under <code class="docutils literal notranslate"><span class="pre">org.apache.spark.sql.functions</span></code>. At a higher level they can be grouped into a few categories.</p>
+<p>There are approximately 300 functions under org.apache.spark.sql.functions. At a higher level they can be grouped into a few categories.</p>
 <ul class="simple">
 <li><p>String Manipulation Functions</p></li>
 <li><p>Case Conversion - <code class="docutils literal notranslate"><span class="pre">lower</span></code>,  <code class="docutils literal notranslate"><span class="pre">upper</span></code></p></li>
@@ -717,16 +658,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// to use operators such as $ in place of functions like col</span>
-<span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -735,10 +666,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative using col function</span>
 <span class="c1">// $ is shorthand operator for col from implicits</span>
-<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.col</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -746,9 +673,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative by passing column names as strings.</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="s">&quot;last_name&quot;</span><span class="o">).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -757,9 +681,6 @@
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// We have to pass all the column names as strings or column type (using col or $)</span>
 <span class="c1">// This will not work</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="s">&quot;last_name&quot;</span><span class="o">).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -770,19 +691,14 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">groupBy</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">).</span>
-    <span class="n">count</span><span class="o">.</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Passing columns as part of groupBy</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">orderBy</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">).</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Passing columns as part of orderBy or sort</span>
 </pre></div>
 </div>
 </div>
@@ -812,45 +728,28 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">upper</span><span class="o">}</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using col and upper</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">)),</span> <span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">))).</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternate using $ and upper</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternate using $</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> <span class="n">upper</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using as part of groupBy</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">groupBy</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
-    <span class="n">count</span><span class="o">.</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">orderBy</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">).</span><span class="n">desc</span><span class="o">).</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using as part of orderBy</span>
 </pre></div>
 </div>
 </div>
@@ -858,9 +757,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Alternative - we can also refer column names using Data Frame like this</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">orderBy</span><span class="o">(</span><span class="n">upper</span><span class="o">(</span><span class="n">employeesDF</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">)).</span><span class="n">desc</span><span class="o">).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -870,8 +766,14 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Both the below approaches fail.</span>
-<span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.concat</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Below approaches fail.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.concat</span>
 </pre></div>
 </div>
 </div>
@@ -910,15 +812,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">concat</span><span class="o">,</span> <span class="n">col</span><span class="o">,</span> <span class="n">lit</span><span class="o">}</span>
-
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="n">concat</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;first_name&quot;</span><span class="o">),</span> 
-                  <span class="n">lit</span><span class="o">(</span><span class="s">&quot;, &quot;</span><span class="o">),</span> 
-                  <span class="n">col</span><span class="o">(</span><span class="s">&quot;last_name&quot;</span><span class="o">)</span>
-                 <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">)</span>
-          <span class="o">).</span>
-    <span class="n">show</span>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="c1">// Using lit to use literals to derive new expressions</span>
 </pre></div>
 </div>
 </div>
@@ -972,26 +866,6 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">lower</span><span class="o">,</span> <span class="n">upper</span><span class="o">,</span> <span class="n">initcap</span><span class="o">,</span> <span class="n">length</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-  <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;nationality&quot;</span><span class="o">).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_upper&quot;</span><span class="o">,</span> <span class="n">upper</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_lower&quot;</span><span class="o">,</span> <span class="n">lower</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_initcap&quot;</span><span class="o">,</span> <span class="n">initcap</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;nationality_length&quot;</span><span class="o">,</span> <span class="n">length</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;nationality&quot;</span><span class="o">))).</span>
-  <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="string-manipulation-substring">
@@ -1036,29 +910,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.substring</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">),</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">5</span><span class="o">)).</span>
-  <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">substring</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">),</span> <span class="o">-</span><span class="mi">5</span><span class="o">,</span> <span class="mi">5</span><span class="o">)).</span>
-  <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -1110,31 +961,6 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.substring</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;ssn&quot;</span><span class="o">).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;phone_last4&quot;</span><span class="o">,</span> <span class="n">substring</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="o">-</span><span class="mi">4</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ssn_last4&quot;</span><span class="o">,</span> <span class="n">substring</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;ssn&quot;</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="string-manipulation-split">
@@ -1157,29 +983,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.split</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World, how are you&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">split</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello World, how are you&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">2</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -1230,32 +1033,6 @@
          <span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span>
          <span class="s">&quot;ssn&quot;</span>
         <span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.split</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">select</span><span class="o">(</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;ssn&quot;</span><span class="o">).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;area_code&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">1</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;phone_last4&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">3</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ssn_last4&quot;</span><span class="o">,</span> <span class="n">split</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;ssn&quot;</span><span class="o">,</span> <span class="s">&quot; &quot;</span><span class="o">)(</span><span class="mi">2</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;int&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -1318,42 +1095,9 @@
 <ul class="simple">
 <li><p>Create a new column by name <strong>full_name</strong> concatenating <strong>first_name</strong> and <strong>last_name</strong>.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.concat</span>
-<span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">,</span> <span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Improvise by adding a <strong>comma followed by a space</strong> in between <strong>first_name</strong> and <strong>last_name</strong>.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">concat</span><span class="o">,</span> <span class="n">lit</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">employeesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;full_name&quot;</span><span class="o">,</span> <span class="n">concat</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="n">lit</span><span class="o">(</span><span class="s">&quot;, &quot;</span><span class="o">),</span> <span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="string-manipulation-padding">
@@ -1384,27 +1128,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lit</span><span class="o">,</span> <span class="n">lpad</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">lpad</span><span class="o">(</span><span class="n">lit</span><span class="o">(</span><span class="s">&quot;Hello&quot;</span><span class="o">),</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)).</span><span class="n">show</span>
 </pre></div>
 </div>
 </div>
@@ -1457,44 +1180,6 @@
 <li><p>Length of the ssn can be left as is. It is 11 characters.</p></li>
 <li><p>Create a new Dataframe <strong>empFixedDF</strong> with column name <strong>employee</strong>. Preview the data by disabling truncate.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">lpad</span><span class="o">,</span> <span class="n">rpad</span><span class="o">,</span> <span class="n">concat</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">empFixedDF</span> <span class="o">=</span> <span class="n">employeesDF</span><span class="o">.</span><span class="n">select</span><span class="o">(</span>
-    <span class="n">concat</span><span class="o">(</span>
-        <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;employee_id&quot;</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> 
-        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;first_name&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
-        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;last_name&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span>
-        <span class="n">lpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;salary&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="s">&quot;0&quot;</span><span class="o">),</span> 
-        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;nationality&quot;</span><span class="o">,</span> <span class="mi">15</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
-        <span class="n">rpad</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="mi">17</span><span class="o">,</span> <span class="s">&quot;-&quot;</span><span class="o">),</span> 
-        <span class="n">$</span><span class="s">&quot;ssn&quot;</span>
-    <span class="o">).</span><span class="n">alias</span><span class="o">(</span><span class="s">&quot;employee&quot;</span><span class="o">)</span>
-<span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">empFixedDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="string-manipulation-trimming">
@@ -1537,33 +1222,6 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">,</span> <span class="n">trim</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ltrim&quot;</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;rtrim&quot;</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;trim&quot;</span><span class="o">,</span> <span class="n">trim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
-  <span class="n">show</span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;ltrim&quot;</span><span class="o">,</span> <span class="n">ltrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;rtrim&quot;</span><span class="o">,</span> <span class="n">rtrim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">))).</span>
-  <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;trim&quot;</span><span class="o">,</span> <span class="n">trim</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">),</span> <span class="s">&quot; &quot;</span><span class="o">)).</span>
-  <span class="n">show</span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="date-and-time-overview">
@@ -1586,27 +1244,6 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">df</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dummy&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">current_date</span><span class="o">,</span> <span class="n">current_timestamp</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_date</span><span class="o">).</span><span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">).</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -1642,20 +1279,6 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Add 10 days to both date and time values.</p></li>
 <li><p>Subtract 10 days from both date and time values.</p></li>
@@ -1663,68 +1286,6 @@
 <li><p>Get the number of months between current_date and date values as well as current_timestamp and time values.</p></li>
 <li><p>Add 3 months to both date values as well as time values.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">date_add</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_add_date&quot;</span><span class="o">,</span> <span class="n">date_add</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_add_time&quot;</span><span class="o">,</span> <span class="n">date_add</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_sub_date&quot;</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_sub_time&quot;</span><span class="o">,</span> <span class="n">date_sub</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">)).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">current_date</span><span class="o">,</span> <span class="n">current_timestamp</span><span class="o">,</span> <span class="n">datediff</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;datediff_date&quot;</span><span class="o">,</span> <span class="n">datediff</span><span class="o">(</span><span class="n">current_date</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;datediff_time&quot;</span><span class="o">,</span> <span class="n">datediff</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">months_between</span><span class="o">,</span> <span class="n">add_months</span><span class="o">,</span> <span class="n">round</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;months_between_date&quot;</span><span class="o">,</span> <span class="n">round</span><span class="o">(</span><span class="n">months_between</span><span class="o">(</span><span class="n">current_date</span><span class="o">(),</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;months_between_time&quot;</span><span class="o">,</span> <span class="n">round</span><span class="o">(</span><span class="n">months_between</span><span class="o">(</span><span class="n">current_timestamp</span><span class="o">(),</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">),</span> <span class="mi">2</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;add_months_date&quot;</span><span class="o">,</span> <span class="n">add_months</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;add_months_time&quot;</span><span class="o">,</span> <span class="n">add_months</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="mi">3</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="date-and-time-trunc-and-date-trunc">
@@ -1737,13 +1298,6 @@
 <li><p>Get beginning date based on month - <code class="docutils literal notranslate"><span class="pre">date_trunc(&quot;MM&quot;,</span> <span class="pre">current_timestamp())</span></code></p></li>
 <li><p>Get beginning time based on day - <code class="docutils literal notranslate"><span class="pre">date_trunc(&quot;DAY&quot;,</span> <span class="pre">current_timestamp())</span></code></p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">trunc</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="id8">
 <h3><span class="section-number">4.14.1. </span>Tasks<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>Let us perform few tasks to understand trunc and date_trunc in detail.</p>
@@ -1778,50 +1332,9 @@
 <ul class="simple">
 <li><p>Get beginning month date using date field and beginning year date using time field.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.trunc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_trunc&quot;</span><span class="o">,</span> <span class="n">trunc</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;MM&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_trunc&quot;</span><span class="o">,</span> <span class="n">trunc</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;YY&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get beginning hour time using date and time field.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_trunc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dt&quot;</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">(</span><span class="s">&quot;HOUR&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dt&quot;</span><span class="o">,</span> <span class="n">date_trunc</span><span class="o">(</span><span class="s">&quot;HOUR&quot;</span><span class="o">,</span> <span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="n">truncate</span><span class="k">=</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="date-and-time-extracting-information">
@@ -1865,113 +1378,18 @@
 <ul class="simple">
 <li><p>Get year from fields date and time.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.year</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_year&quot;</span><span class="o">,</span> <span class="n">year</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_year&quot;</span><span class="o">,</span> <span class="n">year</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get one or two digit month from fields date and time.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.month</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_month&quot;</span><span class="o">,</span> <span class="n">month</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_month&quot;</span><span class="o">,</span> <span class="n">month</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get year and month in yyyyMM format from date and time.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_format</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_ym&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMM&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_ym&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMM&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get day with in a week, a day with in a month and day within a year from date and time.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">dayofweek</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dow&quot;</span><span class="o">,</span> <span class="n">dayofweek</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dow&quot;</span><span class="o">,</span> <span class="n">dayofweek</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_dom&quot;</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_dom&quot;</span><span class="o">,</span> <span class="n">dayofmonth</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_doy&quot;</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time_doy&quot;</span><span class="o">,</span> <span class="n">dayofyear</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get the information from time in yyyyMMddHHmmss format.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.date_format</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date_ts&quot;</span><span class="o">,</span> <span class="n">date_format</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMMddHHmmss&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="dealing-with-unix-timestamp">
@@ -2002,48 +1420,9 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">datetimesDF</span> <span class="o">=</span> <span class="n">datetimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;dateid&quot;</span><span class="o">,</span> <span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;time&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span><span class="n">show</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get unix timestamp for dateid, date and time.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.</span><span class="o">{</span><span class="n">col</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">datetimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_date_id&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">col</span><span class="o">(</span><span class="s">&quot;dateid&quot;</span><span class="o">).</span><span class="n">cast</span><span class="o">(</span><span class="s">&quot;string&quot;</span><span class="o">),</span> <span class="s">&quot;yyyyMMdd&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_date&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;unix_time&quot;</span><span class="o">,</span> <span class="n">unix_timestamp</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;time&quot;</span><span class="o">)).</span>
-    <span class="n">show</span><span class="o">()</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Create a Dataframe by name unixtimesDF with one column unixtime using 4 values. You can use the unix timestamp generated for time column in previous task.</p></li>
 </ul>
@@ -2058,47 +1437,9 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">unixtimesDF</span> <span class="o">=</span> <span class="n">unixtimes</span><span class="o">.</span><span class="n">toDF</span><span class="o">(</span><span class="s">&quot;unixtime&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">unixtimesDF</span><span class="o">.</span><span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 <ul class="simple">
 <li><p>Get date in yyyyMMdd format and also complete timestamp.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">org.apache.spark.sql.functions.from_unixtime</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="k">import</span> <span class="nn">spark.implicits._</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="n">unixtimesDF</span><span class="o">.</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;date&quot;</span><span class="o">,</span> <span class="n">from_unixtime</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;unixtime&quot;</span><span class="o">,</span> <span class="s">&quot;yyyyMMdd&quot;</span><span class="o">)).</span>
-    <span class="n">withColumn</span><span class="o">(</span><span class="s">&quot;time&quot;</span><span class="o">,</span> <span class="n">from_unixtime</span><span class="o">(</span><span class="n">$</span><span class="s">&quot;unixtime&quot;</span><span class="o">)).</span>
-    <span class="n">show</span>
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="conclusion">
@@ -2128,7 +1469,7 @@
         },
         kernelOptions: {
             kernelName: "apache_toree_scala",
-            path: "./spark-python"
+            path: "./spark-scala"
         },
         predefinedOutput: true
     }
